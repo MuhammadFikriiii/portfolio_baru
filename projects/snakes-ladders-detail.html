@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Snakes and Ladders Game - Muhammad Fikri Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "sans-serif"] },
+            colors: {
+              "electric-blue": "#00BFFF",
+              "dark-bg": "#0F0F23",
+              "dark-card": "#1A1A2E",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .glass-dark {
+        background: rgba(15, 15, 35, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-gray-200 font-sans">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-dark">
+      <div class="container mx-auto px-4 sm:px-6 py-4">
+        <div class="flex justify-between items-center">
+          <a href="../index.html" class="text-xl font-bold text-electric-blue">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Portfolio
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-24 pb-16">
+      <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
+        <!-- Project Hero -->
+        <div class="mb-12">
+          <div class="relative aspect-video rounded-xl overflow-hidden shadow-2xl mb-8">
+            <img src="../image/ulartangga.png" alt="Snakes and Ladders Game" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Snakes and Ladders Game</h1>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-2 rounded-full bg-gradient-to-r from-pink-400 to-emerald-500 text-white text-sm font-bold">2023</span>
+            <span class="px-4 py-2 rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-sm font-bold">Game</span>
+          </div>
+
+          <p class="text-lg text-gray-300 leading-relaxed mb-8">
+            A modern web-based implementation of the classic board game Snakes and Ladders. Built with vanilla HTML, CSS, and JavaScript, this interactive game features smooth animations, responsive design, and multiplayer functionality for two players.
+          </p>
+        </div>
+
+        <!-- Project Details -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
+            <h3 class="text-electric-blue font-bold mb-3 flex items-center">
+              <i class="fas fa-code mr-2"></i> Tech Stack
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><strong>Frontend:</strong> HTML5, CSS3</li>
+              <li><strong>Logic:</strong> Vanilla JavaScript</li>
+              <li><strong>Animations:</strong> CSS Transitions</li>
+              <li><strong>Deployment:</strong> GitHub Pages</li>
+              <li><strong>Browser:</strong> Cross-browser compatible</li>
+            </ul>
+          </div>
+
+          <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
+            <h3 class="text-electric-blue font-bold mb-3 flex items-center">
+              <i class="fas fa-gamepad mr-2"></i> Game Features
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li>✓ Two-player gameplay</li>
+              <li>✓ Dice rolling mechanics</li>
+              <li>✓ Smooth piece animations</li>
+              <li>✓ Win detection system</li>
+              <li>✓ Responsive board layout</li>
+            </ul>
+          </div>
+
+          <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
+            <h3 class="text-electric-blue font-bold mb-3 flex items-center">
+              <i class="fas fa-chart-pie mr-2"></i> Project Stats
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><strong>Development:</strong> 1 week</li>
+              <li><strong>Code Lines:</strong> ~500</li>
+              <li><strong>Load Time:</strong> &lt; 2s</li>
+              <li><strong>Mobile Optimized:</strong> Yes</li>
+              <li><strong>Browser Support:</strong> 95%+</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Full Description -->
+        <div class="bg-dark-card rounded-lg p-8 border border-electric-blue/20 mb-12">
+          <h2 class="text-2xl font-bold text-white mb-6">Project Overview</h2>
+          <div class="space-y-4 text-gray-300 leading-relaxed">
+            <p>
+              This project was created to practice front-end development skills and game logic implementation. Despite its simplicity, the project demonstrates important concepts like DOM manipulation, event handling, animation timing, and game state management.
+            </p>
+            <p>
+              <strong>Technical Implementation:</strong>
+            </p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+              <li>Dynamic board generation using JavaScript</li>
+              <li>Dice rolling simulation with random number generation</li>
+              <li>Game state management (current player, positions, turn tracking)</li>
+              <li>CSS animations for smooth piece movement</li>
+              <li>Event listeners for user interaction (button clicks)</li>
+              <li>Win condition detection and game reset functionality</li>
+            </ul>
+            <p>
+              <strong>Learning Outcomes:</strong>
+            </p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+              <li>Improved understanding of JavaScript DOM manipulation</li>
+              <li>Practice with CSS animations and transitions</li>
+              <li>Game logic development and state management</li>
+              <li>Responsive design principles for mobile and desktop</li>
+              <li>Clean code organization and separation of concerns</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://muhammadfikriiii.github.io/Snakes-and-Ladders./" target="_blank" class="px-8 py-3 rounded-full bg-gradient-to-r from-electric-blue to-cyan-glow text-white font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center">
+            <i class="fas fa-play mr-2"></i> Play Game
+          </a>
+          <a href="https://github.com/MuhammadFikriiii/Snakes-and-Ladders." target="_blank" class="px-8 py-3 rounded-full bg-transparent border-2 border-electric-blue text-electric-blue font-medium hover:bg-electric-blue hover:text-white transition-all duration-300 flex items-center">
+            <i class="fab fa-github mr-2"></i> View Code
+          </a>
+          <a href="../index.html#projects" class="px-8 py-3 rounded-full bg-transparent border-2 border-gray-600 text-gray-400 hover:border-electric-blue hover:text-electric-blue transition-all duration-300 flex items-center">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Projects
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="py-8 bg-gradient-to-r from-gray-900 via-gray-800 to-black text-gray-400 text-center border-t border-gray-800">
+      <p>&copy; 2025 Muhammad Fikri. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

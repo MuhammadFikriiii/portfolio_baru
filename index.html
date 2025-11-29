@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Muhammad Fikri - Admin Jaringan & Pengembang Web</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              "electric-blue": "#00BFFF",
+              "cyan-glow": "#00FFFF",
+              "purple-glow": "#8B5CF6",
+              "pink-glow": "#EC4899",
+              "green-glow": "#10B981",
+              "orange-glow": "#F59E0B",
+              "dark-bg": "#0F0F23",
+              "dark-card": "#1A1A2E",
+            },
+            boxShadow: {
+              "neuro-dark": "8px 8px 16px #0a0a0a, -8px -8px 16px #1e1e1e",
+              glow: "0 0 20px rgba(0, 191, 255, 0.5)",
+              "glow-strong": "0 0 30px rgba(0, 255, 255, 0.8)",
+              "glow-purple": "0 0 20px rgba(139, 92, 246, 0.6)",
+              "glow-pink": "0 0 20px rgba(236, 72, 153, 0.6)",
+            },
+            animation: {
+              typing: "typing 3.5s steps(40, end), blink-caret .75s step-end infinite",
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              "bounce-slow": "bounce 3s infinite",
+              "spin-slow": "spin 8s linear infinite",
+              wiggle: "wiggle 1s ease-in-out infinite",
+              gradient: "gradient 15s ease infinite",
+              "slide-up": "slideUp 0.5s ease-out",
+              "slide-in": "slideIn 0.6s ease-out",
+              "scale-in": "scaleIn 0.5s ease-out",
+              "fade-in": "fadeIn 0.5s ease-out",
+            },
+            keyframes: {
+              typing: {
+                from: { width: "0" },
+                to: { width: "100%" },
+              },
+              "blink-caret": {
+                "from, to": { borderColor: "transparent" },
+                "50%": { borderColor: "#00BFFF" },
+              },
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-8px)" },
+              },
+              wiggle: {
+                "0%, 100%": { transform: "rotate(-3deg)" },
+                "50%": { transform: "rotate(3deg)" },
+              },
+              gradient: {
+                "0%, 100%": { backgroundPosition: "0% 50%" },
+                "50%": { backgroundPosition: "100% 50%" },
+              },
+              slideUp: {
+                from: { transform: "translateY(100px)", opacity: "0" },
+                to: { transform: "translateY(0)", opacity: "1" },
+              },
+              slideIn: {
+                from: { transform: "translateX(-100px)", opacity: "0" },
+                to: { transform: "translateX(0)", opacity: "1" },
+              },
+              scaleIn: {
+                from: { transform: "scale(0.8)", opacity: "0" },
+                to: { transform: "scale(1)", opacity: "1" },
+              },
+              fadeIn: {
+                from: { opacity: "0" },
+                to: { opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/css">
+      .glass {
+        background: rgba(224, 224, 224, 0.3);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(70, 70, 70, 0.1);
+      }
+      .glass-dark {
+        background: rgba(15, 15, 35, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .gradient-bg {
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+      }
+      .skill-card {
+        background: rgba(26, 26, 46, 0.6);
+        border: 1px solid rgba(0, 191, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        /* Added skill card animation */
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.3s ease;
+      }
+      .skill-card:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+        border-color: rgba(0, 191, 255, 0.5);
+      }
+      .project-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+      }
+      .project-card:hover {
+        transform: translateY(-10px) scale(1.02);
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+        align-items: center;
+        justify-content: center;
+      }
+      .modal.show {
+        display: flex;
+        animation: fadeIn 0.3s ease-out;
+      }
+      .modal-content {
+        background: rgba(26, 26, 46, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 90vw;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: scaleIn 0.3s ease-out;
+      }
+      .floating-label {
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+      .form-input:focus + .floating-label,
+      .form-input:not(:placeholder-shown) + .floating-label {
+        transform: translateY(-25px) scale(0.8);
+        color: #00bfff;
+      }
+      /* Project carousel styling */
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+      }
+      .carousel-inner {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+      .carousel-item {
+        flex: 0 0 33.333%;
+        padding: 0 1rem;
+        min-width: 0;
+      }
+      @media (max-width: 768px) {
+        .carousel-item {
+          flex: 0 0 100%;
+        }
+      }
+      .carousel-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 191, 255, 0.2);
+        border: 2px solid rgba(0, 191, 255, 0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #00BFFF;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 10;
+      }
+      .carousel-button:hover {
+        background: rgba(0, 191, 255, 0.4);
+        transform: translateY(-50%) scale(1.1);
+      }
+      .carousel-button.prev {
+        left: 1rem;
+      }
+      .carousel-button.next {
+        right: 1rem;
+      }
+      @media (max-width: 768px) {
+        .carousel-button {
+          width: 40px;
+          height: 40px;
+          font-size: 16px;
+        }
+        .carousel-button.prev {
+          left: 0.5rem;
+        }
+        .carousel-button.next {
+          right: 0.5rem;
+        }
+      }
+      .testimonial-card {
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .testimonial-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 191, 255, 0.2);
+      }
+
+      /* Added testimonial card animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInCard {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .testimonial-card {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+
+      .testimonial-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .testimonial-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .testimonial-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .testimonial-stat {
+        animation: slideInCard 0.6s ease-out forwards;
+      }
+
+      .testimonial-stat:nth-child(1) {
+        animation-delay: 0.4s;
+      }
+
+      .testimonial-stat:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+
+      .testimonial-stat:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .testimonial-stat:nth-child(4) {
+        animation-delay: 0.7s;
+      }
+      /* end Added testimonial card animations */
+      
+      @media (hover: none) and (pointer: coarse) {
+        .skill-card:active,
+        .project-card:active,
+        .testimonial-card:active {
+          transform: scale(0.98);
+        }
+      }
+      /* Added skill filter button active state */
+      .skill-filter-btn.active {
+        transform: scale(1.05);
+        /* Updated active skill filter button styling */
+        background: linear-gradient(to right, #00BFFF, #00FFFF);
+        box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-white font-sans">
+    <!-- Enhanced Header with Language Toggle -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-dark">
+      <div class="container mx-auto px-4 sm:px-6 py-4">
+        <div class="flex justify-between items-center">
+          <a href="#" class="text-xl sm:text-2xl font-bold text-electric-blue">
+            <span class="gradient-bg bg-clip-text text-transparent">Muhammad </span><span class="text-electric-blue">Fikri</span>
+          </a>
+          <!-- Navigation -->
+          <nav class="hidden md:flex space-x-6 lg:space-x-8">
+            <a href="#home" class="nav-link active py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-home">Home</a>
+            <a href="#about" class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-about">Tentang</a>
+            <a href="#projects" class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-projects">Proyek</a>
+            <a href="#skills" class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-skills">Keahlian</a>
+            <a href="#github" class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-github">Github</a>
+            <a href="#certificates" class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-certificates">Sertifikat</a>
+            <a href="#testimonial" class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-testimonial">Testimonial</a>
+            <a href="#contact" class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-contact">Kontak</a>
+          </nav>
+          <!-- Language Toggle Button -->
+          <div class="flex items-center gap-4">
+            <button id="lang-toggle" class="px-3 py-2 rounded-full bg-gradient-to-r from-electric-blue to-purple-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300">
+              <span class="lang-text">EN</span>
+            </button>
+            <button id="mobile-menu-button" class="md:hidden text-gray-200 focus:outline-none">
+              <i class="fas fa-bars text-xl sm:text-2xl"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 space-y-2">
+          <a href="#home" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-home">Home</a>
+          <a href="#about" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-about">Tentang</a>
+          <a href="#projects" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-projects">Proyek</a>
+          <a href="#skills" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-skills">Keahlian</a>
+          <a href="#github" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-github">Github</a>
+          <a href="#certificates" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-certificates">Sertifikat</a>
+          <a href="#testimonial" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-testimonial">Testimonial</a>
+          <a href="#contact" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors" data-translate="nav-contact">Kontak</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Enhanced Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+      <div class="absolute inset-0 gradient-bg opacity-20"></div>
+      <div class="absolute inset-0">
+        <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-electric-blue rounded-full filter blur-3xl opacity-30 animate-float"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-40 h-40 bg-purple-glow rounded-full filter blur-3xl opacity-20 animate-float" style="animation-delay: 1s"></div>
+        <div class="absolute top-1/2 left-1/2 w-24 h-24 bg-pink-glow rounded-full filter blur-3xl opacity-25 animate-float" style="animation-delay: 2s"></div>
+      </div>
+      <div class="container mx-auto px-4 sm:px-6 z-10 text-center">
+        <p class="text-lg sm:text-xl md:text-2xl font-light mb-4 text-gray-400 animate-slide-in" data-translate="hero-greeting">Halo, Saya</p>
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 text-white animate-scale-in">
+          <span class="typing-text gradient-bg bg-clip-text text-transparent" id="dev-name">Muhammad Fikri</span>
+        </h1>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-light mb-8 text-electric-blue animate-slide-up">
+          <span class="typing-text" id="dev-title">Admin Jaringan & Pengembang Web</span>
+        </h2>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-slide-up">
+          <a href="#projects" class="px-6 sm:px-8 py-3 rounded-full bg-gradient-to-r from-electric-blue to-purple-glow text-white font-medium hover:shadow-glow-strong transform hover:scale-105 transition-all duration-300" data-translate="hero-view-work">Lihat Karya Saya</a>
+          <a href="https://wa.me/6285248867449?text=Halo%20Muhammad%20Fikri" target="_blank" class="px-6 sm:px-8 py-3 rounded-full bg-transparent border-2 border-electric-blue text-electric-blue font-medium hover:bg-electric-blue hover:text-white hover:shadow-glow transform hover:scale-105 transition-all duration-300"><i class="fab fa-whatsapp mr-2"></i><span data-translate="hero-whatsapp">Chat di WhatsApp</span></a>
+        </div>
+      </div>
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+        <a href="#about" class="text-white opacity-70 hover:opacity-100 transition-opacity">
+          <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- Enhanced About Section -->
+    <section id="about" class="py-16 sm:py-28 scroll-mt-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
+          <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="about-title">Tentang Saya</span>
+        </h2>
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          <div class="lg:w-2/5 flex justify-center">
+            <div class="relative animate-float">
+              <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-neuro-dark border-4 border-electric-blue">
+                <img src="image/pp.png" alt="Foto Profil" class="w-full h-full object-cover object-center">
+              </div>
+              <div class="absolute inset-0 rounded-full border-4 border-cyan-glow opacity-50 animate-pulse-slow"></div>
+            </div>
+          </div>
+          <div class="lg:w-3/5">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
+              Saya <span class="gradient-bg bg-clip-text text-transparent">Muhammad Fikri</span>, <span data-translate="about-subtitle">Lulusan D3 Teknik Informatika</span>
+            </h3>
+            <p class="text-gray-400 mb-6 leading-relaxed text-sm sm:text-base" data-translate="about-desc1">
+              Saya berspesialisasi dalam membangun pengalaman digital yang luar biasa dan memelihara infrastruktur jaringan yang kuat. Sebagai Admin Jaringan & Pengembang Web, saya menggabungkan keahlian teknis dalam infrastruktur dan teknologi web untuk memberikan solusi komprehensif.
+            </p>
+            <p class="text-gray-400 mb-8 leading-relaxed text-sm sm:text-base" data-translate="about-desc2">
+              Sebagai lulusan terbaru dari Politeknik Negeri Banjarmasin (D3 Teknik Informatika), saya telah mengerjakan berbagai proyek selama studi dan melalui pekerjaan freelance—mulai dari website sederhana hingga aplikasi kompleks, dan implementasi infrastruktur jaringan. Saya menikmati menggabungkan keterampilan teknis dengan pemecahan masalah kreatif untuk memberikan solusi yang efektif dan menarik.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div class="flex items-center p-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
+                <i class="fas fa-map-marker-alt text-electric-blue mr-3 text-lg"></i>
+                <span class="text-sm sm:text-base">Banjarmasin, Indonesia</span>
+              </div>
+              <div class="flex items-center p-3 rounded-lg bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20">
+                <i class="fas fa-envelope text-green-glow mr-3 text-lg"></i>
+                <span class="text-sm sm:text-base">tpublicml@gmail.com</span>
+              </div>
+              <div class="flex items-center p-3 rounded-lg bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20">
+                <i class="fas fa-phone text-purple-glow mr-3 text-lg"></i>
+                <span class="text-sm sm:text-base">+62 852 4886 7449</span>
+              </div>
+              <div class="flex items-center p-3 rounded-lg bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20">
+                <i class="fas fa-graduation-cap text-orange-glow mr-3 text-lg"></i>
+                <span class="text-sm sm:text-base">D3 Teknik Informatika</span>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="file/FikriCv.pdf" download="" class="px-6 py-3 rounded-full bg-gradient-to-r from-electric-blue to-purple-glow text-white font-medium hover:shadow-glow transform hover:scale-105 transition-all duration-300 text-center">
+                <i class="fas fa-download mr-2"></i> <span data-translate="about-download">Unduh CV</span>
+              </a>
+              <a href="#contact" class="px-6 py-3 rounded-full bg-transparent border-2 border-electric-blue text-electric-blue font-medium hover:bg-electric-blue hover:text-white hover:shadow-glow transform hover:scale-105 transition-all duration-300 text-center">
+                <i class="fas fa-paper-plane mr-2"></i> <span data-translate="about-hire">Rekrut Saya</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Projects Section with Carousel -->
+    <section id="projects" class="py-16 sm:py-20 md:py-28 bg-gray-900 scroll-mt-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
+          <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="projects-title">Proyek Saya</span>
+        </h2>
+        <!-- Project Carousel -->
+        <div class="carousel-container relative">
+          <div class="carousel-inner" id="projectCarousel">
+            <!-- Project 1 -->
+            <div class="carousel-item">
+              <div class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 h-full">
+                <div class="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+                  <img src="image/chatbot.png" alt="AI ChatBot" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+                  <div class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-bold" data-translate="badge-new">Baru</div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-base font-bold mb-2 text-white">AI ChatBot</h3>
+                  <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project1-desc">Chatbot bertenaga AI yang dirancang untuk berinteraksi secara alami dengan pengguna menggunakan pemrosesan bahasa alami.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-orange-400 to-orange-600 text-white font-medium">HTML</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-medium">CSS</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-medium">JavaScript</span>
+                  </div>
+                  <div class="flex gap-3">
+                    <a href="projects/chatbot-detail.html" class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-electric-blue to-cyan-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center" data-translate="btn-details">Detail</a>
+                    <a href="https://github.com/MuhammadFikriiii/FikriChatBot" target="_blank" class="flex-1 px-4 py-2 rounded-full bg-transparent border border-electric-blue text-electric-blue text-sm font-medium hover:bg-electric-blue hover:text-white transition-all duration-300 text-center" data-translate="btn-code">Kode</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="carousel-item">
+              <div class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 h-full">
+                <div class="relative aspect-video overflow-hidden">
+                  <img src="image/project.png" alt="Kurikulum OBE" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+                  <div class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-yellow-400 to-red-500 text-white text-xs font-bold" data-translate="badge-website">Website</div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-base font-bold mb-2 text-white" data-translate="project2-title">Sistem Informasi Kurikulum OBE</h3>
+                  <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project2-desc">Sistem Desain Kurikulum OBE yang dikembangkan untuk Poliban mendukung pengembangan kurikulum sesuai prinsip OBE.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-purple-600 to-purple-800 text-white font-medium">Laravel</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-orange-800 to-orange-600 text-white font-medium">MySQL</span>
+                  </div>
+                  <div class="flex gap-3">
+                    <a href="projects/kurikulum-obe-detail.html" class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-electric-blue to-cyan-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center" data-translate="btn-details">Detail</a>
+                    <a href="https://github.com/MuhammadFikriiii/baru_kurikulum_OBE" target="_blank" class="flex-1 px-4 py-2 rounded-full bg-transparent border border-electric-blue text-electric-blue text-sm font-medium hover:bg-electric-blue hover:text-white transition-all duration-300 text-center" data-translate="btn-code">Kode</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="carousel-item">
+              <div class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20 h-full">
+                <div class="relative aspect-video overflow-hidden">
+                  <img src="image/project1.png" alt="Cisco LAN" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+                  <div class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-xs font-bold" data-translate="badge-network">Jaringan</div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-base font-bold mb-2 text-white" data-translate="project3-title">Desain LAN Berskala Besar Cisco</h3>
+                  <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project3-desc">Desain jaringan menggunakan Cisco Packet Tracer untuk optimasi lingkungan korporat dengan VLAN dan protokol routing.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-medium">Cisco</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-red-400 to-red-600 text-white font-medium">VLAN</span>
+                  </div>
+                  <div class="flex gap-3">
+                    <a href="projects/cisco-lan-detail.html" class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-purple-glow to-pink-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center" data-translate="btn-details">Detail</a>
+                    <a href="https://drive.google.com/drive/u/0/folders/12u0mo5TJ_B59r6mcU_ZM1LNpqIP7H-yz" target="_blank" class="flex-1 px-4 py-2 rounded-full bg-transparent border border-purple-glow text-purple-glow text-sm font-medium hover:bg-purple-glow hover:text-white transition-all duration-300 text-center" data-translate="btn-file">File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Project 4 -->
+            <div class="carousel-item">
+              <div class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-pink-glow/20 h-full">
+                <div class="relative aspect-video overflow-hidden">
+                  <img src="image/ulartangga.png" alt="Snakes Ladders" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+                  <div class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-pink-400 to-emerald-500 text-white text-xs font-bold" data-translate="badge-game">Game</div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-base font-bold mb-2 text-white" data-translate="project4-title">Permainan Ular Tangga</h3>
+                  <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project4-desc">Game papan klasik berbasis web dengan fitur interaktif, memungkinkan dua pemain untuk bermain dengan animasi mulus.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-orange-400 to-orange-600 text-white font-medium">HTML</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-medium">CSS</span>
+                  </div>
+                  <div class="flex gap-3">
+                    <a href="projects/snakes-ladders-detail.html" class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-electric-blue to-cyan-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center" data-translate="btn-details">Detail</a>
+                    <a href="https://github.com/MuhammadFikriiii/Snakes-and-Ladders." target="_blank" class="flex-1 px-4 py-2 rounded-full bg-transparent border border-electric-blue text-electric-blue text-sm font-medium hover:bg-electric-blue hover:text-white transition-all duration-300 text-center" data-translate="btn-code">Kode</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Project 5 -->
+            <div class="carousel-item">
+              <div class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-pink-glow/20 h-full">
+                <div class="relative aspect-video overflow-hidden">
+                  <img src="image/sima.jpg" alt="SIMA" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+                  <div class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 text-white text-xs font-bold" data-translate="badge-website">Website</div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-base font-bold mb-2 text-white" data-translate="project5-title">SIMA BPKPAD Kota Banjarmasin</h3>
+                  <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project5-desc">Sistem manajemen arsip elektronik untuk BPKPAD mengoptimalkan penyimpanan dokumen, pengambilan, dan keamanan.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-purple-600 to-purple-800 text-white font-medium">Laravel</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-orange-800 to-orange-600 text-white font-medium">MySQL</span>
+                  </div>
+                  <div class="flex gap-3">
+                    <a href="projects/sima-detail.html" class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-pink-glow to-rose-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center" data-translate="btn-details">Detail</a>
+                    <a href="https://github.com/MuhammadFikriiii/sistem-informasi-manajemen-arsip" target="_blank" class="flex-1 px-4 py-2 rounded-full bg-transparent border border-pink-glow text-pink-glow text-sm font-medium hover:bg-pink-glow hover:text-white transition-all duration-300 text-center" data-translate="btn-code">Kode</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Project 6 - Load Balance Mikrotik -->
+            <div class="carousel-item">
+              <div class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-cyan-400/20 h-full">
+                <div class="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+                  <img src="image/project1.png" alt="Load Balance Mikrotik" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+                  <div class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-xs font-bold" data-translate="badge-network">Jaringan</div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-base font-bold mb-2 text-white" data-translate="project6-title">Setting Load Balance Mikrotik</h3>
+                  <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project6-desc">Implementasi load balancing multi-WAN dengan Mikrotik RouterOS untuk optimasi bandwidth dan failover otomatis.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-medium">Mikrotik</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium">RouterOS</span>
+                  </div>
+                  <div class="flex gap-3">
+                    <a href="projects/loadbalance-detail.html" class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center" data-translate="btn-details">Detail</a>
+                    <a href="https://drive.google.com/drive/u/0/folders/12u0mo5TJ_B59r6mcU_ZM1LNpqIP7H-yz" target="_blank" class="flex-1 px-4 py-2 rounded-full bg-transparent border border-cyan-400 text-cyan-400 text-sm font-medium hover:bg-cyan-400 hover:text-white transition-all duration-300 text-center" data-translate="btn-file">File</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Project 7 - Landing Page Cafe -->
+            <div class="carousel-item">
+              <div class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-amber-400/20 h-full">
+                <div class="relative aspect-video overflow-hidden">
+                  <img src="image/project.png" alt="Landing Page Cafe" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+                  <div class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs font-bold" data-translate="badge-website">Website</div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-base font-bold mb-2 text-white" data-translate="project7-title">Landing Page Cafe - Brew Haven</h3>
+                  <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project7-desc">Landing page responsif modern untuk kedai kopi dengan menu showcase, lokasi, dan call-to-action yang efektif.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-orange-400 to-orange-600 text-white font-medium">HTML5</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-blue-400 to-blue-600 text-white font-medium">Tailwind CSS</span>
+                  </div>
+                  <div class="flex gap-3">
+                    <a href="projects/cafe-detail.html" class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center" data-translate="btn-details">Detail</a>
+                    <a href="https://github.com" target="_blank" class="flex-1 px-4 py-2 rounded-full bg-transparent border border-amber-400 text-amber-400 text-sm font-medium hover:bg-amber-400 hover:text-white transition-all duration-300 text-center" data-translate="btn-code">Kode</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Project 8 - AI Image Upscaler -->
+            <div class="carousel-item">
+              <div class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-purple-400/20 h-full">
+                <div class="relative aspect-video overflow-hidden">
+                  <img src="image/chatbot.png" alt="AI Image Upscaler" class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+                  <div class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-xs font-bold" data-translate="badge-ai">AI</div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-base font-bold mb-2 text-white" data-translate="project8-title">AI Image Upscaler</h3>
+                  <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project8-desc">Aplikasi web dengan AI untuk upscale gambar hingga 4x menggunakan neural network Real-ESRGAN dengan hasil profesional.</p>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium">Next.js</span>
+                    <span class="px-3 py-1 text-xs rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium">AI/ML</span>
+                  </div>
+                  <div class="flex gap-3">
+                    <a href="projects/upscale-detail.html" class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center" data-translate="btn-details">Detail</a>
+                    <a href="https://github.com" target="_blank" class="flex-1 px-4 py-2 rounded-full bg-transparent border border-purple-400 text-purple-400 text-sm font-medium hover:bg-purple-400 hover:text-white transition-all duration-300 text-center" data-translate="btn-code">Kode</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Carousel Controls -->
+          <button class="carousel-button prev" id="prevBtn" onclick="moveCarousel(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-button next" id="nextBtn" onclick="moveCarousel(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Skills Section -->
+    <section id="skills" class="py-16 sm:py-20 md:py-32 scroll-mt-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
+          <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="nav-skills">My Skills</span>
+        </h2>
+
+        <!-- Added category filter buttons -->
+        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+          <button class="skill-filter-btn active px-4 sm:px-6 py-2 rounded-full bg-gradient-to-r from-electric-blue to-cyan-glow text-white font-medium hover:shadow-glow transition-all duration-300 text-sm sm:text-base" data-category="all">
+            Semua
+          </button>
+          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-electric-blue text-electric-blue font-medium hover:bg-electric-blue hover:text-white hover:shadow-glow transition-all duration-300 text-sm sm:text-base" data-category="frontend">
+            Frontend
+          </button>
+          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-purple-glow text-purple-glow font-medium hover:bg-purple-glow hover:text-white hover:shadow-glow-purple transition-all duration-300 text-sm sm:text-base" data-category="backend">
+            Backend
+          </button>
+          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-cyan-glow text-cyan-glow font-medium hover:bg-cyan-glow hover:text-white hover:shadow-glow-strong transition-all duration-300 text-sm sm:text-base" data-category="network">
+            Network
+          </button>
+          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-green-glow text-green-glow font-medium hover:bg-green-glow hover:text-white transition-all duration-300 text-sm sm:text-base" data-category="design">
+            Design
+          </button>
+          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-orange-glow text-orange-glow font-medium hover:bg-orange-glow hover:text-white transition-all duration-300 text-sm sm:text-base" data-category="tools">
+            Tools
+          </button>
+          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-pink-glow text-pink-glow font-medium hover:bg-pink-glow hover:text-white transition-all duration-300 text-sm sm:text-base" data-category="office">
+            Office
+          </button>
+        </div>
+
+        <!-- Replaced skill cards with categorized skills -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 sm:gap-6" id="skillsGrid">
+          <!-- Frontend Skills -->
+          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
+            <div class="text-4xl mb-3 text-orange-400"><i class="fab fa-html5"></i></div>
+            <div class="font-semibold text-sm">HTML5</div>
+          </div>
+          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
+            <div class="text-4xl mb-3 text-blue-400"><i class="fab fa-css3-alt"></i></div>
+            <div class="font-semibold text-sm">CSS3</div>
+          </div>
+          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
+            <div class="text-4xl mb-3 text-yellow-400"><i class="fab fa-js"></i></div>
+            <div class="font-semibold text-sm">JavaScript</div>
+          </div>
+          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
+            <div class="text-4xl mb-3 text-blue-500"><i class="fas fa-wind"></i></div>
+            <div class="font-semibold text-sm">Tailwind CSS</div>
+          </div>
+          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
+            <div class="text-4xl mb-3 text-purple-600"><i class="fab fa-bootstrap"></i></div>
+            <div class="font-semibold text-sm">Bootstrap</div>
+          </div>
+
+          <!-- Backend Skills -->
+          <div class="skill-card" data-category="backend" data-category-name="Backend">
+            <div class="text-4xl mb-3 text-blue-500"><i class="fab fa-php"></i></div>
+            <div class="font-semibold text-sm">PHP</div>
+          </div>
+          <div class="skill-card" data-category="backend" data-category-name="Backend">
+            <div class="text-4xl mb-3 text-red-500"><i class="fab fa-laravel"></i></div>
+            <div class="font-semibold text-sm">Laravel</div>
+          </div>
+          <div class="skill-card" data-category="backend" data-category-name="Backend">
+            <div class="text-4xl mb-3 text-green-500"><i class="fas fa-database"></i></div>
+            <div class="font-semibold text-sm">MySQL</div>
+          </div>
+          <div class="skill-card" data-category="backend" data-category-name="Backend">
+            <div class="text-4xl mb-3 text-amber-600"><i class="fas fa-database"></i></div>
+            <div class="font-semibold text-sm">SQL</div>
+          </div>
+          <div class="skill-card" data-category="backend" data-category-name="Backend">
+            <div class="text-4xl mb-3 text-blue-700"><i class="fab fa-wordpress"></i></div>
+            <div class="font-semibold text-sm">WordPress</div>
+          </div>
+
+          <!-- Network Skills -->
+          <div class="skill-card" data-category="network" data-category-name="Network">
+            <div class="text-4xl mb-3 text-cyan-400"><i class="fas fa-network-wired"></i></div>
+            <div class="font-semibold text-sm">Cisco</div>
+          </div>
+          <div class="skill-card" data-category="network" data-category-name="Network">
+            <div class="text-4xl mb-3 text-orange-500"><i class="fas fa-router"></i></div>
+            <div class="font-semibold text-sm">Mikrotik</div>
+          </div>
+          <div class="skill-card" data-category="network" data-category-name="Network">
+            <div class="text-4xl mb-3 text-red-600"><i class="fas fa-fiber-port"></i></div>
+            <div class="font-semibold text-sm">Fiber Optic</div>
+          </div>
+
+          <!-- Design Skills -->
+          <div class="skill-card" data-category="design" data-category-name="Design">
+            <div class="text-4xl mb-3 text-purple-500"><i class="fab fa-figma"></i></div>
+            <div class="font-semibold text-sm">Figma</div>
+          </div>
+          <div class="skill-card" data-category="design" data-category-name="Design">
+            <div class="text-4xl mb-3 text-cyan-500"><i class="fas fa-palette"></i></div>
+            <div class="font-semibold text-sm">Canvas</div>
+          </div>
+
+          <!-- Tools Skills -->
+          <div class="skill-card" data-category="tools" data-category-name="Tools">
+            <div class="text-4xl mb-3 text-gray-400"><i class="fab fa-github"></i></div>
+            <div class="font-semibold text-sm">GitHub</div>
+          </div>
+          <div class="skill-card" data-category="tools" data-category-name="Tools">
+            <div class="text-4xl mb-3 text-gray-300"><i class="fas fa-rocket"></i></div>
+            <div class="font-semibold text-sm">Vercel</div>
+          </div>
+          <div class="skill-card" data-category="tools" data-category-name="Tools">
+            <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-envelope"></i></div>
+            <div class="font-semibold text-sm">Postman</div>
+          </div>
+
+          <!-- Office Skills -->
+          <div class="skill-card" data-category="office" data-category-name="Office">
+            <div class="text-4xl mb-3 text-red-600"><i class="fas fa-file-word"></i></div>
+            <div class="font-semibold text-sm">MS Word</div>
+          </div>
+          <div class="skill-card" data-category="office" data-category-name="Office">
+            <div class="text-4xl mb-3 text-green-600"><i class="fas fa-file-excel"></i></div>
+            <div class="font-semibold text-sm">MS Excel</div>
+          </div>
+          <div class="skill-card" data-category="office" data-category-name="Office">
+            <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-file-powerpoint"></i></div>
+            <div class="font-semibold text-sm">MS PowerPoint</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Certificates Section -->
+    <section id="certificates" class="py-16 sm:py-20 md:py-32 bg-gray-900 scroll-mt-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
+          <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="nav-certificates">Certificates & Achievements</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <button onclick="showCertificateDetail('jscoi', 'Learn the Fundamentals of JavaScript Programming', 'Dicoding', '2025', 'image/jscoi.png', 'Learned the fundamentals of JavaScript as a core programming language in web development. Covered topics such as language structure, data types, operators, functions, control flow, and code modularization to build a strong foundation in programming logic.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <img src="image/jscoi.png" alt="Belajar Dasar Pemrograman JavaScript" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Learn the Fundamentals of JavaScript Programming</h3>
+              <p class="text-gray-400 text-sm">Dicoding</p>
+            </div>
+          </button>
+          <button onclick="showCertificateDetail('backend', 'Beginner Back-End Development with JavaScript', 'Dicoding', '2025', 'image/dicodingbackend.png', 'Successfully completed the Beginner Back-End Development with JavaScript course on Dicoding. Gained foundational skills in back-end application development, including understanding servers, databases, and API creation.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <img src="image/dicodingbackend.png" alt="Back-End Certificate" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Beginner Back-End Development with JavaScript</h3>
+              <p class="text-gray-400 text-sm">Dicoding</p>
+            </div>
+          </button>
+          <button onclick="showCertificateDetail('ccna', 'CCNA 200-301 Certification Training', 'Simple Learn', '2025', 'image/ccn.png', 'Completed comprehensive CCNA 200-301 training covering network fundamentals, routing and switching, IP addressing, network security, and troubleshooting. Gained practical knowledge to design, implement, and manage modern enterprise networks.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <img src="image/ccn.png" alt="Certificate ccn" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">CCNA 200-301 Certification Training</h3>
+              <p class="text-gray-400 text-sm">Simple Learn</p>
+            </div>
+          </button>
+          <button onclick="showCertificateDetail('excel', 'Finding, Sorting, and Filtering Data in Excel', 'Coursera', '2025', 'image/filterdata.png', 'Completed a guided project on efficiently finding, sorting, and filtering data in Excel. Gained practical skills in organizing and analyzing datasets using built-in Excel tools to support decision-making and reporting.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <img src="image/filterdata.png" alt="Certificate filterdata" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Finding, Sorting, and Filtering Data in Excel</h3>
+              <p class="text-gray-400 text-sm">Coursera</p>
+            </div>
+          </button>
+          <button onclick="showCertificateDetail('msoffice', 'Essential Skills in Microsoft Excel', 'Coursera', '2025', 'image/coursera.png', 'Completed hands-on guided project introducing key Excel features, including formatting, formulas, charts, and functions. Acquired foundational skills to create and manage spreadsheets for budgeting, tracking, and data analysis.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <img src="image/coursera.png" alt="Certificate coursera" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Essential Skills in Microsoft Excel</h3>
+              <p class="text-gray-400 text-sm">Coursera</p>
+            </div>
+          </button>
+          <button onclick="showCertificateDetail('lintasarta', 'Certificate Of Competency Assessment', 'Lintasarta', '2022', 'image/lintasarta.jpg', 'Mikrotik router configuration, network setup, routing protocols, firewall management, and bandwidth optimization. Practical training for enterprise network administration.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 text-left hover:shadow-glow cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 flex items-center justify-center overflow-hidden">
+              <img src="image/lintasarta.jpg" alt="Certificate Lintasarta" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2022</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Certificate Of Competency Assessment</h3>
+              <p class="text-gray-400 text-sm">Lintasarta</p>
+            </div>
+          </button>
+          <button onclick="showCertificateDetail('fiber', 'Practical Training in Fiber Optic Network Technology', 'Upaya Teknik (PT. Telkom)', '2021', 'image/upayateknik.jpg', 'Completed internship training on Fiber Optic Network at Upaya Teknik. Gained practical skills in installation, configuration, and maintenance of fiber optic telecom networks.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <img src="image/upayateknik.jpg" alt="Certificate upayateknik" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2021</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Practical Training in Fiber Optic Network Technology</h3>
+              <p class="text-gray-400 text-sm">Upaya Teknik (PT. Telkom)</p>
+            </div>
+          </button>
+          <button onclick="showCertificateDetail('office', 'Microsoft Office Productivity Training', 'LPKBB IPTEK', '2019', 'image/office.jpg', 'Completed professional training in Microsoft Office applications at LPKB IPTEK, focusing on enhancing productivity using Word, Excel, and PowerPoint for various administrative and business tasks.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <img src="image/office.jpg" alt="Certificate office" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2019</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Microsoft Office Productivity Training</h3>
+              <p class="text-gray-400 text-sm">LPKBB IPTEK</p>
+            </div>
+          </button>
+          <button onclick="showCertificateDetail('design', 'Graphic Design Training Program', 'LPKBB IPTEK', '2019', 'image/design.jpg', 'Completed graphic design training at LPKB IPTEK, focusing on fundamentals of visual design, typography, color theory, and digital illustration using tools like Adobe Photoshop and CorelDRAW.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
+            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
+              <img src="image/design.jpg" alt="Certificate design" class="w-full h-full object-contain p-2">
+              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2019</div>
+            </div>
+            <div class="p-4 sm:p-6">
+              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Graphic Design Training Program</h3>
+              <p class="text-gray-400 text-sm">LPKBB IPTEK</p>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Stats -->
+        <div id="github" class="mt-20 scroll-mt-32">
+          <h3 class="text-xl sm:text-2xl font-bold mb-8 text-center gradient-bg bg-clip-text text-transparent" data-lang-key="github_title">Statistik GitHub</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-blue-500/20">
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="text-lg font-medium" data-lang-key="github_repos">Repository</h4>
+                <i class="fas fa-code-branch text-electric-blue text-2xl"></i>
+              </div>
+              <p class="text-4xl font-bold text-electric-blue count-up" data-target="12">0</p>
+              <p class="text-xs text-gray-500 mt-2" data-lang-key="github_public">Repository publik</p>
+            </div>
+            <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-yellow-500/20">
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="text-lg font-medium" data-lang-key="github_stars">Bintang</h4>
+                <i class="fas fa-star text-yellow-500 text-2xl"></i>
+              </div>
+              <p class="text-4xl font-bold text-yellow-500 count-up" data-target="3">0</p>
+              <p class="text-xs text-gray-500 mt-2" data-lang-key="github_received">Diterima di proyek</p>
+            </div>
+            <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-green-500/20">
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="text-lg font-medium" data-lang-key="github_contrib">Kontribusi</h4>
+                <i class="fas fa-code-commit text-green-glow text-2xl"></i>
+              </div>
+              <p class="text-4xl font-bold text-green-glow count-up" data-target="100">0</p>
+              <p class="text-xs text-gray-500 mt-2" data-lang-key="github_lastyear">Tahun lalu</p>
+            </div>
+            <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-purple-500/20">
+              <div class="flex items-center justify-between mb-4">
+                <h4 class="text-lg font-medium" data-lang-key="github_followers">Pengikut</h4>
+                <i class="fas fa-users text-purple-glow text-2xl"></i>
+              </div>
+              <p class="text-4xl font-bold text-purple-glow count-up" data-target="10">0</p>
+              <p class="text-xs text-gray-500 mt-2" data-lang-key="github_followers_desc">Pengikut GitHub</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificate Detail Modal -->
+    <div id="certificateModal" class="modal">
+      <div class="modal-content max-w-md">
+        <div class="flex justify-between items-center mb-6">
+          <h3 class="text-xl sm:text-2xl font-bold text-white">Certificate Details</h3>
+          <button onclick="closeCertificateModal()" class="text-gray-400 hover:text-white text-2xl">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="space-y-4">
+          <img id="certImage" src="/placeholder.svg" alt="Certificate" class="w-full rounded-lg border border-electric-blue/30">
+          <div>
+            <h4 id="certTitle" class="text-lg font-bold text-white mb-2"></h4>
+            <p id="certOrganization" class="text-electric-blue text-sm mb-4"></p>
+            <p id="certDescription" class="text-gray-400 text-sm leading-relaxed"></p>
+          </div>
+          <div class="flex gap-3 pt-4">
+            <button onclick="closeCertificateModal()" class="flex-1 px-4 py-2 rounded-lg bg-transparent border border-gray-600 text-gray-400 hover:border-electric-blue hover:text-electric-blue transition-all">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced Testimonials Section -->
+    <section id="testimonial" class="py-16 sm:py-20 md:py-32 scroll-mt-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
+          <span class="relative gradient-bg bg-clip-text text-transparent">What Clients Say</span>
+        </h2>
+        
+        <!-- Testimonial Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 flex flex-col h-full">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+              </div>
+              <span class="ml-2 text-sm text-gray-400">5.0</span>
+            </div>
+            
+            <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow">
+              "Working with Fikri felt like playing Snakes and Ladders — but without hitting any snakes. His problem-solving skills kept our progress climbing, helping us reach the finish line faster than expected."
+            </p>
+            
+            <div class="flex items-center pt-4 border-t border-gray-700">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-3">
+              <div>
+                <h4 class="font-semibold text-white text-sm sm:text-base">Michael Chen</h4>
+                <p class="text-xs sm:text-sm text-gray-400">CTO, InnovateLab</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20 flex flex-col h-full">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+              </div>
+              <span class="ml-2 text-sm text-gray-400">5.0</span>
+            </div>
+            
+            <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow">
+              "The AI chatbot Fikri developed for us has revolutionized our customer service. His understanding of both frontend and backend technologies is impressive."
+            </p>
+            
+            <div class="flex items-center pt-4 border-t border-gray-700">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="David Kim" class="w-12 h-12 rounded-full object-cover mr-3">
+              <div>
+                <h4 class="font-semibold text-white text-sm sm:text-base">David Kim</h4>
+                <p class="text-xs sm:text-sm text-gray-400">Founder, AI Solutions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-orange-glow/20 flex flex-col h-full">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+              </div>
+              <span class="ml-2 text-sm text-gray-400">5.0</span>
+            </div>
+            
+            <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow">
+              "Fikri's work on our financial dashboard was outstanding. The data visualization and real-time updates work flawlessly. Professional and reliable developer."
+            </p>
+            
+            <div class="flex items-center pt-4 border-t border-gray-700">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Lisa Thompson" class="w-12 h-12 rounded-full object-cover mr-3">
+              <div>
+                <h4 class="font-semibold text-white text-sm sm:text-base">Lisa Thompson</h4>
+                <p class="text-xs sm:text-sm text-gray-400">Director, FinTech Pro</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+          <div class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20">
+            <div class="text-2xl sm:text-3xl font-bold text-electric-blue mb-2">3</div>
+            <div class="text-xs sm:text-sm text-gray-400">Happy Clients</div>
+          </div>
+          
+          <div class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20">
+            <div class="text-2xl sm:text-3xl font-bold text-green-glow mb-2">100</div>
+            <div class="text-xs sm:text-sm text-gray-400">Success Rate %</div>
+          </div>
+          
+          <div class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20">
+            <div class="text-2xl sm:text-3xl font-bold text-purple-glow mb-2">5</div>
+            <div class="text-xs sm:text-sm text-gray-400">Projects Completed</div>
+          </div>
+          
+          <div class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-orange-glow/20">
+            <div class="text-2xl sm:text-3xl font-bold text-orange-glow mb-2">5.0</div>
+            <div class="text-xs sm:text-sm text-gray-400">Average Rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Contact Section -->
+    <section id="contact" class="py-16 sm:py-24 scroll-mt-20 bg-gray-900">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
+          <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="nav-contact">Get In Touch</span>
+        </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold mb-6 gradient-bg bg-clip-text text-transparent" data-translate="contact-info-title">Contact Information</h3>
+            <div class="space-y-6">
+              <div class="flex items-start p-4 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-electric-blue to-purple-glow flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-map-marker-alt text-white"></i>
+                </div>
+                <div>
+                  <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-location-title">Location</h4>
+                  <p class="text-gray-400 text-sm sm:text-base">Banjarmasin, Indonesia</p>
+                </div>
+              </div>
+              <div class="flex items-start p-4 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-glow to-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-envelope text-white"></i>
+                </div>
+                <div>
+                  <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-email-title">Email</h4>
+                  <p class="text-gray-400 text-sm sm:text-base">tpublicml@gmail.com</p>
+                </div>
+              </div>
+              <div class="flex items-start p-4 rounded-lg bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-glow to-pink-glow flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fas fa-phone text-white"></i>
+                </div>
+                <div>
+                  <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-phone-title">Phone</h4>
+                  <p class="text-gray-400 text-sm sm:text-base">+62 852 4886 7449</p>
+                </div>
+              </div>
+              <div class="flex items-start p-4 rounded-lg bg-gradient-to-r from-green-500/10 to-teal-500/10 border border-green-500/20">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center mr-4 flex-shrink-0">
+                  <i class="fab fa-whatsapp text-white"></i>
+                </div>
+                <div>
+                  <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-whatsapp-title">WhatsApp</h4>
+                  <a href="https://wa.me/6285248867449?text=Hello%20Muhammad%20Fikri" target="_blank" class="text-electric-blue hover:text-cyan-glow text-sm sm:text-base transition-colors">
+                    +62 852 4886 7449 <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-xl sm:text-2xl font-bold mb-6 gradient-bg bg-clip-text text-transparent" data-translate="contact-message-title">Send Me a Message</h3>
+            <form id="emailForm" class="space-y-6">
+              <div class="relative">
+                <input type="text" id="name" name="name" class="form-input w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-lg focus:border-electric-blue focus:outline-none focus:shadow-glow transition-all duration-300 text-white" placeholder=" " required="">
+                <label for="name" class="floating-label absolute left-4 top-3 text-gray-500" data-translate="form-name">Your Name</label>
+              </div>
+              <div class="relative">
+                <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-lg focus:border-electric-blue focus:outline-none focus:shadow-glow transition-all duration-300 text-white" placeholder=" " required="">
+                <label for="email" class="floating-label absolute left-4 top-3 text-gray-500" data-translate="form-email">Your Email</label>
+              </div>
+              <div class="relative">
+                <input type="text" id="subject" name="subject" class="form-input w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-lg focus:border-electric-blue focus:outline-none focus:shadow-glow transition-all duration-300 text-white" placeholder=" " required="">
+                <label for="subject" class="floating-label absolute left-4 top-3 text-gray-500" data-translate="form-subject">Subject</label>
+              </div>
+              <div class="relative">
+                <textarea id="message" name="message" rows="5" class="form-input w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-lg focus:border-electric-blue focus:outline-none focus:shadow-glow transition-all duration-300 text-white" placeholder=" " required=""></textarea>
+                <label for="message" class="floating-label absolute left-4 top-3 text-gray-500" data-translate="form-message">Your Message</label>
+              </div>
+              <button type="submit" class="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-electric-blue via-purple-glow to-pink-glow text-white font-medium hover:shadow-glow-strong transform hover:scale-105 transition-all duration-300" data-translate="btn-send-message">
+                <i class="fas fa-paper-plane mr-2"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="py-8 bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <a href="#" class="text-xl sm:text-2xl font-bold">
+              <span class="gradient-bg bg-clip-text text-transparent">Muhammad </span><span class="text-electric-blue">Fikri</span>
+            </a>
+          </div>
+          <div class="flex space-x-6 mb-4 md:mb-0">
+            <a href="https://github.com/MuhammadFikriiii" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 flex items-center justify-center text-white hover:from-electric-blue hover:to-purple-glow transition-all duration-300">
+              <i class="fab fa-github text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/muhammad-fikri-9075b2299" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center text-white hover:from-electric-blue hover:to-purple-glow transition-all duration-300">
+              <i class="fab fa-linkedin-in text-xl"></i>
+            </a>
+            <a href="https://www.instagram.com/mfikri.724" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-white hover:from-electric-blue hover:to-purple-glow transition-all duration-300">
+              <i class="fab fa-instagram text-xl"></i>
+            </a>
+            <a href="https://wa.me/6285248867449" target="_blank" class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white hover:from-electric-blue hover:to-purple-glow transition-all duration-300">
+              <i class="fab fa-whatsapp text-xl"></i>
+            </a>
+          </div>
+          <div class="text-gray-400 text-sm">
+            © <span id="current-year">2025</span> Muhammad Fikri. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Enhanced JavaScript -->
+    <script>
+      const translations = {
+        id: {
+          "nav-home": "Home",
+          "nav-about": "Tentang",
+          "nav-projects": "Proyek",
+          "nav-skills": "Keahlian",
+          "nav-github": "Github",
+          "nav-certificates": "Sertifikat",
+          "nav-testimonial": "Testimonial",
+          "nav-contact": "Kontak",
+          "hero-greeting": "Halo, Saya",
+          "hero-view-work": "Lihat Karya Saya",
+          "hero-whatsapp": "Chat di WhatsApp",
+          "about-title": "Tentang Saya",
+          "about-subtitle": "Lulusan D3 Teknik Informatika",
+          "about-desc1": "Saya berspesialisasi dalam membangun pengalaman digital yang luar biasa dan memelihara infrastruktur jaringan yang kuat. Sebagai Admin Jaringan & Pengembang Web, saya menggabungkan keahlian teknis dalam infrastruktur dan teknologi web untuk memberikan solusi komprehensif.",
+          "about-desc2": "Sebagai lulusan terbaru dari Politeknik Negeri Banjarmasin (D3 Teknik Informatika), saya telah mengerjakan berbagai proyek selama studi dan melalui pekerjaan freelance—mulai dari website sederhana hingga aplikasi kompleks, dan implementasi infrastruktur jaringan. Saya menikmati menggabungkan keterampilan teknis dengan pemecahan masalah kreatif untuk memberikan solusi yang efektif dan menarik.",
+          "about-download": "Unduh CV",
+          "about-hire": "Rekrut Saya",
+          "projects-title": "Proyek Saya",
+          "badge-new": "Baru",
+          "badge-website": "Website",
+          "badge-network": "Jaringan",
+          "badge-game": "Game",
+          "project1-desc": "Chatbot bertenaga AI yang dirancang untuk berinteraksi secara alami dengan pengguna menggunakan pemrosesan bahasa alami.",
+          "project2-title": "Sistem Informasi Kurikulum OBE",
+          "project2-desc": "Sistem Desain Kurikulum OBE yang dikembangkan untuk Poliban mendukung pengembangan kurikulum sesuai prinsip OBE.",
+          "project3-title": "Desain LAN Berskala Besar Cisco",
+          "project3-desc": "Desain jaringan menggunakan Cisco Packet Tracer untuk optimasi lingkungan korporat dengan VLAN dan protokol routing.",
+          "project4-title": "Permainan Ular Tangga",
+          "project4-desc": "Game papan klasik berbasis web dengan fitur interaktif, memungkinkan dua pemain untuk bermain dengan animasi mulus.",
+          "project5-title": "SIMA BPKPAD Kota Banjarmasin",
+          "project5-desc": "Sistem manajemen arsip elektronik untuk BPKPAD mengoptimalkan penyimpanan dokumen, pengambilan, dan keamanan.",
+          "project6-title": "Setting Load Balance Mikrotik",
+          "project6-desc": "Implementasi load balancing multi-WAN dengan Mikrotik RouterOS untuk optimasi bandwidth dan failover otomatis.",
+          "project7-title": "Landing Page Cafe - Brew Haven",
+          "project7-desc": "Landing page responsif modern untuk kedai kopi dengan menu showcase, lokasi, dan call-to-action yang efektif.",
+          "project8-title": "AI Image Upscaler",
+          "project8-desc": "Aplikasi web dengan AI untuk upscale gambar hingga 4x menggunakan neural network Real-ESRGAN dengan hasil profesional.",
+          "badge-ai": "AI",
+          "btn-details": "Detail",
+          "btn-code": "Kode",
+          "btn-file": "File",
+          "skills-technical": "Keahlian Teknis",
+          "contact-info-title": "Informasi Kontak",
+          "contact-location-title": "Lokasi",
+          "contact-email-title": "Email",
+          "contact-phone-title": "Telepon",
+          "contact-whatsapp-title": "WhatsApp",
+          "contact-message-title": "Kirim Pesan",
+          "form-name": "Nama Anda",
+          "form-email": "Email Anda",
+          "form-subject": "Subjek",
+          "form-message": "Pesan Anda",
+          "btn-send-message": "Kirim Pesan"
+        },
+        en: {
+          "nav-home": "Home",
+          "nav-about": "About",
+          "nav-projects": "Projects",
+          "nav-skills": "Skills",
+          "nav-github": "Github",
+          "nav-certificates": "Certificates",
+          "nav-testimonial": "Testimonial",
+          "nav-contact": "Contact",
+          "hero-greeting": "Hello, I'm",
+          "hero-view-work": "View My Work",
+          "hero-whatsapp": "Chat on WhatsApp",
+          "about-title": "About Me",
+          "about-subtitle": "D3 Informatic Engineering Graduate",
+          "about-desc1": "I specialize in building exceptional digital experiences and maintaining robust network infrastructure. As a Network Administrator & Web Developer, I combine technical expertise in both infrastructure and web technologies to deliver comprehensive solutions.",
+          "about-desc2": "As a recent graduate from Politeknik Negeri Banjarmasin (D3 Informatic Engineering), I've worked on various projects during my studies and through freelance work—ranging from simple websites to complex applications, and network infrastructure implementations. I enjoy combining technical skills with creative problem-solving to deliver effective and engaging solutions.",
+          "about-download": "Download CV",
+          "about-hire": "Hire Me",
+          "projects-title": "My Projects",
+          "badge-new": "New",
+          "badge-website": "Website",
+          "badge-network": "Network",
+          "badge-game": "Game",
+          "project1-desc": "An intelligent AI-powered chatbot designed to interact naturally with users using natural language processing.",
+          "project2-title": "Curriculum Information System OBE",
+          "project2-desc": "OBE Curriculum Design Information System developed for Poliban to support curriculum development aligned with OBE principles.",
+          "project3-title": "Large-Scale LAN Design Cisco",
+          "project3-desc": "Network design using Cisco Packet Tracer for corporate environment optimization with VLAN and routing protocols.",
+          "project4-title": "Snakes and Ladders Game",
+          "project4-desc": "Web-based classic board game with interactive features, allowing two players to play with smooth animations.",
+          "project5-title": "SIMA BPKPAD Banjarmasin City",
+          "project5-desc": "Electronic archive management system for BPKPAD optimizing document storage, retrieval, and security.",
+          "project6-title": "Load Balance Mikrotik Settings",
+          "project6-desc": "Multi-WAN load balancing implementation with Mikrotik RouterOS for bandwidth optimization and automatic failover.",
+          "project7-title": "Landing Page Cafe - Brew Haven",
+          "project7-desc": "Modern responsive landing page for coffee shop with menu showcase, location, and effective call-to-action.",
+          "project8-title": "AI Image Upscaler",
+          "project8-desc": "Web application with AI to upscale images up to 4x using Real-ESRGAN neural network with professional results.",
+          "badge-ai": "AI",
+          "btn-details": "Details",
+          "btn-code": "Code",
+          "btn-file": "File",
+          "skills-technical": "Technical Skills",
+          "contact-info-title": "Contact Information",
+          "contact-location-title": "Location",
+          "contact-email-title": "Email",
+          "contact-phone-title": "Phone",
+          "contact-whatsapp-title": "WhatsApp",
+          "contact-message-title": "Send Me a Message",
+          "form-name": "Your Name",
+          "form-email": "Your Email",
+          "form-subject": "Subject",
+          "form-message": "Your Message",
+          "btn-send-message": "Send Message"
+        }
+      };
+
+      let currentLang = 'id';
+      let currentCarouselIndex = 0;
+      let activeFilterButton = null;
+
+      document.getElementById('lang-toggle').addEventListener('click', function() {
+        currentLang = currentLang === 'id' ? 'en' : 'id';
+        document.querySelector('.lang-text').textContent = currentLang === 'id' ? 'EN' : 'ID';
+        updatePageTranslations();
+      });
+
+      function updatePageTranslations() {
+        const transKeys = document.querySelectorAll('[data-translate]');
+        transKeys.forEach(el => {
+          const key = el.getAttribute('data-translate');
+          if (translations[currentLang] && translations[currentLang][key]) {
+            el.textContent = translations[currentLang][key];
+          }
+        });
+        const titleText = currentLang === 'id' ? "Admin Jaringan & Pengembang Web" : "Network Administrator & Web Developer";
+        typeEffect(document.getElementById("dev-title"), titleText, 100, 0);
+      }
+
+      function moveCarousel(direction) {
+        const carousel = document.getElementById('projectCarousel');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const itemCount = items.length;
+        currentCarouselIndex += direction;
+        if (currentCarouselIndex > itemCount - 3) {
+          currentCarouselIndex = 0;
+        } else if (currentCarouselIndex < 0) {
+          currentCarouselIndex = itemCount - 3;
+        }
+        const offset = -currentCarouselIndex * (100 / 3);
+        carousel.style.transform = `translateX(${offset}%)`;
+      }
+
+      function showCertificateDetail(id, title, organization, year, image, description) {
+        document.getElementById('certImage').src = image;
+        document.getElementById('certTitle').textContent = title;
+        document.getElementById('certOrganization').textContent = organization + ' - ' + year;
+        document.getElementById('certDescription').textContent = description;
+        document.getElementById('certificateModal').classList.add('show');
+      }
+
+      function closeCertificateModal() {
+        document.getElementById('certificateModal').classList.remove('show');
+      }
+
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      if (mobileMenuButton) {
+        mobileMenuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
+      function typeEffect(element, text, speed = 100, delay = 0) {
+        if (!element) return;
+        setTimeout(() => {
+          element.textContent = "";
+          let i = 0;
+          const timer = setInterval(() => {
+            if (i < text.length) {
+              element.textContent += text.charAt(i);
+              i++;
+            } else {
+              clearInterval(timer);
+            }
+          }, speed);
+        }, delay);
+      }
+
+      const emailForm = document.getElementById("emailForm");
+      if (emailForm) {
+        emailjs.init("MkDTippaiZtJd2cUV"); // Replace with your actual EmailJS User ID
+        emailForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          emailjs.sendForm("service_rw9xkqw", "template_z37v5ih", this).then(
+            function (response) {
+              alert(currentLang === 'id' ? "Pesan berhasil dikirim!" : "Message sent successfully!");
+              emailForm.reset();
+            },
+            function (error) {
+              alert(currentLang === 'id' ? "Terjadi kesalahan: " + error.text : "Error occurred: " + error.text);
+            }
+          );
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+              mobileMenu.classList.add("hidden");
+            }
+          }
+        });
+      });
+
+      document.getElementById("current-year").textContent = new Date().getFullYear();
+      updatePageTranslations();
+
+      // Skill filtering logic
+      const skillFilterButtons = document.querySelectorAll('.skill-filter-btn');
+      const skillsGrid = document.getElementById('skillsGrid');
+      const skillCards = skillsGrid.querySelectorAll('.skill-card');
+
+      skillFilterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          skillFilterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          const category = this.dataset.category;
+
+          skillCards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+              card.style.display = 'flex'; // Changed to flex to maintain layout
+              card.style.flexDirection = 'column';
+              card.style.alignItems = 'center';
+              card.style.justifyContent = 'center';
+              // Added a slight delay for fade-in effect
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+              }, 50); // Increased delay slightly
+            } else {
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.8)';
+              // Changed transition to end property to avoid flickering when display is none
+              card.addEventListener('transitionend', function handler() {
+                if (parseFloat(card.style.opacity) === 0) {
+                  card.style.display = 'none';
+                }
+                card.removeEventListener('transitionend', handler);
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

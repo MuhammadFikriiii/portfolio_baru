@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Sistem Informasi Manajemen Arsip - Muhammad Fikri Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Inter", "sans-serif"] },
+            colors: {
+              "electric-blue": "#00BFFF",
+              "dark-bg": "#0F0F23",
+              "dark-card": "#1A1A2E",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .glass-dark {
+        background: rgba(15, 15, 35, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-dark-bg text-gray-200 font-sans">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-dark">
+      <div class="container mx-auto px-4 sm:px-6 py-4">
+        <div class="flex justify-between items-center">
+          <a href="../index.html" class="text-xl font-bold text-electric-blue">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Portfolio
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-24 pb-16">
+      <div class="container mx-auto px-4 sm:px-6 max-w-4xl">
+        <!-- Project Hero -->
+        <div class="mb-12">
+          <div class="relative aspect-video rounded-xl overflow-hidden shadow-2xl mb-8">
+            <img src="../image/sima.jpg" alt="Sistem Informasi Manajemen Arsip" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70"></div>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Sistem Informasi Manajemen Arsip BPKPAD Kota Banjarmasin</h1>
+          <div class="flex flex-wrap gap-3 mb-8">
+            <span class="px-4 py-2 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 text-white text-sm font-bold">2024</span>
+            <span class="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-sm font-bold">Enterprise System</span>
+          </div>
+
+          <p class="text-lg text-gray-300 leading-relaxed mb-8">
+            A comprehensive electronic archive management system designed for BPKPAD (Badan Pengelola Keuangan, Aset, dan Dinas) Kota Banjarmasin. This system modernizes document storage, retrieval, and management processes with emphasis on security, compliance, and operational efficiency.
+          </p>
+        </div>
+
+        <!-- Project Details -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
+            <h3 class="text-electric-blue font-bold mb-3 flex items-center">
+              <i class="fas fa-code mr-2"></i> Tech Stack
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><strong>Frontend:</strong> HTML5, Tailwind CSS</li>
+              <li><strong>Backend:</strong> Laravel 10</li>
+              <li><strong>Database:</strong> MySQL 8.0</li>
+              <li><strong>Authentication:</strong> Laravel Auth</li>
+              <li><strong>File Storage:</strong> Local + Cloud</li>
+            </ul>
+          </div>
+
+          <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
+            <h3 class="text-electric-blue font-bold mb-3 flex items-center">
+              <i class="fas fa-archive mr-2"></i> Core Features
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li>✓ Document Digitization</li>
+              <li>✓ Metadata Management</li>
+              <li>✓ Full-text Search</li>
+              <li>✓ Access Control & Permissions</li>
+              <li>✓ Audit Trail Logging</li>
+            </ul>
+          </div>
+
+          <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
+            <h3 class="text-electric-blue font-bold mb-3 flex items-center">
+              <i class="fas fa-briefcase mr-2"></i> Project Details
+            </h3>
+            <ul class="space-y-2 text-sm text-gray-300">
+              <li><strong>Duration:</strong> 5 months</li>
+              <li><strong>Status:</strong> Production</li>
+              <li><strong>Users:</strong> 30+ Staff</li>
+              <li><strong>Documents:</strong> 10,000+</li>
+              <li><strong>Uptime:</strong> 99.5%</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Full Description -->
+        <div class="bg-dark-card rounded-lg p-8 border border-electric-blue/20 mb-12">
+          <h2 class="text-2xl font-bold text-white mb-6">Project Overview</h2>
+          <div class="space-y-4 text-gray-300 leading-relaxed">
+            <p>
+              This project addressed the critical need for modernized archive management at BPKPAD. The previous manual system was inefficient, insecure, and non-compliant with government digitalization requirements. The new system provides a centralized, secure, and efficient platform for managing institutional documents.
+            </p>
+            <p>
+              <strong>Key Responsibilities:</strong>
+            </p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+              <li>Backend development using Laravel framework</li>
+              <li>Database design for efficient document management</li>
+              <li>Frontend implementation with responsive UI</li>
+              <li>User authentication and role-based access control</li>
+              <li>Document upload and storage management</li>
+              <li>Search functionality implementation</li>
+              <li>Audit logging for compliance tracking</li>
+              <li>System testing and deployment</li>
+            </ul>
+            <p>
+              <strong>Business Impact:</strong>
+            </p>
+            <ul class="list-disc list-inside space-y-2 ml-4">
+              <li>Reduced document retrieval time by 80%</li>
+              <li>Improved document security and access control</li>
+              <li>Enhanced compliance with government regulations</li>
+              <li>Eliminated physical storage space requirements</li>
+              <li>Enabled better institutional record management</li>
+              <li>Increased staff productivity and efficiency</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="https://github.com/MuhammadFikriiii/sistem-informasi-manajemen-arsip" target="_blank" class="px-8 py-3 rounded-full bg-transparent border-2 border-pink-glow text-pink-glow font-medium hover:bg-pink-glow hover:text-white transition-all duration-300 flex items-center">
+            <i class="fab fa-github mr-2"></i> View Code
+          </a>
+          <a href="../index.html#projects" class="px-8 py-3 rounded-full bg-transparent border-2 border-gray-600 text-gray-400 hover:border-electric-blue hover:text-electric-blue transition-all duration-300 flex items-center">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Projects
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="py-8 bg-gradient-to-r from-gray-900 via-gray-800 to-black text-gray-400 text-center border-t border-gray-800">
+      <p>&copy; 2025 Muhammad Fikri. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
