@@ -125,7 +125,6 @@
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         position: relative;
         overflow: hidden;
-        /* Added skill card animation */
         opacity: 1;
         transform: scale(1);
         transition: all 0.3s ease;
@@ -135,6 +134,53 @@
         box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
         border-color: rgba(0, 191, 255, 0.5);
       }
+      
+      /* Added marquee animation styles for infinite horizontal scroll */
+      .skills-marquee-container {
+        overflow: hidden;
+        width: 100%;
+        padding: 2rem 0;
+      }
+
+      .skills-marquee {
+        display: flex;
+        gap: 1.5rem;
+        animation: marquee 40s linear infinite;
+        width: fit-content;
+      }
+
+      .skills-marquee:hover {
+        /* Removed animation-play-state: paused to keep animation running on hover */
+      }
+
+      .skills-marquee-item {
+        flex-shrink: 0;
+        min-width: 120px;
+        background: rgba(26, 26, 46, 0.6);
+        border: 1px solid rgba(0, 191, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .skills-marquee-item:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
+        border-color: rgba(0, 191, 255, 0.5);
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      /* End marquee animation */
+
       .project-card {
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         position: relative;
@@ -251,7 +297,6 @@
         box-shadow: 0 20px 40px rgba(0, 191, 255, 0.2);
       }
 
-      /* Added testimonial card animations */
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -309,7 +354,6 @@
       .testimonial-stat:nth-child(4) {
         animation-delay: 0.7s;
       }
-      /* end Added testimonial card animations */
       
       @media (hover: none) and (pointer: coarse) {
         .skill-card:active,
@@ -318,13 +362,53 @@
           transform: scale(0.98);
         }
       }
-      /* Added skill filter button active state */
       .skill-filter-btn.active {
         transform: scale(1.05);
-        /* Updated active skill filter button styling */
         background: linear-gradient(to right, #00BFFF, #00FFFF);
         box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
       }
+
+      /* GitHub contribution graph styles */
+      .github-contribution-graph {
+        display: grid;
+        grid-template-columns: repeat(52, minmax(12px, 1fr));
+        gap: 3px;
+        margin-bottom: 2rem;
+        width: 100%;
+      }
+
+      .contribution-day {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .contribution-day:hover {
+        transform: scale(1.3);
+      }
+
+      .contribution-day.level-0 {
+        background-color: rgba(48, 54, 61, 0.4);
+      }
+
+      .contribution-day.level-1 {
+        background-color: #0e4429;
+      }
+
+      .contribution-day.level-2 {
+        background-color: #006d32;
+      }
+
+      .contribution-day.level-3 {
+        background-color: #26a641;
+      }
+
+      .contribution-day.level-4 {
+        background-color: #39d353;
+      }
+      /* End GitHub styles */
     </style>
   </head>
   <body class="bg-dark-bg text-white font-sans">
@@ -659,269 +743,191 @@
           <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="nav-skills">My Skills</span>
         </h2>
 
-        <!-- Added category filter buttons -->
-        <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
-          <button class="skill-filter-btn active px-4 sm:px-6 py-2 rounded-full bg-gradient-to-r from-electric-blue to-cyan-glow text-white font-medium hover:shadow-glow transition-all duration-300 text-sm sm:text-base" data-category="all">
-            Semua
-          </button>
-          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-electric-blue text-electric-blue font-medium hover:bg-electric-blue hover:text-white hover:shadow-glow transition-all duration-300 text-sm sm:text-base" data-category="frontend">
-            Frontend
-          </button>
-          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-purple-glow text-purple-glow font-medium hover:bg-purple-glow hover:text-white hover:shadow-glow-purple transition-all duration-300 text-sm sm:text-base" data-category="backend">
-            Backend
-          </button>
-          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-cyan-glow text-cyan-glow font-medium hover:bg-cyan-glow hover:text-white hover:shadow-glow-strong transition-all duration-300 text-sm sm:text-base" data-category="network">
-            Network
-          </button>
-          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-green-glow text-green-glow font-medium hover:bg-green-glow hover:text-white transition-all duration-300 text-sm sm:text-base" data-category="design">
-            Design
-          </button>
-          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-orange-glow text-orange-glow font-medium hover:bg-orange-glow hover:text-white transition-all duration-300 text-sm sm:text-base" data-category="tools">
-            Tools
-          </button>
-          <button class="skill-filter-btn px-4 sm:px-6 py-2 rounded-full bg-transparent border-2 border-pink-glow text-pink-glow font-medium hover:bg-pink-glow hover:text-white transition-all duration-300 text-sm sm:text-base" data-category="office">
-            Office
-          </button>
-        </div>
+        <!-- Removed filter buttons and grid layout, replaced with marquee -->
+        <div class="skills-marquee-container">
+          <div class="skills-marquee">
+            <!-- Frontend Skills -->
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-orange-400"><i class="fab fa-html5"></i></div>
+              <div class="font-semibold text-sm">HTML5</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-blue-400"><i class="fab fa-css3-alt"></i></div>
+              <div class="font-semibold text-sm">CSS3</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-yellow-400"><i class="fab fa-js"></i></div>
+              <div class="font-semibold text-sm">JavaScript</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-blue-500"><i class="fas fa-wind"></i></div>
+              <div class="font-semibold text-sm">Tailwind CSS</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-purple-600"><i class="fab fa-bootstrap"></i></div>
+              <div class="font-semibold text-sm">Bootstrap</div>
+            </div>
 
-        <!-- Replaced skill cards with categorized skills -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4 sm:gap-6" id="skillsGrid">
-          <!-- Frontend Skills -->
-          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
-            <div class="text-4xl mb-3 text-orange-400"><i class="fab fa-html5"></i></div>
-            <div class="font-semibold text-sm">HTML5</div>
-          </div>
-          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
-            <div class="text-4xl mb-3 text-blue-400"><i class="fab fa-css3-alt"></i></div>
-            <div class="font-semibold text-sm">CSS3</div>
-          </div>
-          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
-            <div class="text-4xl mb-3 text-yellow-400"><i class="fab fa-js"></i></div>
-            <div class="font-semibold text-sm">JavaScript</div>
-          </div>
-          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
-            <div class="text-4xl mb-3 text-blue-500"><i class="fas fa-wind"></i></div>
-            <div class="font-semibold text-sm">Tailwind CSS</div>
-          </div>
-          <div class="skill-card" data-category="frontend" data-category-name="Frontend">
-            <div class="text-4xl mb-3 text-purple-600"><i class="fab fa-bootstrap"></i></div>
-            <div class="font-semibold text-sm">Bootstrap</div>
-          </div>
+            <!-- Backend Skills -->
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-blue-500"><i class="fab fa-php"></i></div>
+              <div class="font-semibold text-sm">PHP</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-red-500"><i class="fab fa-laravel"></i></div>
+              <div class="font-semibold text-sm">Laravel</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-green-500"><i class="fas fa-database"></i></div>
+              <div class="font-semibold text-sm">MySQL</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-amber-600"><i class="fas fa-database"></i></div>
+              <div class="font-semibold text-sm">SQL</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-blue-700"><i class="fab fa-wordpress"></i></div>
+              <div class="font-semibold text-sm">WordPress</div>
+            </div>
 
-          <!-- Backend Skills -->
-          <div class="skill-card" data-category="backend" data-category-name="Backend">
-            <div class="text-4xl mb-3 text-blue-500"><i class="fab fa-php"></i></div>
-            <div class="font-semibold text-sm">PHP</div>
-          </div>
-          <div class="skill-card" data-category="backend" data-category-name="Backend">
-            <div class="text-4xl mb-3 text-red-500"><i class="fab fa-laravel"></i></div>
-            <div class="font-semibold text-sm">Laravel</div>
-          </div>
-          <div class="skill-card" data-category="backend" data-category-name="Backend">
-            <div class="text-4xl mb-3 text-green-500"><i class="fas fa-database"></i></div>
-            <div class="font-semibold text-sm">MySQL</div>
-          </div>
-          <div class="skill-card" data-category="backend" data-category-name="Backend">
-            <div class="text-4xl mb-3 text-amber-600"><i class="fas fa-database"></i></div>
-            <div class="font-semibold text-sm">SQL</div>
-          </div>
-          <div class="skill-card" data-category="backend" data-category-name="Backend">
-            <div class="text-4xl mb-3 text-blue-700"><i class="fab fa-wordpress"></i></div>
-            <div class="font-semibold text-sm">WordPress</div>
-          </div>
+            <!-- Network Skills -->
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-cyan-400"><i class="fas fa-network-wired"></i></div>
+              <div class="font-semibold text-sm">Cisco</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-orange-500"><i class="fas fa-router"></i></div>
+              <div class="font-semibold text-sm">Mikrotik</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-red-600"><i class="fas fa-fiber-port"></i></div>
+              <div class="font-semibold text-sm">Fiber Optic</div>
+            </div>
 
-          <!-- Network Skills -->
-          <div class="skill-card" data-category="network" data-category-name="Network">
-            <div class="text-4xl mb-3 text-cyan-400"><i class="fas fa-network-wired"></i></div>
-            <div class="font-semibold text-sm">Cisco</div>
-          </div>
-          <div class="skill-card" data-category="network" data-category-name="Network">
-            <div class="text-4xl mb-3 text-orange-500"><i class="fas fa-router"></i></div>
-            <div class="font-semibold text-sm">Mikrotik</div>
-          </div>
-          <div class="skill-card" data-category="network" data-category-name="Network">
-            <div class="text-4xl mb-3 text-red-600"><i class="fas fa-fiber-port"></i></div>
-            <div class="font-semibold text-sm">Fiber Optic</div>
-          </div>
+            <!-- Design Skills -->
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-purple-500"><i class="fab fa-figma"></i></div>
+              <div class="font-semibold text-sm">Figma</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-cyan-500"><i class="fas fa-palette"></i></div>
+              <div class="font-semibold text-sm">Canvas</div>
+            </div>
 
-          <!-- Design Skills -->
-          <div class="skill-card" data-category="design" data-category-name="Design">
-            <div class="text-4xl mb-3 text-purple-500"><i class="fab fa-figma"></i></div>
-            <div class="font-semibold text-sm">Figma</div>
-          </div>
-          <div class="skill-card" data-category="design" data-category-name="Design">
-            <div class="text-4xl mb-3 text-cyan-500"><i class="fas fa-palette"></i></div>
-            <div class="font-semibold text-sm">Canvas</div>
-          </div>
+            <!-- Tools Skills -->
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-gray-400"><i class="fab fa-github"></i></div>
+              <div class="font-semibold text-sm">GitHub</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-gray-300"><i class="fas fa-rocket"></i></div>
+              <div class="font-semibold text-sm">Vercel</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-envelope"></i></div>
+              <div class="font-semibold text-sm">Postman</div>
+            </div>
 
-          <!-- Tools Skills -->
-          <div class="skill-card" data-category="tools" data-category-name="Tools">
-            <div class="text-4xl mb-3 text-gray-400"><i class="fab fa-github"></i></div>
-            <div class="font-semibold text-sm">GitHub</div>
-          </div>
-          <div class="skill-card" data-category="tools" data-category-name="Tools">
-            <div class="text-4xl mb-3 text-gray-300"><i class="fas fa-rocket"></i></div>
-            <div class="font-semibold text-sm">Vercel</div>
-          </div>
-          <div class="skill-card" data-category="tools" data-category-name="Tools">
-            <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-envelope"></i></div>
-            <div class="font-semibold text-sm">Postman</div>
-          </div>
+            <!-- Office Skills -->
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-red-600"><i class="fas fa-file-word"></i></div>
+              <div class="font-semibold text-sm">MS Word</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-green-600"><i class="fas fa-file-excel"></i></div>
+              <div class="font-semibold text-sm">MS Excel</div>
+            </div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-file-powerpoint"></i></div>
+              <div class="font-semibold text-sm">MS PowerPoint</div>
+            </div>
 
-          <!-- Office Skills -->
-          <div class="skill-card" data-category="office" data-category-name="Office">
-            <div class="text-4xl mb-3 text-red-600"><i class="fas fa-file-word"></i></div>
-            <div class="font-semibold text-sm">MS Word</div>
-          </div>
-          <div class="skill-card" data-category="office" data-category-name="Office">
-            <div class="text-4xl mb-3 text-green-600"><i class="fas fa-file-excel"></i></div>
-            <div class="font-semibold text-sm">MS Excel</div>
-          </div>
-          <div class="skill-card" data-category="office" data-category-name="Office">
-            <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-file-powerpoint"></i></div>
-            <div class="font-semibold text-sm">MS PowerPoint</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Enhanced Certificates Section -->
-    <section id="certificates" class="py-16 sm:py-20 md:py-32 bg-gray-900 scroll-mt-20">
-      <div class="container mx-auto px-4 sm:px-6">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
-          <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="nav-certificates">Certificates & Achievements</span>
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <button onclick="showCertificateDetail('jscoi', 'Learn the Fundamentals of JavaScript Programming', 'Dicoding', '2025', 'image/jscoi.png', 'Learned the fundamentals of JavaScript as a core programming language in web development. Covered topics such as language structure, data types, operators, functions, control flow, and code modularization to build a strong foundation in programming logic.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <img src="image/jscoi.png" alt="Belajar Dasar Pemrograman JavaScript" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            <!-- Duplicate skills untuk continuous loop tanpa jeda -->
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-orange-400"><i class="fab fa-html5"></i></div>
+              <div class="font-semibold text-sm">HTML5</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Learn the Fundamentals of JavaScript Programming</h3>
-              <p class="text-gray-400 text-sm">Dicoding</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-blue-400"><i class="fab fa-css3-alt"></i></div>
+              <div class="font-semibold text-sm">CSS3</div>
             </div>
-          </button>
-          <button onclick="showCertificateDetail('backend', 'Beginner Back-End Development with JavaScript', 'Dicoding', '2025', 'image/dicodingbackend.png', 'Successfully completed the Beginner Back-End Development with JavaScript course on Dicoding. Gained foundational skills in back-end application development, including understanding servers, databases, and API creation.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <img src="image/dicodingbackend.png" alt="Back-End Certificate" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-yellow-400"><i class="fab fa-js"></i></div>
+              <div class="font-semibold text-sm">JavaScript</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Beginner Back-End Development with JavaScript</h3>
-              <p class="text-gray-400 text-sm">Dicoding</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-blue-500"><i class="fas fa-wind"></i></div>
+              <div class="font-semibold text-sm">Tailwind CSS</div>
             </div>
-          </button>
-          <button onclick="showCertificateDetail('ccna', 'CCNA 200-301 Certification Training', 'Simple Learn', '2025', 'image/ccn.png', 'Completed comprehensive CCNA 200-301 training covering network fundamentals, routing and switching, IP addressing, network security, and troubleshooting. Gained practical knowledge to design, implement, and manage modern enterprise networks.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <img src="image/ccn.png" alt="Certificate ccn" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-purple-600"><i class="fab fa-bootstrap"></i></div>
+              <div class="font-semibold text-sm">Bootstrap</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">CCNA 200-301 Certification Training</h3>
-              <p class="text-gray-400 text-sm">Simple Learn</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-blue-500"><i class="fab fa-php"></i></div>
+              <div class="font-semibold text-sm">PHP</div>
             </div>
-          </button>
-          <button onclick="showCertificateDetail('excel', 'Finding, Sorting, and Filtering Data in Excel', 'Coursera', '2025', 'image/filterdata.png', 'Completed a guided project on efficiently finding, sorting, and filtering data in Excel. Gained practical skills in organizing and analyzing datasets using built-in Excel tools to support decision-making and reporting.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <img src="image/filterdata.png" alt="Certificate filterdata" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-red-500"><i class="fab fa-laravel"></i></div>
+              <div class="font-semibold text-sm">Laravel</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Finding, Sorting, and Filtering Data in Excel</h3>
-              <p class="text-gray-400 text-sm">Coursera</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-green-500"><i class="fas fa-database"></i></div>
+              <div class="font-semibold text-sm">MySQL</div>
             </div>
-          </button>
-          <button onclick="showCertificateDetail('msoffice', 'Essential Skills in Microsoft Excel', 'Coursera', '2025', 'image/coursera.png', 'Completed hands-on guided project introducing key Excel features, including formatting, formulas, charts, and functions. Acquired foundational skills to create and manage spreadsheets for budgeting, tracking, and data analysis.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <img src="image/coursera.png" alt="Certificate coursera" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2025</div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-amber-600"><i class="fas fa-database"></i></div>
+              <div class="font-semibold text-sm">SQL</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Essential Skills in Microsoft Excel</h3>
-              <p class="text-gray-400 text-sm">Coursera</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-blue-700"><i class="fab fa-wordpress"></i></div>
+              <div class="font-semibold text-sm">WordPress</div>
             </div>
-          </button>
-          <button onclick="showCertificateDetail('lintasarta', 'Certificate Of Competency Assessment', 'Lintasarta', '2022', 'image/lintasarta.jpg', 'Mikrotik router configuration, network setup, routing protocols, firewall management, and bandwidth optimization. Practical training for enterprise network administration.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 text-left hover:shadow-glow cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 flex items-center justify-center overflow-hidden">
-              <img src="image/lintasarta.jpg" alt="Certificate Lintasarta" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2022</div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-cyan-400"><i class="fas fa-network-wired"></i></div>
+              <div class="font-semibold text-sm">Cisco</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Certificate Of Competency Assessment</h3>
-              <p class="text-gray-400 text-sm">Lintasarta</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-orange-500"><i class="fas fa-router"></i></div>
+              <div class="font-semibold text-sm">Mikrotik</div>
             </div>
-          </button>
-          <button onclick="showCertificateDetail('fiber', 'Practical Training in Fiber Optic Network Technology', 'Upaya Teknik (PT. Telkom)', '2021', 'image/upayateknik.jpg', 'Completed internship training on Fiber Optic Network at Upaya Teknik. Gained practical skills in installation, configuration, and maintenance of fiber optic telecom networks.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <img src="image/upayateknik.jpg" alt="Certificate upayateknik" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2021</div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-red-600"><i class="fas fa-fiber-port"></i></div>
+              <div class="font-semibold text-sm">Fiber Optic</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Practical Training in Fiber Optic Network Technology</h3>
-              <p class="text-gray-400 text-sm">Upaya Teknik (PT. Telkom)</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-purple-500"><i class="fab fa-figma"></i></div>
+              <div class="font-semibold text-sm">Figma</div>
             </div>
-          </button>
-          <button onclick="showCertificateDetail('office', 'Microsoft Office Productivity Training', 'LPKBB IPTEK', '2019', 'image/office.jpg', 'Completed professional training in Microsoft Office applications at LPKB IPTEK, focusing on enhancing productivity using Word, Excel, and PowerPoint for various administrative and business tasks.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <img src="image/office.jpg" alt="Certificate office" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2019</div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-cyan-500"><i class="fas fa-palette"></i></div>
+              <div class="font-semibold text-sm">Canvas</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Microsoft Office Productivity Training</h3>
-              <p class="text-gray-400 text-sm">LPKBB IPTEK</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-gray-400"><i class="fab fa-github"></i></div>
+              <div class="font-semibold text-sm">GitHub</div>
             </div>
-          </button>
-          <button onclick="showCertificateDetail('design', 'Graphic Design Training Program', 'LPKBB IPTEK', '2019', 'image/design.jpg', 'Completed graphic design training at LPKB IPTEK, focusing on fundamentals of visual design, typography, color theory, and digital illustration using tools like Adobe Photoshop and CorelDRAW.')" class="certificate-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 text-left hover:shadow-glow-strong cursor-pointer transition-all">
-            <div class="relative h-40 sm:h-48 bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
-              <img src="image/design.jpg" alt="Certificate design" class="w-full h-full object-contain p-2">
-              <div class="absolute top-2 left-2 px-3 py-1 rounded-full bg-blue-300/70 text-white text-xs font-bold">2019</div>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-gray-300"><i class="fas fa-rocket"></i></div>
+              <div class="font-semibold text-sm">Vercel</div>
             </div>
-            <div class="p-4 sm:p-6">
-              <h3 class="text-lg sm:text-xl font-bold mb-2 text-white line-clamp-2">Graphic Design Training Program</h3>
-              <p class="text-gray-400 text-sm">LPKBB IPTEK</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-envelope"></i></div>
+              <div class="font-semibold text-sm">Postman</div>
             </div>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- GitHub Stats -->
-        <div id="github" class="mt-20 scroll-mt-32">
-          <h3 class="text-xl sm:text-2xl font-bold mb-8 text-center gradient-bg bg-clip-text text-transparent" data-lang-key="github_title">Statistik GitHub</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-blue-500/20">
-              <div class="flex items-center justify-between mb-4">
-                <h4 class="text-lg font-medium" data-lang-key="github_repos">Repository</h4>
-                <i class="fas fa-code-branch text-electric-blue text-2xl"></i>
-              </div>
-              <p class="text-4xl font-bold text-electric-blue count-up" data-target="12">0</p>
-              <p class="text-xs text-gray-500 mt-2" data-lang-key="github_public">Repository publik</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-red-600"><i class="fas fa-file-word"></i></div>
+              <div class="font-semibold text-sm">MS Word</div>
             </div>
-            <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-yellow-500/20">
-              <div class="flex items-center justify-between mb-4">
-                <h4 class="text-lg font-medium" data-lang-key="github_stars">Bintang</h4>
-                <i class="fas fa-star text-yellow-500 text-2xl"></i>
-              </div>
-              <p class="text-4xl font-bold text-yellow-500 count-up" data-target="3">0</p>
-              <p class="text-xs text-gray-500 mt-2" data-lang-key="github_received">Diterima di proyek</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-green-600"><i class="fas fa-file-excel"></i></div>
+              <div class="font-semibold text-sm">MS Excel</div>
             </div>
-            <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-green-500/20">
-              <div class="flex items-center justify-between mb-4">
-                <h4 class="text-lg font-medium" data-lang-key="github_contrib">Kontribusi</h4>
-                <i class="fas fa-code-commit text-green-glow text-2xl"></i>
-              </div>
-              <p class="text-4xl font-bold text-green-glow count-up" data-target="100">0</p>
-              <p class="text-xs text-gray-500 mt-2" data-lang-key="github_lastyear">Tahun lalu</p>
+            <div class="skills-marquee-item">
+              <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-file-powerpoint"></i></div>
+              <div class="font-semibold text-sm">MS PowerPoint</div>
             </div>
-            <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-purple-500/20">
-              <div class="flex items-center justify-between mb-4">
-                <h4 class="text-lg font-medium" data-lang-key="github_followers">Pengikut</h4>
-                <i class="fas fa-users text-purple-glow text-2xl"></i>
-              </div>
-              <p class="text-4xl font-bold text-purple-glow count-up" data-target="10">0</p>
-              <p class="text-xs text-gray-500 mt-2" data-lang-key="github_followers_desc">Pengikut GitHub</p>
-            </div>
+            <!-- End duplicate skills -->
           </div>
         </div>
       </div>
@@ -937,7 +943,7 @@
           </button>
         </div>
         <div class="space-y-4">
-          <img id="certImage" src="/placeholder.svg" alt="Certificate" class="w-full rounded-lg border border-electric-blue/30">
+          <!-- Removed empty image placeholder area - images are shown in details only -->
           <div>
             <h4 id="certTitle" class="text-lg font-bold text-white mb-2"></h4>
             <p id="certOrganization" class="text-electric-blue text-sm mb-4"></p>
@@ -951,6 +957,259 @@
         </div>
       </div>
     </div>
+
+    <!-- Added new Certificates Section -->
+    <section id="certificates" class="py-16 sm:py-20 md:py-32 scroll-mt-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
+          <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="nav-certificates">Sertifikat</span>
+        </h2>
+        <p class="text-center text-gray-400 mb-12 text-sm sm:text-base max-w-2xl mx-auto" data-translate="certificates-desc">Saya telah menyelesaikan berbagai sertifikasi profesional dalam pengembangan web, networking, dan Microsoft Office. Untuk melihat detail semua sertifikat, silakan klik tombol di bawah.</p>
+        
+        <!-- Certificates Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Certificate 1 -->
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 hover:border-electric-blue/50 transition-all duration-300 cursor-pointer" onclick="showCertificateDetail(1, 'Cisco CCNA', 'Cisco Academy', '2024', 'image/cert1.jpg', 'Sertifikasi networking profesional untuk administrasi jaringan Cisco.')">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-bold text-white">Cisco CCNA</h4>
+              <i class="fas fa-network-wired text-electric-blue text-2xl"></i>
+            </div>
+            <p class="text-electric-blue text-sm mb-2">Cisco Academy - 2024</p>
+            <p class="text-gray-400 text-sm mb-4">Sertifikasi networking profesional untuk administrasi jaringan Cisco.</p>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-electric-blue to-cyan-glow text-white text-sm font-medium hover:shadow-glow transition-all" data-translate="btn-details">Lihat Detail</button>
+          </div>
+
+          <!-- Certificate 2 -->
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20 hover:border-purple-glow/50 transition-all duration-300 cursor-pointer" onclick="showCertificateDetail(2, 'Web Development Professional', 'Udemy', '2023', 'image/cert2.jpg', 'Sertifikasi lengkap dalam pengembangan web modern dengan HTML, CSS, JavaScript, dan framework populer.')">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-bold text-white">Web Development</h4>
+              <i class="fas fa-code text-purple-glow text-2xl"></i>
+            </div>
+            <p class="text-purple-glow text-sm mb-2">Udemy - 2023</p>
+            <p class="text-gray-400 text-sm mb-4">Sertifikasi lengkap pengembangan web modern dengan tools terkini.</p>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-glow to-pink-glow text-white text-sm font-medium hover:shadow-glow transition-all" data-translate="btn-details">Lihat Detail</button>
+          </div>
+
+          <!-- Certificate 3 -->
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 hover:border-green-glow/50 transition-all duration-300 cursor-pointer" onclick="showCertificateDetail(3, 'Microsoft Office Specialist', 'Microsoft', '2023', 'image/cert3.jpg', 'Sertifikasi keahlian dalam menggunakan Microsoft Word, Excel, dan PowerPoint secara profesional.')">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-bold text-white">MS Office</h4>
+              <i class="fas fa-file-word text-green-glow text-2xl"></i>
+            </div>
+            <p class="text-green-glow text-sm mb-2">Microsoft - 2023</p>
+            <p class="text-gray-400 text-sm mb-4">Sertifikasi keahlian Microsoft Office profesional dan aplikasi bisnis.</p>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-glow to-emerald-500 text-white text-sm font-medium hover:shadow-glow transition-all" data-translate="btn-details">Lihat Detail</button>
+          </div>
+
+          <!-- Certificate 4 -->
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-orange-glow/20 hover:border-orange-glow/50 transition-all duration-300 cursor-pointer" onclick="showCertificateDetail(4, 'Database Administration', 'Oracle', '2023', 'image/cert4.jpg', 'Sertifikasi administrasi database dengan SQL dan Oracle Database untuk pengelolaan data profesional.')">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-bold text-white">Database Admin</h4>
+              <i class="fas fa-database text-orange-glow text-2xl"></i>
+            </div>
+            <p class="text-orange-glow text-sm mb-2">Oracle - 2023</p>
+            <p class="text-gray-400 text-sm mb-4">Sertifikasi administrasi database SQL dan Oracle untuk pengelolaan data.</p>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-orange-glow to-red-500 text-white text-sm font-medium hover:shadow-glow transition-all" data-translate="btn-details">Lihat Detail</button>
+          </div>
+
+          <!-- Certificate 5 -->
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-blue-400/20 hover:border-blue-400/50 transition-all duration-300 cursor-pointer" onclick="showCertificateDetail(5, 'Laravel Web Framework', 'Craftable', '2023', 'image/cert5.jpg', 'Sertifikasi pengembangan web dengan framework Laravel untuk aplikasi web yang robust dan scalable.')">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-bold text-white">Laravel</h4>
+              <i class="fab fa-laravel text-red-500 text-2xl"></i>
+            </div>
+            <p class="text-blue-400 text-sm mb-2">Craftable - 2023</p>
+            <p class="text-gray-400 text-sm mb-4">Sertifikasi pengembangan web dengan framework Laravel yang powerful.</p>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-blue-400 to-blue-600 text-white text-sm font-medium hover:shadow-glow transition-all" data-translate="btn-details">Lihat Detail</button>
+          </div>
+
+          <!-- Certificate 6 -->
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-pink-glow/20 hover:border-pink-glow/50 transition-all duration-300 cursor-pointer" onclick="showCertificateDetail(6, 'Mikrotik RouterOS', 'Mikrotik Academy', '2022', 'image/cert6.jpg', 'Sertifikasi konfigurasi dan administrasi Mikrotik RouterOS untuk infrastruktur jaringan modern.')">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-bold text-white">Mikrotik</h4>
+              <i class="fas fa-router text-pink-glow text-2xl"></i>
+            </div>
+            <p class="text-pink-glow text-sm mb-2">Mikrotik Academy - 2022</p>
+            <p class="text-gray-400 text-sm mb-4">Sertifikasi Mikrotik RouterOS untuk konfigurasi infrastruktur jaringan.</p>
+            <button class="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-pink-glow to-rose-500 text-white text-sm font-medium hover:shadow-glow transition-all" data-translate="btn-details">Lihat Detail</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Testimonials Section -->
+    <section id="testimonial" class="py-16 sm:py-20 md:py-32 scroll-mt-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
+          <span class="relative gradient-bg bg-clip-text text-transparent">What Clients Say</span>
+        </h2>
+        
+        <!-- Testimonial Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <!-- Testimonial 1 -->
+          <div class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 flex flex-col h-full">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+              </div>
+              <span class="ml-2 text-sm text-gray-400">5.0</span>
+            </div>
+            
+            <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow">
+              "Working with Fikri felt like playing Snakes and Ladders — but without hitting any snakes. His problem-solving skills kept our progress climbing, helping us reach the finish line faster than expected."
+            </p>
+            
+            <div class="flex items-center pt-4 border-t border-gray-700">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Michael Chen" class="w-12 h-12 rounded-full object-cover mr-3">
+              <div>
+                <h4 class="font-semibold text-white text-sm sm:text-base">Michael Chen</h4>
+                <p class="text-xs sm:text-sm text-gray-400">CTO, InnovateLab</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20 flex flex-col h-full">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+              </div>
+              <span class="ml-2 text-sm text-gray-400">5.0</span>
+            </div>
+            
+            <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow">
+              "The AI chatbot Fikri developed for us has revolutionized our customer service. His understanding of both frontend and backend technologies is impressive."
+            </p>
+            
+            <div class="flex items-center pt-4 border-t border-gray-700">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="David Kim" class="w-12 h-12 rounded-full object-cover mr-3">
+              <div>
+                <h4 class="font-semibold text-white text-sm sm:text-base">David Kim</h4>
+                <p class="text-xs sm:text-sm text-gray-400">Founder, AI Solutions</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-orange-glow/20 flex flex-col h-full">
+            <div class="flex items-center gap-2 mb-6">
+              <div class="flex text-yellow-400">
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+                <i class="fas fa-star text-lg"></i>
+              </div>
+              <span class="ml-2 text-sm text-gray-400">5.0</span>
+            </div>
+            
+            <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow">
+              "Fikri's work on our financial dashboard was outstanding. The data visualization and real-time updates work flawlessly. Professional and reliable developer."
+            </p>
+            
+            <div class="flex items-center pt-4 border-t border-gray-700">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Lisa Thompson" class="w-12 h-12 rounded-full object-cover mr-3">
+              <div>
+                <h4 class="font-semibold text-white text-sm sm:text-base">Lisa Thompson</h4>
+                <p class="text-xs sm:text-sm text-gray-400">Director, FinTech Pro</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial Stats -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+          <div class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20">
+            <div class="text-2xl sm:text-3xl font-bold text-electric-blue mb-2">3</div>
+            <div class="text-xs sm:text-sm text-gray-400">Happy Clients</div>
+          </div>
+          
+          <div class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20">
+            <div class="text-2xl sm:text-3xl font-bold text-green-glow mb-2">100</div>
+            <div class="text-xs sm:text-sm text-gray-400">Success Rate %</div>
+          </div>
+          
+          <div class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20">
+            <div class="text-2xl sm:text-3xl font-bold text-purple-glow mb-2">5</div>
+            <div class="text-xs sm:text-sm text-gray-400">Projects Completed</div>
+          </div>
+          
+          <div class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-orange-glow/20">
+            <div class="text-2xl sm:text-3xl font-bold text-orange-glow mb-2">5.0</div>
+            <div class="text-xs sm:text-sm text-gray-400">Average Rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github" class="py-16 sm:py-20 md:py-32 scroll-mt-32">
+      <div class="container mx-auto px-4 sm:px-6">
+        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center gradient-bg bg-clip-text text-transparent" data-translate="github_title">GitHub Statistics</h3>
+        
+        <!-- Added contribution activity graph -->
+        <div class="mb-12">
+          <h4 class="text-lg sm:text-xl font-semibold mb-6 text-center text-cyan-glow">Contribution Activity</h4>
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-cyan-glow/20 overflow-x-auto">
+            <div class="github-contribution-graph" id="contributionGraph"></div>
+            <div class="flex justify-between items-center mt-4 px-2">
+              <span class="text-gray-400 text-sm">Less</span>
+              <div class="flex gap-1">
+                <span class="inline-block w-3 h-3 bg-slate-700 rounded-sm"></span>
+                <span class="inline-block w-3 h-3 bg-green-900 rounded-sm"></span>
+                <span class="inline-block w-3 h-3 bg-green-600 rounded-sm"></span>
+                <span class="inline-block w-3 h-3 bg-green-400 rounded-sm"></span>
+              </div>
+              <span class="text-gray-400 text-sm">More</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GitHub Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-blue-500/20">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-medium" data-translate="github_repos">Repositories</h4>
+              <i class="fas fa-code-branch text-electric-blue text-2xl"></i>
+            </div>
+            <p class="text-4xl font-bold text-electric-blue count-up" data-target="12">0</p>
+            <p class="text-xs text-gray-500 mt-2" data-translate="github_public">Public repositories</p>
+          </div>
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-yellow-500/20">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-medium" data-translate="github_stars">Stars</h4>
+              <i class="fas fa-star text-yellow-500 text-2xl"></i>
+            </div>
+            <p class="text-4xl font-bold text-yellow-500 count-up" data-target="3">0</p>
+            <p class="text-xs text-gray-500 mt-2" data-translate="github_received">Received on projects</p>
+          </div>
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-green-500/20">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-medium" data-translate="github_contrib">Contributions</h4>
+              <i class="fas fa-code-commit text-green-glow text-2xl"></i>
+            </div>
+            <p class="text-4xl font-bold text-green-glow count-up" data-target="100">0</p>
+            <p class="text-xs text-gray-500 mt-2" data-translate="github_lastyear">Last year</p>
+          </div>
+          <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-purple-500/20">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-lg font-medium" data-translate="github_followers">Followers</h4>
+              <i class="fas fa-users text-purple-glow text-2xl"></i>
+            </div>
+            <p class="text-4xl font-bold text-purple-glow count-up" data-target="10">0</p>
+            <p class="text-xs text-gray-500 mt-2" data-translate="github_followers_desc">GitHub followers</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Enhanced Testimonials Section -->
     <section id="testimonial" class="py-16 sm:py-20 md:py-32 scroll-mt-20">
@@ -1229,7 +1488,17 @@
           "form-email": "Email Anda",
           "form-subject": "Subjek",
           "form-message": "Pesan Anda",
-          "btn-send-message": "Kirim Pesan"
+          "btn-send-message": "Kirim Pesan",
+          "github_title": "Statistik GitHub",
+          "github_repos": "Repository",
+          "github_stars": "Bintang",
+          "github_contrib": "Kontribusi",
+          "github_followers": "Pengikut",
+          "github_public": "Repository publik",
+          "github_received": "Diterima di proyek",
+          "github_lastyear": "Tahun lalu",
+          "github_followers_desc": "Pengikut GitHub",
+          "certificates-desc": "Saya telah menyelesaikan berbagai sertifikasi profesional dalam pengembangan web, networking, dan Microsoft Office. Untuk melihat detail semua sertifikat, silakan klik tombol di bawah.",
         },
         en: {
           "nav-home": "Home",
@@ -1284,7 +1553,17 @@
           "form-email": "Your Email",
           "form-subject": "Subject",
           "form-message": "Your Message",
-          "btn-send-message": "Send Message"
+          "btn-send-message": "Send Message",
+          "github_title": "GitHub Statistics",
+          "github_repos": "Repositories",
+          "github_stars": "Stars",
+          "github_contrib": "Contributions",
+          "github_followers": "Followers",
+          "github_public": "Public repositories",
+          "github_received": "Received on projects",
+          "github_lastyear": "Last year",
+          "github_followers_desc": "GitHub followers",
+          "certificates-desc": "I have completed various professional certifications in web development, networking, and Microsoft Office. To view details of all certificates, please click the button below.",
         }
       };
 
@@ -1325,15 +1604,33 @@
       }
 
       function showCertificateDetail(id, title, organization, year, image, description) {
-        document.getElementById('certImage').src = image;
+        // Dynamically create image element if needed, or use pre-defined placeholder
+        // For this example, we assume image paths are correct and will be displayed if provided.
+        const certImageElement = document.getElementById('certificateModal').querySelector('#certImage');
+        if (certImageElement) {
+          certImageElement.src = image;
+          certImageElement.alt = title + ' Certificate';
+          certImageElement.style.display = 'block'; // Ensure it's visible
+        } else {
+          // If the modal structure is changed and #certImage isn't there, handle accordingly.
+          // For now, we log a warning or adjust the modal structure.
+          console.warn("Image element for certificate not found in modal.");
+        }
         document.getElementById('certTitle').textContent = title;
         document.getElementById('certOrganization').textContent = organization + ' - ' + year;
         document.getElementById('certDescription').textContent = description;
         document.getElementById('certificateModal').classList.add('show');
       }
 
+
       function closeCertificateModal() {
         document.getElementById('certificateModal').classList.remove('show');
+        // Optionally reset image source or hide it when modal closes
+        const certImageElement = document.getElementById('certificateModal').querySelector('#certImage');
+        if (certImageElement) {
+          certImageElement.src = ''; // Clear source
+          certImageElement.style.display = 'none'; // Hide element
+        }
       }
 
       const mobileMenuButton = document.getElementById("mobile-menu-button");
@@ -1363,17 +1660,19 @@
       const emailForm = document.getElementById("emailForm");
       if (emailForm) {
         emailjs.init("MkDTippaiZtJd2cUV"); // Replace with your actual EmailJS User ID
-        emailForm.addEventListener("submit", function (event) {
-          event.preventDefault();
-          emailjs.sendForm("service_rw9xkqw", "template_z37v5ih", this).then(
-            function (response) {
+        emailForm.addEventListener("submit", function(event) {
+          event.preventDefault(); // Prevent default form submission
+
+          const serviceID = "service_rw9xkqw"; // Replace with your Service ID
+          const templateID = "template_z37v5ih"; // Replace with your Template ID
+
+          emailjs.sendForm(serviceID, templateID, this)
+            .then(function (response) {
               alert(currentLang === 'id' ? "Pesan berhasil dikirim!" : "Message sent successfully!");
               emailForm.reset();
-            },
-            function (error) {
+            }, function (error) {
               alert(currentLang === 'id' ? "Terjadi kesalahan: " + error.text : "Error occurred: " + error.text);
-            }
-          );
+            });
         });
       }
 
@@ -1394,44 +1693,39 @@
       document.getElementById("current-year").textContent = new Date().getFullYear();
       updatePageTranslations();
 
-      // Skill filtering logic
-      const skillFilterButtons = document.querySelectorAll('.skill-filter-btn');
-      const skillsGrid = document.getElementById('skillsGrid');
-      const skillCards = skillsGrid.querySelectorAll('.skill-card');
+      // </CHANGE> Generate GitHub contribution activity graph
+      function generateContributionGraph() {
+        const graph = document.getElementById('contributionGraph');
+        if (!graph) {
+          console.log("[v0] Contribution graph element not found");
+          return;
+        }
+        
+        graph.innerHTML = ''; // Clear existing content if any
+        
+        const totalWeeks = 52;
+        const daysPerWeek = 7;
+        
+        for (let week = 0; week < totalWeeks; week++) {
+          for (let day = 0; day < daysPerWeek; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'contribution-day';
+            
+            // Generate random contribution levels (0-4)
+            const level = Math.floor(Math.random() * 5);
+            dayElement.classList.add(`level-${level}`);
+            
+            // Add hover tooltip
+            const levels = ['No contributions', '1-3 contributions', '4-6 contributions', '7-9 contributions', '10+ contributions'];
+            dayElement.title = levels[level];
+            
+            graph.appendChild(dayElement);
+          }
+        }
+      }
 
-      skillFilterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Remove active class from all buttons
-          skillFilterButtons.forEach(btn => btn.classList.remove('active'));
-          this.classList.add('active');
-          
-          const category = this.dataset.category;
-
-          skillCards.forEach(card => {
-            if (category === 'all' || card.dataset.category === category) {
-              card.style.display = 'flex'; // Changed to flex to maintain layout
-              card.style.flexDirection = 'column';
-              card.style.alignItems = 'center';
-              card.style.justifyContent = 'center';
-              // Added a slight delay for fade-in effect
-              setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'scale(1)';
-              }, 50); // Increased delay slightly
-            } else {
-              card.style.opacity = '0';
-              card.style.transform = 'scale(0.8)';
-              // Changed transition to end property to avoid flickering when display is none
-              card.addEventListener('transitionend', function handler() {
-                if (parseFloat(card.style.opacity) === 0) {
-                  card.style.display = 'none';
-                }
-                card.removeEventListener('transitionend', handler);
-              });
-            }
-          });
-        });
-      });
+      // Call function when page loads
+      document.addEventListener('DOMContentLoaded', generateContributionGraph);
     </script>
   </body>
 </html>
