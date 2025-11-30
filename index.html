@@ -1180,7 +1180,7 @@
               <h4 class="text-lg font-medium" data-translate="github_repos">Repositories</h4>
               <i class="fas fa-code-branch text-electric-blue text-2xl"></i>
             </div>
-            <p class="text-4xl font-bold text-electric-blue count-up" data-target="12">0</p>
+            <p class="text-4xl font-bold text-electric-blue count-up" data-target="12">23</p>
             <p class="text-xs text-gray-500 mt-2" data-translate="github_public">Public repositories</p>
           </div>
           <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-yellow-500/20">
@@ -1188,7 +1188,7 @@
               <h4 class="text-lg font-medium" data-translate="github_stars">Stars</h4>
               <i class="fas fa-star text-yellow-500 text-2xl"></i>
             </div>
-            <p class="text-4xl font-bold text-yellow-500 count-up" data-target="3">0</p>
+            <p class="text-4xl font-bold text-yellow-500 count-up" data-target="3">5</p>
             <p class="text-xs text-gray-500 mt-2" data-translate="github_received">Received on projects</p>
           </div>
           <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-green-500/20">
@@ -1196,7 +1196,7 @@
               <h4 class="text-lg font-medium" data-translate="github_contrib">Contributions</h4>
               <i class="fas fa-code-commit text-green-glow text-2xl"></i>
             </div>
-            <p class="text-4xl font-bold text-green-glow count-up" data-target="100">0</p>
+            <p class="text-4xl font-bold text-green-glow count-up" data-target="100">15</p>
             <p class="text-xs text-gray-500 mt-2" data-translate="github_lastyear">Last year</p>
           </div>
           <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-purple-500/20">
@@ -1204,7 +1204,7 @@
               <h4 class="text-lg font-medium" data-translate="github_followers">Followers</h4>
               <i class="fas fa-users text-purple-glow text-2xl"></i>
             </div>
-            <p class="text-4xl font-bold text-purple-glow count-up" data-target="10">0</p>
+            <p class="text-4xl font-bold text-purple-glow count-up" data-target="10">10</p>
             <p class="text-xs text-gray-500 mt-2" data-translate="github_followers_desc">GitHub followers</p>
           </div>
         </div>
@@ -1366,11 +1366,31 @@
                   <i class="fab fa-whatsapp text-white"></i>
                 </div>
                 <div>
-                  <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-whatsapp-title">WhatsApp</h4>
-                  <a href="https://wa.me/6285248867449?text=Hello%20Muhammad%20Fikri" target="_blank" class="text-electric-blue hover:text-cyan-glow text-sm sm:text-base transition-colors">
-                    +62 852 4886 7449 <i class="fas fa-external-link-alt ml-1 text-xs"></i>
-                  </a>
-                </div>
+  <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-whatsapp-title">
+    WhatsApp
+  </h4>
+
+  <form action="https://api.whatsapp.com/send" method="GET" target="_blank" class="flex gap-2">
+    <input type="hidden" name="phone" value="6285248867449">
+
+    <!-- Kolom pesan -->
+    <input
+      type="text"
+      name="text"
+      placeholder="Send me something..."
+      class="flex-1 px-3 py-2 rounded bg-[#1b1b1b] text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-glow"
+    >
+
+    <!-- Tombol send -->
+    <button
+      type="submit"
+      class="px-4 py-2 rounded bg-electric-blue text-black font-medium text-sm hover:bg-cyan-glow transition-colors"
+    >
+      Send
+    </button>
+  </form>
+</div>
+
               </div>
             </div>
           </div>
