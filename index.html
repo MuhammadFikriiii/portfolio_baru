@@ -1679,18 +1679,23 @@
       }
 
       function moveCarousel(direction) {
-        const carousel = document.getElementById('projectCarousel');
-        const items = carousel.querySelectorAll('.carousel-item');
-        const itemCount = items.length;
-        currentCarouselIndex += direction;
-        if (currentCarouselIndex > itemCount - 3) {
-          currentCarouselIndex = 0;
-        } else if (currentCarouselIndex < 0) {
-          currentCarouselIndex = itemCount - 3;
-        }
-        const offset = -currentCarouselIndex * (100 / 3);
-        carousel.style.transform = `translateX(${offset}%)`;
+      const carousel = document.getElementById('projectCarousel');
+      const items = carousel.querySelectorAll('.carousel-item');
+      const itemCount = items.length;
+
+      const itemsPerView = window.innerWidth <= 768 ? 1 : 3; // mobile:1, desktop:3
+
+      currentCarouselIndex += direction;
+
+      if (currentCarouselIndex > itemCount - itemsPerView) {
+        currentCarouselIndex = 0;
+      } else if (currentCarouselIndex < 0) {
+        currentCarouselIndex = itemCount - itemsPerView;
       }
+
+      const offset = -currentCarouselIndex * (100 / itemsPerView);
+      carousel.style.transform = `translateX(${offset}%)`;
+    }
 
       function showCertificateDetail(id, title, organization, year, image, description) {
         // Dynamically create image element if needed, or use pre-defined placeholder
