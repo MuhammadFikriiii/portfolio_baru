@@ -143,15 +143,13 @@
         document.getElementById('article-image').alt = item.judul;
         
         // Format tanggal
-        const date = new Date(item.created_at).toLocaleDateString("id-ID", {
+        const date = new Date(item.tgl_publish).toLocaleDateString("id-ID", {
           day: "numeric",
           month: "long",
           year: "numeric"
         });
         document.getElementById('article-date').innerText = date;
 
-        // Isi konten (Jika konten mengandung HTML, gunakan innerHTML. Jika teks biasa, gunakan innerText)
-        // Disini kita gunakan innerHTML agar tag seperti <br> atau <b> bisa terbaca
         document.getElementById('article-body').innerHTML = item.konten;
       }
 
@@ -160,7 +158,6 @@
         document.getElementById('error-state').classList.remove('hidden');
       }
 
-      // Jalankan fungsi saat halaman dimuat
       document.addEventListener('DOMContentLoaded', fetchArticleDetail);
     </script>
   </body>
