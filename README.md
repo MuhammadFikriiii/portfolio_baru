@@ -10,7 +10,6 @@ The source code for this website is licensed under the **MIT License** - see the
 
 **✅ You are FREE to:**
 * Use the source code to build your own portfolio.
-* Learn from the React/Next.js implementation.
 * Modify the design to fit your own brand.
 
 **❌ You are NOT allowed to:**
@@ -19,4 +18,5 @@ The source code for this website is licensed under the **MIT License** - see the
 * Claim this specific design identity as your own without modification.
 
 ---
+
 
