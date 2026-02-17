@@ -53,34 +53,55 @@
           <!-- WRAPPER TAMBAHAN -->
           <div id="slider" class="flex transition-transform duration-700 ease-out md:grid md:grid-cols-3 md:gap-6">
 
-            <div class="relative aspect-video overflow-hidden shadow-2xl min-w-full md:min-w-0">
-              <img src="../image/donghuawatch.jpg" class="w-full h-full object-cover border border-white" />
+            <div
+              class="relative aspect-video overflow-hidden shadow-2xl min-w-full md:min-w-0 rounded-xl group/item bg-gray-800">
+              <img src="../image/donghuawatch.png"
+                class="w-full h-full object-contain border border-white/20 transition-transform duration-500 group-hover/item:scale-110" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
+              </div>
+              <div
+                class="absolute bottom-4 left-4 bg-electric-blue/20 backdrop-blur-md border border-white/10 px-3 py-1 rounded-md">
+                <p class="text-xs font-bold text-white uppercase tracking-wider"><i class="fas fa-home mr-1"></i> Home
+                  UI</p>
               </div>
             </div>
 
-            <div class="relative aspect-video overflow-hidden shadow-2xl min-w-full md:min-w-0">
-              <img src="../image/donghuawatch2.png" class="w-full h-full object-cover border border-white" />
+            <div
+              class="relative aspect-video overflow-hidden shadow-2xl min-w-full md:min-w-0 rounded-xl group/item bg-gray-800">
+              <img src="../image/donghuawatch2.png"
+                class="w-full h-full object-contain border border-white/20 transition-transform duration-500 group-hover/item:scale-110" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
+              </div>
+              <div
+                class="absolute bottom-4 left-4 bg-purple-500/20 backdrop-blur-md border border-white/10 px-3 py-1 rounded-md">
+                <p class="text-xs font-bold text-white uppercase tracking-wider"><i class="fas fa-play mr-1"></i> Player
+                  Interface</p>
               </div>
             </div>
 
-            <div class="relative aspect-video overflow-hidden shadow-2xl min-w-full md:min-w-0">
-              <img src="../image/donghuawatch3.png" class="w-full h-full object-cover border border-white" />
+            <div
+              class="relative aspect-video overflow-hidden shadow-2xl min-w-full md:min-w-0 rounded-xl group/item bg-gray-800">
+              <img src="../image/donghuawatch3.png"
+                class="w-full h-full object-contain border border-white/20 transition-transform duration-500 group-hover/item:scale-110" />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
+              </div>
+              <div
+                class="absolute bottom-4 left-4 bg-emerald-500/20 backdrop-blur-md border border-white/10 px-3 py-1 rounded-md">
+                <p class="text-xs font-bold text-white uppercase tracking-wider"><i class="fas fa-mobile-alt mr-1"></i>
+                  Mobile Responsive</p>
               </div>
             </div>
           </div>
 
-          <!-- BUTTON (MOBILE ONLY) -->
+          <!-- BUTTON SLIDER -->
           <button onclick="prev()"
-            class="md:hidden absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 text-white px-3 py-2 rounded-full">
-            ‹
+            class="md:hidden absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all">
+            <i class="fas fa-chevron-left"></i>
           </button>
 
           <button onclick="next()"
-            class="md:hidden absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 text-white px-3 py-2 rounded-full">
-            ›
+            class="md:hidden absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all">
+            <i class="fas fa-chevron-right"></i>
           </button>
 
         </div>
@@ -104,42 +125,57 @@
 
       <!-- Project Details -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-        <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
-          <h3 class="text-electric-blue font-bold mb-3 flex items-center">
+        <div
+          class="bg-dark-card rounded-lg p-6 border border-electric-blue/20 shadow-lg translate-y-0 hover:-translate-y-2 transition-transform duration-300">
+          <h3 class="text-electric-blue font-bold mb-4 flex items-center text-lg">
             <i class="fas fa-code mr-2"></i> Tech Stack
           </h3>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li><strong>Frontend:</strong> HTML5, Tailwind CSS</li>
-            <li><strong>Logic:</strong>JavaScript</li>
-            <li><strong>Animations:</strong> Tailwind Animations</li>
-            <li><strong>Deployment:</strong> Vercel</li>
-            <li><strong>Browser:</strong> Cross-browser compatible</li>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex items-center"><i class="fab fa-react mr-2 text-cyan-400"></i><strong>Frontend:</strong>
+              React.js</li>
+            <li class="flex items-center"><i class="fas fa-bolt mr-2 text-green-400"></i><strong>Backend:</strong>
+              Supabase, PostgreSQL</li>
+            <li class="flex items-center"><i
+                class="fas fa-server mr-2 text-purple-400"></i><strong>Communication:</strong> Axios, API</li>
+            <li class="flex items-center"><i class="fas fa-mobile-alt mr-2 text-gray-400"></i><strong>Mobile:</strong>
+              Capacitor, Responsive Tool</li>
+            <li class="flex items-center"><i class="fas fa-route mr-2 text-red-400"></i><strong>Routing:</strong> React
+              Router</li>
+            <li class="flex items-center"><i
+                class="fas fa-chart-line mr-2 text-emerald-400"></i><strong>Analytics:</strong> Vercel Analytics</li>
           </ul>
         </div>
 
-        <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
-          <h3 class="text-electric-blue font-bold mb-3 flex items-center">
-            <i class="fas fa-gamepad mr-2"></i> Web Features
+        <div
+          class="bg-dark-card rounded-lg p-6 border border-electric-blue/20 shadow-lg translate-y-0 hover:-translate-y-2 transition-transform duration-300">
+          <h3 class="text-electric-blue font-bold mb-4 flex items-center text-lg">
+            <i class="fas fa-star mr-2"></i> Key Features
           </h3>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li>✓ Free</li>
-            <li>✓ Ringan</li>
-            <li>✓ Cepat</li>
-            <li>✓ HD</li>
-            <li>✓ Responsive</li>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex items-center">✓ <span class="ml-2">Fast Streaming Protocol</span></li>
+            <li class="flex items-center">✓ <span class="ml-2">Cross-platform (Web & Mobile)</span></li>
+            <li class="flex items-center">✓ <span class="ml-2">Advanced Caching System</span></li>
+            <li class="flex items-center">✓ <span class="ml-2">Offline Reading/Watching</span></li>
+            <li class="flex items-center">✓ <span class="ml-2">User Authentication & History</span></li>
           </ul>
         </div>
 
-        <div class="bg-dark-card rounded-lg p-6 border border-electric-blue/20">
-          <h3 class="text-electric-blue font-bold mb-3 flex items-center">
+        <div
+          class="bg-dark-card rounded-lg p-6 border border-electric-blue/20 shadow-lg translate-y-0 hover:-translate-y-2 transition-transform duration-300">
+          <h3 class="text-electric-blue font-bold mb-4 flex items-center text-lg">
             <i class="fas fa-chart-pie mr-2"></i> Project Stats
           </h3>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li><strong>Development:</strong> 2 week</li>
-            <li><strong>Code Lines:</strong> ~2000</li>
-            <li><strong>Load Time:</strong> &lt; 1s</li>
-            <li><strong>Mobile Optimized:</strong> Yes</li>
-            <li><strong>Browser Support:</strong> 100%+</li>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex justify-between"><span>Development:</span> <span class="text-white font-semibold">2
+                Months</span></li>
+            <li class="flex justify-between"><span>Performance:</span> <span
+                class="text-green-400 font-semibold">98/100</span></li>
+            <li class="flex justify-between"><span>Weekly Users:</span> <span
+                class="text-white font-semibold">1,000+</span></li>
+            <li class="flex justify-between"><span>Uptime:</span> <span class="text-blue-400 font-semibold">99.9%</span>
+            </li>
+            <li class="flex justify-between"><span>Security:</span> <span class="text-white font-semibold">SSL
+                Protected</span></li>
           </ul>
         </div>
       </div>
@@ -219,4 +255,5 @@
     updateSlider();
   }
 </script>
+
 </html>
