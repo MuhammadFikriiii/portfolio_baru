@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="overflow-x-hidden">
 
 <head>
   <meta charset="UTF-8">
@@ -49,21 +49,24 @@
             sans: ["Inter", "sans-serif"],
           },
           colors: {
-            "electric-blue": "#00BFFF",
-            "cyan-glow": "#00FFFF",
-            "purple-glow": "#8B5CF6",
-            "pink-glow": "#EC4899",
-            "green-glow": "#10B981",
-            "orange-glow": "#F59E0B",
-            "dark-bg": "#0F0F23",
-            "dark-card": "#1A1A2E",
+            "neo-yellow": "#FFD600",
+            "neo-pink": "#FF006E",
+            "neo-blue": "#3A86FF",
+            "neo-green": "#00FF66",
+            "neo-orange": "#FB5607",
+            "neo-purple": "#8338EC",
+            "neo-bg": "#F5F5F5",
           },
           boxShadow: {
-            "neuro-dark": "8px 8px 16px #0a0a0a, -8px -8px 16px #1e1e1e",
-            glow: "0 0 20px rgba(0, 191, 255, 0.5)",
-            "glow-strong": "0 0 30px rgba(0, 255, 255, 0.8)",
-            "glow-purple": "0 0 20px rgba(139, 92, 246, 0.6)",
-            "glow-pink": "0 0 20px rgba(236, 72, 153, 0.6)",
+            "neo": "4px 4px 0px 0px #000000",
+            "neo-lg": "8px 8px 0px 0px #000000",
+            "neo-xl": "12px 12px 0px 0px #000000",
+          },
+          borderWidth: {
+            "3": "3px",
+            "4": "4px",
+            "6": "6px",
+            "8": "8px",
           },
           animation: {
             typing: "typing 3.5s steps(40, end), blink-caret .75s step-end infinite",
@@ -85,11 +88,11 @@
             },
             "blink-caret": {
               "from, to": { borderColor: "transparent" },
-              "50%": { borderColor: "#00BFFF" },
+              "50%": { borderColor: "#000000" },
             },
             float: {
-              "0%, 100%": { transform: "translateY(0px)" },
-              "50%": { transform: "translateY(-8px)" },
+              "0%, 100%": { transform: "translate(0px, 0px)" },
+              "50%": { transform: "translate(-4px, -4px)" },
             },
             wiggle: {
               "0%, 100%": { transform: "rotate(-3deg)" },
@@ -115,51 +118,65 @@
               from: { opacity: "0" },
               to: { opacity: "1" },
             },
+            "neo-pop": {
+              "0%": { transform: "scale(0.8) rotate(-2deg)", opacity: "0" },
+              "70%": { transform: "scale(1.05) rotate(1deg)", opacity: "1" },
+              "100%": { transform: "scale(1) rotate(0deg)", opacity: "1" },
+            }
           },
         },
       },
     };
   </script>
   <style type="text/css">
-    .glass {
-      background: rgba(224, 224, 224, 0.3);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(70, 70, 70, 0.1);
+    .neo-card {
+      background: #FFFFFF;
+      border: 3px solid #000000;
+      box-shadow: 6px 6px 0px 0px #000000;
+      transition: all 0.2s ease;
     }
 
-    .glass-dark {
-      background: rgba(15, 15, 35, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+    .neo-card:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0px 0px #000000;
+    }
+
+    .neo-btn {
+      background: #FFD600;
+      border: 2px solid #000000;
+      box-shadow: 4px 4px 0px 0px #000000;
+      transition: all 0.2s ease;
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .neo-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px 0px #000000;
+    }
+
+    .neo-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px 0px #000000;
     }
 
     .gradient-bg {
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
+      background: #FFD600;
+      border-bottom: 4px solid #000000;
     }
 
     .skill-card {
-      background: rgba(26, 26, 46, 0.6);
-      border: 1px solid rgba(0, 191, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
+      background: #FFFFFF;
+      border: 3px solid #000000;
+      box-shadow: 4px 4px 0px 0px #000000;
       padding: 1.5rem;
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      opacity: 1;
-      transform: scale(1);
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
 
     .skill-card:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
-      border-color: rgba(0, 191, 255, 0.5);
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0px 0px #000000;
     }
 
     /* Added marquee animation styles for infinite horizontal scroll */
@@ -179,19 +196,17 @@
     .skills-marquee-item {
       flex-shrink: 0;
       min-width: 120px;
-      background: rgba(26, 26, 46, 0.6);
-      border: 1px solid rgba(0, 191, 255, 0.2);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
+      background: #FFFFFF;
+      border: 3px solid #000000;
+      box-shadow: 4px 4px 0px 0px #000000;
       padding: 1.5rem;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
 
     .skills-marquee-item:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3);
-      border-color: rgba(0, 191, 255, 0.5);
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0px 0px #000000;
     }
 
     @keyframes marquee {
@@ -207,13 +222,17 @@
     /* End marquee animation */
 
     .project-card {
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: #FFFFFF;
+      border: 4px solid #000000;
+      box-shadow: 8px 8px 0px 0px #000000;
+      transition: all 0.2s ease;
       position: relative;
       overflow: hidden;
     }
 
     .project-card:hover {
-      transform: translateY(-10px) scale(1.02);
+      transform: translate(-4px, -4px);
+      box-shadow: 12px 12px 0px 0px #000000;
     }
 
     .modal {
@@ -236,10 +255,9 @@
     }
 
     .modal-content {
-      background: rgba(26, 26, 46, 0.95);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
+      background: #FFFFFF;
+      border: 4px solid #000000;
+      box-shadow: 12px 12px 0px 0px #000000;
       padding: 2rem;
       max-width: 90vw;
       max-height: 90vh;
@@ -255,7 +273,8 @@
     .form-input:focus+.floating-label,
     .form-input:not(:placeholder-shown)+.floating-label {
       transform: translateY(-25px) scale(0.8);
-      color: #00bfff;
+      color: #000000;
+      font-weight: 700;
     }
 
     /* Project carousel styling */
@@ -281,64 +300,47 @@
       }
     }
 
-    .carousel-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+    .carousel-button-static {
       width: 50px;
       height: 50px;
-      background: rgba(0, 191, 255, 0.2);
-      border: 2px solid rgba(0, 191, 255, 0.5);
-      border-radius: 50%;
+      background: #FFD600;
+      border: 3px solid #000000;
+      box-shadow: 4px 4px 0px 0px #000000;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #00BFFF;
+      color: #000000;
       font-size: 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 10;
+      transition: all 0.2s ease;
     }
 
-    .carousel-button:hover {
-      background: rgba(0, 191, 255, 0.4);
-      transform: translateY(-50%) scale(1.1);
+    .carousel-button-static:hover {
+      background: #FF006E;
+      color: #FFFFFF;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px 0px #000000;
     }
 
-    .carousel-button.prev {
-      left: 1rem;
+    .carousel-button-static:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px 0px #000000;
     }
 
-    .carousel-button.next {
-      right: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      .carousel-button {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-      }
-
-      .carousel-button.prev {
-        left: 0.5rem;
-      }
-
-      .carousel-button.next {
-        right: 0.5rem;
-      }
-    }
 
     .testimonial-card {
-      transition: all 0.3s ease;
+      background: #FFFFFF;
+      border: 3px solid #000000;
+      box-shadow: 6px 6px 0px 0px #000000;
+      transition: all 0.2s ease;
       height: 100%;
       display: flex;
       flex-direction: column;
     }
 
     .testimonial-card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 191, 255, 0.2);
+      transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0px 0px #000000;
     }
 
     @keyframes fadeInUp {
@@ -411,9 +413,10 @@
     }
 
     .skill-filter-btn.active {
-      transform: scale(1.05);
-      background: linear-gradient(to right, #00BFFF, #00FFFF);
-      box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+      transform: translate(-2px, -2px);
+      background: #FFD600;
+      box-shadow: 4px 4px 0px 0px #000000;
+      border: 2px solid #000000;
     }
 
     /* GitHub contribution graph styles */
@@ -456,180 +459,217 @@
       background-color: #39d353;
     }
 
+    .dragging {
+      animation: none !important;
+      transition: none !important;
+      z-index: 40 !important;
+    }
+
+    @keyframes slideDownRope {
+      0% { transform: translateY(-200px); opacity: 0; }
+      60% { transform: translateY(20px); opacity: 1; }
+      80% { transform: translateY(-10px); }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .animate-slide-down-rope {
+      animation: slideDownRope 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    /* Scroll Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      will-change: transform, opacity;
+    }
+
+    .reveal-up { transform: translateY(60px); }
+    .reveal-down { transform: translateY(-60px); }
+    .reveal-left { transform: translateX(-60px); }
+    .reveal-right { transform: translateX(60px); }
+    .reveal-scale { transform: scale(0.8); }
+
+    .reveal.active {
+      opacity: 1 !important;
+      transform: translate(0) scale(1) !important;
+    }
+
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+
     /* End GitHub styles */
   </style>
 </head>
 
-<body class="bg-dark-bg text-white font-sans">
+<body class="bg-neo-bg text-black font-sans selection:bg-neo-pink selection:text-white overflow-x-hidden">
   <!-- Enhanced Header with Language Toggle -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-dark">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-black">
     <div class="container mx-auto px-4 sm:px-6 py-4">
       <div class="flex justify-between items-center">
-        <a href="#" class="text-xl sm:text-2xl font-bold text-electric-blue">
-          <span class="gradient-bg bg-clip-text text-transparent">Muhammad </span><span
-            class="text-electric-blue">Fikri</span>
+        <a href="#" class="text-xl sm:text-2xl font-black text-black uppercase tracking-tighter">
+          Muhammad <span class="bg-neo-yellow px-1 border-2 border-black">Fikri</span>
         </a>
         <!-- Navigation -->
         <nav class="hidden md:flex space-x-6 lg:space-x-8">
           <a href="#home"
-            class="nav-link active py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors"
+            class="nav-link active py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-yellow px-2 transition-all"
             data-translate="nav-home">Home</a>
           <a href="#about"
-            class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors"
+            class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-pink hover:text-white px-2 transition-all"
             data-translate="nav-about">Tentang</a>
           <a href="#projects"
-            class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors"
+            class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-blue hover:text-white px-2 transition-all"
             data-translate="nav-projects">Proyek</a>
           <a href="#skills"
-            class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors"
+            class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-green px-2 transition-all"
             data-translate="nav-skills">Keahlian</a>
           <a href="#certificates"
-            class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors"
+            class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-purple hover:text-white px-2 transition-all"
             data-translate="nav-certificates">Sertifikat</a>
           <a href="#testimonial"
-            class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors"
+            class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-orange hover:text-white px-2 transition-all"
             data-translate="nav-testimonial">Testimonial</a>
           <a href="#github"
-            class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors"
+            class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-yellow px-2 transition-all"
             data-translate="nav-github">Github</a>
           <a href="#contact"
-            class="nav-link py-2 text-sm lg:text-base text-gray-200 hover:text-electric-blue transition-colors"
+            class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-pink hover:text-white px-2 transition-all"
             data-translate="nav-contact">Kontak</a>
         </nav>
         <!-- Language Toggle Button -->
         <div class="flex items-center gap-4">
-          <button id="lang-toggle"
-            class="px-3 py-2 rounded-full bg-gradient-to-r from-electric-blue to-purple-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300">
+          <button id="lang-toggle" class="neo-btn px-4 py-2 bg-neo-purple text-white">
             <span class="lang-text">EN</span>
           </button>
-          <button id="mobile-menu-button" class="md:hidden text-gray-200 focus:outline-none">
+          <button id="mobile-menu-button" class="md:hidden text-black focus:outline-none">
             <i class="fas fa-bars text-xl sm:text-2xl"></i>
           </button>
         </div>
       </div>
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4 space-y-2">
-        <a href="#home" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors"
+      <div id="mobile-menu"
+        class="md:hidden hidden mt-4 pb-4 space-y-2 bg-white border-t-2 border-black p-4 shadow-neo">
+        <a href="#home" class="block py-2 font-bold text-black hover:bg-neo-yellow px-2"
           data-translate="nav-home">Home</a>
-        <a href="#about" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors"
+        <a href="#about" class="block py-2 font-bold text-black hover:bg-neo-pink px-2 hover:text-white"
           data-translate="nav-about">Tentang</a>
-        <a href="#projects" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors"
+        <a href="#projects" class="block py-2 font-bold text-black hover:bg-neo-blue px-2 hover:text-white"
           data-translate="nav-projects">Proyek</a>
-        <a href="#skills" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors"
+        <a href="#skills" class="block py-2 font-bold text-black hover:bg-neo-green px-2"
           data-translate="nav-skills">Keahlian</a>
-        <a href="#certificates" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors"
+        <a href="#certificates" class="block py-2 font-bold text-black hover:bg-neo-purple px-2 hover:text-white"
           data-translate="nav-certificates">Sertifikat</a>
-        <a href="#testimonial" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors"
+        <a href="#testimonial" class="block py-2 font-bold text-black hover:bg-neo-orange px-2 hover:text-white"
           data-translate="nav-testimonial">Testimonial</a>
-        <a href="#github" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors"
+        <a href="#github" class="block py-2 font-bold text-black hover:bg-neo-yellow px-2"
           data-translate="nav-github">Github</a>
-        <a href="#contact" class="block py-2 text-gray-200 hover:text-electric-blue transition-colors"
+        <a href="#contact" class="block py-2 font-bold text-black hover:bg-neo-pink px-2 hover:text-white"
           data-translate="nav-contact">Kontak</a>
       </div>
     </div>
   </header>
 
   <!-- Enhanced Hero Section -->
-  <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-    <div class="absolute inset-0 gradient-bg opacity-20"></div>
+  <section id="home"
+    class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 border-b-8 border-black bg-neo-yellow">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]">
+    </div>
     <div class="absolute inset-0">
       <div
-        class="absolute top-1/4 left-1/4 w-32 h-32 bg-electric-blue rounded-full filter blur-3xl opacity-30 animate-float">
+        class="draggable-shape absolute top-16 left-5 md:top-1/3 md:left-1/4 w-16 h-16 md:w-32 md:h-32 bg-neo-pink border-4 border-black shadow-neo-lg animate-float hover:rotate-12 transition-transform duration-300 cursor-move z-0">
       </div>
       <div
-        class="absolute bottom-1/3 right-1/4 w-40 h-40 bg-purple-glow rounded-full filter blur-3xl opacity-20 animate-float"
+        class="draggable-shape absolute bottom-10 right-5 md:bottom-1/3 md:right-1/4 w-20 h-20 md:w-40 md:h-40 bg-neo-blue border-4 border-black shadow-neo-lg animate-float hover:-rotate-12 transition-transform duration-300 cursor-move z-0"
         style="animation-delay: 1s"></div>
       <div
-        class="absolute top-1/2 left-1/2 w-24 h-24 bg-pink-glow rounded-full filter blur-3xl opacity-25 animate-float"
+        class="draggable-shape absolute top-20 right-5 md:top-1/2 md:left-1/2 w-14 h-14 md:w-24 md:h-24 bg-neo-green border-4 border-black shadow-neo-lg animate-float hover:rotate-45 transition-transform duration-300 cursor-move z-0"
         style="animation-delay: 2s"></div>
     </div>
-    <div class="container mx-auto px-4 sm:px-6 z-10 text-center">
-      <p class="text-lg sm:text-xl md:text-2xl font-light mb-4 text-gray-400 animate-slide-in"
+    <div class="container mx-auto px-4 sm:px-6 z-30 text-center">
+      <p class="text-lg sm:text-xl md:text-2xl font-black mb-4 text-black uppercase tracking-widest animate-slide-in"
         data-translate="hero-greeting">Halo, Saya</p>
-      <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 text-white animate-scale-in">
-        <span class="typing-text gradient-bg bg-clip-text text-transparent" id="dev-name">Muhammad Fikri</span>
+      <h1
+        class="text-4xl sm:text-6xl md:text-8xl font-black mb-6 text-black uppercase tracking-tighter">
+        <div class="relative inline-block animate-slide-down-rope">
+          <span
+            class="bg-white px-6 py-2 border-4 border-black shadow-neo-xl inline-block transform -rotate-2 hover:rotate-2 transition-transform duration-300 cursor-default relative"
+            id="dev-name">
+            <!-- Tali Gantungan (Ditingkatkan agar tidak putus) -->
+            <div class="absolute top-0 left-8 w-1 h-[1000px] bg-black -translate-y-full -z-10 hidden md:block"></div>
+            <div class="absolute top-0 right-8 w-1 h-[1000px] bg-black -translate-y-full -z-10 hidden md:block"></div>
+            <!-- Baut Gantungan -->
+            <div class="absolute top-1 left-7 w-3 h-3 bg-black rounded-full hidden md:block"></div>
+            <div class="absolute top-1 right-7 w-3 h-3 bg-black rounded-full hidden md:block"></div>
+            Muhammad Fikri
+          </span>
+        </div>
       </h1>
-      <h2 class="text-xl sm:text-2xl md:text-3xl font-light mb-8 text-electric-blue animate-slide-up">
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl font-black mb-8 text-black animate-slide-up bg-neo-pink text-white inline-block px-4 py-2 border-4 border-black shadow-neo transform rotate-1 hover:-rotate-1 transition-transform duration-300 cursor-default">
         <span class="typing-text" id="dev-title">Admin Jaringan & Pengembang Web</span>
       </h2>
-      <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8 animate-slide-up">
-        <a href="#projects"
-          class="px-6 sm:px-8 py-3 rounded-full bg-gradient-to-r from-electric-blue to-purple-glow text-white font-medium hover:shadow-glow-strong transform hover:scale-105 transition-all duration-300"
+      <div class="flex flex-col sm:flex-row justify-center gap-6 mt-8 animate-slide-up">
+        <a href="#projects" class="neo-btn px-8 py-4 text-lg uppercase tracking-bold bg-neo-blue text-white"
           data-translate="hero-view-work">Lihat Karya Saya</a>
         <a href="https://wa.me/6285248867449?text=Halo%20Muhammad%20Fikri" target="_blank"
-          class="px-6 sm:px-8 py-3 rounded-full bg-transparent border-2 border-electric-blue text-electric-blue font-medium hover:bg-electric-blue hover:text-white hover:shadow-glow transform hover:scale-105 transition-all duration-300"><i
+          class="neo-btn px-8 py-4 text-lg uppercase tracking-bold bg-neo-green text-black"><i
             class="fab fa-whatsapp mr-2"></i><span data-translate="hero-whatsapp">Chat di WhatsApp</span></a>
       </div>
     </div>
     <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-      <a href="#about" class="text-white opacity-70 hover:opacity-100 transition-opacity">
-        <i class="fas fa-chevron-down text-2xl"></i>
+      <a href="#about" class="text-black hover:text-neo-pink transition-colors">
+        <i class="fas fa-chevron-down text-4xl"></i>
       </a>
     </div>
   </section>
 
   <!-- Enhanced About Section -->
-  <section id="about" class="py-16 sm:py-20 md:py-24 scroll-mt-16">
+  <section id="about" class="py-10 sm:py-16 md:py-20 scroll-mt-16">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
-        <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="about-title">Tentang
-          Saya</span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-10 text-center uppercase tracking-tighter reveal reveal-up">
+        <span
+          class="bg-neo-pink text-white px-6 py-2 border-4 border-black shadow-neo-lg inline-block transform rotate-2 hover:-rotate-2 transition-transform duration-300 cursor-default"
+          data-translate="about-title">Tentang Saya</span>
       </h2>
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8">
-        <div class="lg:w-2/5 flex justify-center -mt-10">
-          <div class="relative animate-float">
-            <div
-              class="w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden shadow-neuro-dark border-4 border-electric-blue">
-              <img src="image/pp.jpeg" alt="Foto Profil" class="w-full h-full object-cover object-center">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
+        <div class="lg:w-2/5 flex justify-center reveal reveal-left">
+          <div class="relative">
+            <div id="about-img-container"
+              class="w-64 h-64 sm:w-72 sm:h-72 overflow-hidden border-8 border-black shadow-neo-xl transform -rotate-3 cursor-pointer transition-transform duration-300 ease-in-out">
+              <img src="img/profil.jpg" alt="Foto Profil" class="w-full h-full object-cover object-center">
             </div>
-            <div class="absolute inset-0 rounded-full border-4 border-cyan-glow opacity-50 animate-pulse-slow"></div>
+            <div
+              class="absolute -bottom-4 -right-4 w-20 h-20 bg-neo-yellow border-4 border-black shadow-neo -z-10 animate-spin-slow">
+            </div>
           </div>
         </div>
-        <div class="lg:w-3/5">
-          <h3 class="text-xl sm:text-2xl md:text-3xl font-bold mb-4">
-            Saya <span class="gradient-bg bg-clip-text text-transparent">Muhammad Fikri</span>, <span
-              data-translate="about-subtitle">Lulusan D3 Teknik Informatika</span>
+        <div class="lg:w-3/5 reveal reveal-right delay-200">
+          <h3 class="text-2xl sm:text-3xl font-black mb-4 uppercase tracking-tight">
+            Saya <span class="text-neo-blue">Muhammad Fikri</span>, <span data-translate="about-subtitle"
+              class="bg-neo-green px-2">Lulusan D3 Teknik Informatika</span>
           </h3>
-          <p class="text-gray-400 mb-6 leading-relaxed text-sm sm:text-base" data-translate="about-desc1">
-            Saya berspesialisasi dalam membangun pengalaman digital yang luar biasa dan memelihara infrastruktur
-            jaringan yang kuat. Sebagai Admin Jaringan & Pengembang Web, saya menggabungkan keahlian teknis dalam
-            infrastruktur dan teknologi web untuk memberikan solusi komprehensif.
-          </p>
-          <p class="text-gray-400 mb-8 leading-relaxed text-sm sm:text-base" data-translate="about-desc2">
+          <p class="text-black font-medium mb-4 leading-relaxed text-sm border-l-4 border-neo-pink pl-4"
+            data-translate="about-desc2">
             Sebagai lulusan terbaru dari Politeknik Negeri Banjarmasin (D3 Teknik Informatika), saya telah mengerjakan
             berbagai proyek selama studi dan melalui pekerjaan freelance—mulai dari website sederhana hingga aplikasi
             kompleks, dan implementasi infrastruktur jaringan. Saya menikmati menggabungkan keterampilan teknis dengan
             pemecahan masalah kreatif untuk memberikan solusi yang efektif dan menarik.
           </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            <div
-              class="flex items-center p-3 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
-              <i class="fas fa-map-marker-alt text-electric-blue mr-3 text-lg"></i>
-              <span class="text-sm sm:text-base">Banjarmasin, Indonesia</span>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 reveal reveal-up delay-400">
+            <div class="flex items-center p-3 bg-white border-3 border-black shadow-neo">
+              <i class="fas fa-map-marker-alt text-neo-pink mr-3 text-lg"></i>
+              <span class="text-xs sm:text-sm font-bold">Banjarmasin, Indonesia</span>
             </div>
-            <div
-              class="flex items-center p-3 rounded-lg bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20">
-              <i class="fas fa-envelope text-green-glow mr-3 text-lg"></i>
-              <span class="text-sm sm:text-base">fikri@stiepancasetia.ac.id</span>
-            </div>
-            <div
-              class="flex items-center p-3 rounded-lg bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20">
-              <i class="fas fa-phone text-purple-glow mr-3 text-lg"></i>
-              <span class="text-sm sm:text-base">+62 852 4886 7449</span>
-            </div>
-            <div
-              class="flex items-center p-3 rounded-lg bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20">
-              <i class="fas fa-graduation-cap text-orange-glow mr-3 text-lg"></i>
-              <span class="text-sm sm:text-base">D3 Teknik Informatika</span>
+            <div class="flex items-center p-3 bg-white border-3 border-black shadow-neo">
+              <i class="fas fa-envelope text-neo-blue mr-3 text-lg"></i>
+              <span class="text-xs sm:text-sm font-bold break-all">fikri772277@gmail.com</span>
             </div>
           </div>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="file/FikriCv.pdf" download=""
-              class="px-6 py-3 rounded-full bg-gradient-to-r from-electric-blue to-purple-glow text-white font-medium hover:shadow-glow transform hover:scale-105 transition-all duration-300 text-center">
-              <i class="fas fa-download mr-2"></i> <span data-translate="about-download">Unduh CV</span>
-            </a>
-            <a href="#contact"
-              class="px-6 py-3 rounded-full bg-transparent border-2 border-electric-blue text-electric-blue font-medium hover:bg-electric-blue hover:text-white hover:shadow-glow transform hover:scale-105 transition-all duration-300 text-center">
+          <div class="flex flex-col sm:flex-row gap-6 mt-8">
+            <a href="#contact" class="neo-btn px-8 py-2 bg-white text-black uppercase text-sm">
               <i class="fas fa-paper-plane mr-2"></i> <span data-translate="about-hire">Rekrut Saya</span>
             </a>
           </div>
@@ -639,86 +679,207 @@
   </section>
 
   <!-- Enhanced Projects Section with Carousel -->
-  <section id="projects" class="py-16 sm:py-20 md:py-28 bg-gray-900 scroll-mt-20">
+  <section id="projects" class="py-20 sm:py-32 border-y-8 border-black bg-neo-blue">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
-        <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="projects-title">Proyek
-          Saya</span>
-      </h2>
+      <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 text-center md:text-left reveal reveal-up">
+        <h2 class="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter">
+          <span
+            class="bg-neo-yellow text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform -rotate-1 hover:rotate-1 transition-transform duration-300 cursor-default"
+            data-translate="projects-title">Proyek Saya</span>
+        </h2>
+        <div class="flex gap-4">
+          <button class="carousel-button-static prev" id="prevBtn" onclick="moveCarousel(-1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-button-static next" id="nextBtn" onclick="moveCarousel(1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
       <!-- Project Carousel -->
-      <div class="carousel-container relative">
+      <div class="carousel-container relative reveal reveal-scale delay-200">
         <div class="carousel-inner" id="projectCarousel">
 
 
-          <!-- 1. DonghuaWatch -->
+          <!-- 1. Gilmar Idea -->
           <div class="carousel-item">
             <div
-              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-purple-400/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-gray-800">
-                <img src="image/donghuawatch.png" alt="DonghuaWatch" class="w-full h-full object-contain">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
-                </div>
-                <div
-                  class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-xs font-bold"
-                  data-translate="donghuawatchs">Stream</div>
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-pink-400/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="img/gilmaridea.png" alt="Gilmar Idea" class="w-full h-full object-contain">
               </div>
-              <div class="p-6">
-                <h3 class="text-base font-bold mb-2 text-white">DONGHUAWATCH</h3>
-                <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project-donghuawatch-desc">Situs
-                  streaming untuk menonton film atau animasi donghua dengan subtitle Indonesia yang cepat dan responsif.
-                </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <i class="fab fa-react text-blue-400 text-xl" title="React.js"></i>
-                  <i class="fas fa-server text-purple-400 text-xl" title="API"></i>
-                  <i class="fab fa-css3-alt text-blue-500 text-xl" title="CSS"></i>
-                  <i class="fas fa-bolt text-green-400 text-xl" title="Supabase"></i>
-                  <i class="fas fa-mobile-alt text-gray-400 text-xl" title="Capacitor"></i>
-                  <i class="fas fa-route text-red-400 text-xl" title="React Router"></i>
-                  <i class="fas fa-database text-blue-300 text-xl" title="PostgreSQL"></i>
-                  <i class="fas fa-chart-line text-green-500 text-xl" title="Vercel Analytics"></i>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project9-title">GILMAR IDEA</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project9-desc">Web berita digital yang menyajikan informasi terkini bagi mahasiswa STIE Pancasetia.</p>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fas fa-bolt text-[#000000] text-2xl" title="Next.js"></i>
+                  <i class="fas fa-database text-[#339933] text-2xl" title="Supabase"></i>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                  <a href="projects/donghua-watch.html"
-                    class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center"
-                    data-translate="btn-details">Detail</a>
-                  <a href="https://donghuawatch.vercel.app/" target="_blank"
-                    class="flex-1 px-4 py-2 rounded-full bg-transparent border border-purple-400 text-purple-400 text-sm font-medium hover:bg-purple-400 hover:text-white transition-all duration-300 text-center"
-                    data-translate="btn-code2">Kunjungi</a>
+                <div class="flex gap-4 mt-auto">
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="https://gilmarideastiepancasetia.vercel.app/" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 2. DonghuaWatch API -->
+          <!-- 2. DonghuaWatch -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-purple-400/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="image/donghuawatch.png" alt="DonghuaWatch" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
+                  data-translate="badge-portfolio">DONGHUAWATCH</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-donghuawatch-desc">
+                  Situs
+                  streaming Donghua dengan subtitle Indonesia yang cepat dan responsif.
+                </p>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-react text-[#61DAFB] text-2xl" title="React.js"></i>
+                  <i class="fas fa-server text-neo-blue text-2xl" title="API"></i>
+                  <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS"></i>
+                  <i class="fas fa-bolt text-[#00A3E0] text-2xl" title="Supabase"></i>
+                  <i class="fas fa-mobile-alt text-neo-pink text-2xl" title="Capacitor"></i>
+                  <i class="fas fa-route text-black text-2xl" title="React Router"></i>
+                  <i class="fas fa-database text-[#4479A1] text-2xl" title="PostgreSQL"></i>
+                  <i class="fas fa-chart-line text-neo-purple text-2xl" title="Vercel Analytics"></i>
+                </div>
+                <div class="flex gap-4 mt-auto">
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="https://donghuawatch.vercel.app/" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Siperu -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-emerald-400/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="img/siperu.png" alt="Siperu" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project12-title">SIPERU</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project12-desc">Sistem Informasi Peminjaman Ruangan untuk mengelola reservasi fasilitas kampus secara otomatis.</p>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-laravel text-[#FF2D20] text-2xl" title="Laravel"></i>
+                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
+                  <i class="fas fa-database text-[#4479A1] text-2xl" title="MySQL"></i>
+                </div>
+                <div class="flex gap-4 mt-auto">
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="https://siperu.stiepancasetia.ac.id/" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. DonghuaWatch Komik -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-neo-yellow/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="img/komik.png" alt="DonghuaWatch Komik" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project13-title">DONGHUAWATCH KOMIK</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project13-desc">Platform baca komik online dengan koleksi lengkap dan antarmuka yang ramah pengguna.</p>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-react text-[#61DAFB] text-2xl" title="React.js"></i>
+                  <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS"></i>
+                  <i class="fas fa-bolt text-[#00A3E0] text-2xl" title="Supabase"></i>
+                </div>
+                <div class="flex gap-4 mt-auto">
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="https://www.donghuawatch.cloud/komik" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. DonghuaWatch API -->
           <div class="carousel-item">
             <div
               class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-blue-400/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-gray-800">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
                 <img src="image/donghuawatchapi.png" alt="DonghuaWatch API" class="w-full h-full object-contain">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
-                </div>
-                <div
-                  class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 text-white text-xs font-bold"
-                  data-translate="badge-backend">Backend</div>
               </div>
-              <div class="p-6">
-                <h3 class="text-base font-bold mb-2 text-white">DONGHUAWATCH API</h3>
-                <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project-api-desc">RESTful API untuk
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight">DONGHUAWATCH API</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-api-desc">RESTful API
+                  untuk
                   mengambil data streaming Donghua dengan fitur pencarian dan caching yang efisien.</p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <i class="fab fa-node-js text-green-500 text-xl" title="Node.js"></i>
-                  <i class="fas fa-server text-blue-400 text-xl" title="Express"></i>
-                  <i class="fab fa-css3-alt text-blue-500 text-xl" title="CSS"></i>
-                  <i class="fas fa-spider text-orange-400 text-xl" title="Scraping (Cheerio)"></i>
-                  <i class="fas fa-exchange-alt text-yellow-500 text-xl" title="Axios"></i>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-node-js text-[#339933] text-2xl" title="Node.js"></i>
+                  <i class="fas fa-server text-neo-blue text-2xl" title="Express"></i>
+                  <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS"></i>
+                  <i class="fas fa-spider text-[#FF6600] text-2xl" title="Scraping (Cheerio)"></i>
+                  <i class="fas fa-exchange-alt text-neo-purple text-2xl" title="Axios"></i>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                  <a href="projects/donghuawatchapi-detail.html"
-                    class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center"
-                    data-translate="btn-details">Detail</a>
+                <div class="flex gap-4 mt-auto">
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
                   <a href="https://donghuawatchapi.vercel.app/" target="_blank"
-                    class="flex-1 px-4 py-2 rounded-full bg-transparent border border-blue-400 text-blue-400 text-sm font-medium hover:bg-blue-400 hover:text-white transition-all duration-300 text-center"
-                    data-translate="btn-code2">Visit</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. SIP -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-neo-blue/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="img/sip.png" alt="SIP" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project10-title">SIP STIE PANCASETIA</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project10-desc">Sistem Informasi Terpadu STIE Pancasetia untuk manajemen data akademik yang efisien.</p>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-html5 text-[#E34F26] text-2xl" title="HTML5"></i>
+                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
+                </div>
+                <div class="flex gap-4 mt-auto">
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="https://sip.stiepancasetia.ac.id/" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. LPPM -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-neo-purple/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="img/lppm.png" alt="LPPM" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project11-title">LPPM STIE PANCASETIA</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project11-desc">Portal resmi Lembaga Penelitian dan Pengabdian kepada Masyarakat STIE Pancasetia.</p>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-wordpress text-[#21759B] text-2xl" title="WordPress"></i>
+                </div>
+                <div class="flex gap-4 mt-auto">
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="https://lppm.stiepancasetia.ac.id/" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -728,31 +889,25 @@
           <div class="carousel-item">
             <div
               class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-gray-800">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
                 <img src="image/project.png" alt="Kurikulum OBE" class="w-full h-full object-contain">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
-                </div>
-                <div
-                  class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-yellow-400 to-red-500 text-white text-xs font-bold"
-                  data-translate="badge-website">Website</div>
               </div>
-              <div class="p-6">
-                <h3 class="text-base font-bold mb-2 text-white" data-translate="project2-title">Sistem Informasi
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project2-title">
+                  Sistem Informasi
                   Kurikulum OBE</h3>
-                <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project2-desc">Sistem Desain
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project2-desc">Sistem Desain
                   Kurikulum OBE yang dikembangkan untuk Poliban mendukung pengembangan kurikulum sesuai prinsip OBE.</p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <i class="fab fa-laravel text-red-500 text-xl" title="Laravel"></i>
-                  <i class="fas fa-wind text-teal-400 text-xl" title="Tailwind CSS"></i>
-                  <i class="fas fa-database text-orange-500 text-xl" title="MySQL"></i>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-laravel text-[#FF2D20] text-2xl" title="Laravel"></i>
+                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
+                  <i class="fas fa-database text-[#4479A1] text-2xl" title="MySQL"></i>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                  <a href="projects/kurikulum-obe-detail.html"
-                    class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-electric-blue to-cyan-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center"
-                    data-translate="btn-details">Detail</a>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/MuhammadFikriiii/baru_kurikulum_OBE" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
                   <a href="https://obepoliban.vps-poliban.my.id/" target="_blank"
-                    class="flex-1 px-4 py-2 rounded-full bg-transparent border border-purple-400 text-purple-400 text-sm font-medium hover:bg-purple-400 hover:text-white transition-all duration-300 text-center"
-                    data-translate="btn-code2">Visit</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
                 </div>
               </div>
             </div>
@@ -762,29 +917,23 @@
           <div class="carousel-item">
             <div
               class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-purple-400/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-gray-800">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
                 <img src="img/chatbot.png" alt="AI ChatBot" class="w-full h-full object-contain">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
-                </div>
-                <div
-                  class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-bold"
-                  data-translate="badge-ai">AI</div>
               </div>
-              <div class="p-6">
-                <h3 class="text-base font-bold mb-2 text-white">AI ChatBot</h3>
-                <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project1-desc">Chatbot bertenaga AI
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight">AI ChatBot</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project1-desc">Chatbot cerdas
+                  bertenaga AI
                   yang dirancang untuk berinteraksi secara alami dengan pengguna menggunakan Gemini API.</p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <i class="fas fa-bolt text-white text-xl" title="Next.js"></i>
-                  <i class="fas fa-brain text-purple-400 text-xl" title="Gemini API"></i>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fas fa-bolt text-[#000000] text-2xl" title="Next.js"></i>
+                  <i class="fas fa-brain text-neo-purple text-2xl" title="Gemini API"></i>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                  <a href="projects/chatbot-detail.html"
-                    class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center"
-                    data-translate="btn-details">Detail</a>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/MuhammadFikriiii/FikBot" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
                   <a href="https://fikri-bot.vercel.app/" target="_blank"
-                    class="flex-1 px-4 py-2 rounded-full bg-transparent border border-purple-400 text-purple-400 text-sm font-medium hover:bg-purple-400 hover:text-white transition-all duration-300 text-center"
-                    data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -794,31 +943,26 @@
           <div class="carousel-item">
             <div
               class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-pink-glow/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-gray-800">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
                 <img src="image/sima.jpg" alt="SIMA" class="w-full h-full object-contain">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
-                </div>
-                <div
-                  class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 text-white text-xs font-bold"
-                  data-translate="badge-website">Website</div>
               </div>
-              <div class="p-6">
-                <h3 class="text-base font-bold mb-2 text-white" data-translate="project5-title">SIM-A BPKPAD Kota
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project5-title">
+                  SIM-A BPKPAD Kota
                   Banjarmasin</h3>
-                <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project5-desc">Sistem manajemen arsip
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project5-desc">Sistem
+                  manajemen arsip
                   elektronik untuk BPKPAD mengoptimalkan penyimpanan dokumen, pengambilan, dan keamanan.</p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <i class="fab fa-laravel text-red-500 text-xl" title="Laravel"></i>
-                  <i class="fas fa-wind text-teal-400 text-xl" title="Tailwind CSS"></i>
-                  <i class="fas fa-database text-orange-500 text-xl" title="MySQL"></i>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-laravel text-[#FF2D20] text-2xl" title="Laravel"></i>
+                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
+                  <i class="fas fa-database text-[#4479A1] text-2xl" title="MySQL"></i>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                  <a href="projects/sima-detail.html"
-                    class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-pink-glow to-rose-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center"
-                    data-translate="btn-details">Detail</a>
+                <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/sistem-informasi-manajemen-arsip" target="_blank"
-                    class="flex-1 px-4 py-2 rounded-full bg-transparent border border-pink-glow text-pink-glow text-sm font-medium hover:bg-pink-glow hover:text-white transition-all duration-300 text-center"
-                    data-translate="btn-code">Kode</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -828,31 +972,26 @@
           <div class="carousel-item">
             <div
               class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-emerald-400/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-gray-800">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
                 <img src="image/ulartangga.png" alt="Snakes Ladders" class="w-full h-full object-contain">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
-                </div>
-                <div
-                  class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-pink-400 to-emerald-500 text-white text-xs font-bold"
-                  data-translate="badge-game">Game</div>
               </div>
-              <div class="p-6">
-                <h3 class="text-base font-bold mb-2 text-white" data-translate="project4-title">Permainan Ular Tangga
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project4-title">
+                  Permainan Ular Tangga
                 </h3>
-                <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project4-desc">Game papan klasik
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project4-desc">Game papan
+                  klasik
                   berbasis web dengan fitur interaktif, memungkinkan dua pemain untuk bermain dengan animasi mulus.</p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <i class="fab fa-html5 text-orange-500 text-xl" title="HTML5"></i>
-                  <i class="fab fa-js text-yellow-400 text-xl" title="JavaScript"></i>
-                  <i class="fab fa-css3-alt text-blue-500 text-xl" title="CSS3"></i>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fab fa-html5 text-[#E34F26] text-2xl" title="HTML5"></i>
+                  <i class="fab fa-js text-[#F7DF1E] text-2xl" title="JavaScript"></i>
+                  <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS3"></i>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                  <a href="projects/snakes-ladders-detail.html"
-                    class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-electric-blue to-cyan-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center"
-                    data-translate="btn-details">Detail</a>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/MuhammadFikriiii/Snakes-and-Ladders." target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
                   <a href="https://muhammadfikriiii.github.io/Snakes-and-Ladders./" target="_blank"
-                    class="flex-1 px-4 py-2 rounded-full bg-transparent border border-electric-blue text-electric-blue text-sm font-medium hover:bg-electric-blue hover:text-white transition-all duration-300 text-center"
-                    data-translate="btn-code2">Visit</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
                 </div>
               </div>
             </div>
@@ -862,29 +1001,24 @@
           <div class="carousel-item">
             <div
               class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-purple-400/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-gray-800">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
                 <img src="image/upscale.png" alt="AI Image Upscaler" class="w-full h-full object-contain">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
-                </div>
-                <div
-                  class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-xs font-bold"
-                  data-translate="badge-ai">AI</div>
               </div>
-              <div class="p-6">
-                <h3 class="text-base font-bold mb-2 text-white" data-translate="project8-title">AI Image Upscaler</h3>
-                <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project8-desc">Aplikasi web dengan AI
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project8-title">
+                  AI Image Upscaler</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project8-desc">Aplikasi web
+                  dengan AI
                   untuk upscale gambar hingga 4x menggunakan neural network Real-ESRGAN dengan hasil profesional.</p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <i class="fas fa-bolt text-white text-xl" title="Next.js"></i>
-                  <i class="fas fa-brain text-purple-400 text-xl" title="AI/ML"></i>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fas fa-bolt text-[#000000] text-2xl" title="Next.js"></i>
+                  <i class="fas fa-brain text-neo-purple text-2xl" title="AI/ML"></i>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                  <a href="projects/upscale-detail.html"
-                    class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center"
-                    data-translate="btn-details">Detail</a>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/MuhammadFikriiii/UpscaleGambar" target="_blank"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
                   <a href="https://muhammadfikriiii.github.io/UpscaleGambar/" target="_blank"
-                    class="flex-1 px-4 py-2 rounded-full bg-transparent border border-purple-400 text-purple-400 text-sm font-medium hover:bg-purple-400 hover:text-white transition-all duration-300 text-center"
-                    data-translate="btn-code2">Visit</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
                 </div>
               </div>
             </div>
@@ -894,31 +1028,25 @@
           <div class="carousel-item">
             <div
               class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-gray-800">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
                 <img src="image/project1.png" alt="Cisco LAN" class="w-full h-full object-contain">
-                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-transparent opacity-70">
-                </div>
-                <div
-                  class="absolute top-2 right-2 px-3 py-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 text-white text-xs font-bold"
-                  data-translate="badge-network">Jaringan</div>
               </div>
-              <div class="p-6">
-                <h3 class="text-base font-bold mb-2 text-white" data-translate="project3-title">Desain LAN Berskala
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project3-title">
+                  Desain LAN Berskala
                   Besar Cisco</h3>
-                <p class="text-gray-400 mb-4 text-xs text-justify" data-translate="project3-desc">Desain jaringan
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project3-desc">Desain jaringan
                   menggunakan Cisco Packet Tracer untuk optimasi lingkungan korporat dengan VLAN dan protokol routing.
                 </p>
-                <div class="flex flex-wrap gap-3 mb-6">
-                  <i class="fas fa-network-wired text-blue-400 text-xl" title="Cisco"></i>
-                  <i class="fas fa-project-diagram text-red-500 text-xl" title="VLAN"></i>
+                <div class="flex flex-wrap gap-4 mb-6">
+                  <i class="fas fa-network-wired text-[#1BA0D7] text-2xl" title="Cisco"></i>
+                  <i class="fas fa-project-diagram text-neo-blue text-2xl" title="VLAN"></i>
                 </div>
-                <div class="flex gap-3 mt-auto">
-                  <a href="projects/cisco-lan-detail.html"
-                    class="flex-1 px-4 py-2 rounded-full bg-gradient-to-r from-purple-glow to-pink-glow text-white text-sm font-medium hover:shadow-glow transition-all duration-300 text-center"
-                    data-translate="btn-details">Detail</a>
+                <div class="flex gap-4 mt-auto">
+                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
                   <a href="https://drive.google.com/drive/u/0/folders/12u0mo5TJ_B59r6mcU_ZM1LNpqIP7H-yz" target="_blank"
-                    class="flex-1 px-4 py-2 rounded-full bg-transparent border border-purple-glow text-purple-glow text-sm font-medium hover:bg-purple-glow hover:text-white transition-all duration-300 text-center"
-                    data-translate="btn-file">File</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-file">File</a>
                 </div>
               </div>
             </div>
@@ -926,159 +1054,186 @@
 
 
         </div>
-        <!-- Carousel Controls -->
-        <button class="carousel-button prev" id="prevBtn" onclick="moveCarousel(-1)">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-button next" id="nextBtn" onclick="moveCarousel(1)">
-          <i class="fas fa-chevron-right"></i>
-        </button>
       </div>
     </div>
   </section>
 
   <!-- Enhanced Skills Section -->
-  <section id="skills" class="py-16 sm:py-20 md:py-32 scroll-mt-20">
+  <section id="skills" class="py-20 sm:py-32 bg-neo-bg">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
-        <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="nav-skills">My Skills</span>
+      <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
+        <span
+          class="bg-neo-green text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform rotate-1 hover:-rotate-1 transition-transform duration-300 cursor-default"
+          data-translate="nav-skills">Keahlian</span>
       </h2>
 
       <!-- Removed filter buttons and grid layout, replaced with marquee -->
       <div class="skills-marquee-container">
         <div class="skills-marquee">
           <!-- Frontend Skills -->
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-orange-400"><i class="fab fa-html5"></i></div>
-            <div class="font-semibold text-sm">HTML5</div>
+          <div class="skills-marquee-item group hover:bg-[#E34F26] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-html5"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">HTML5</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-blue-400"><i class="fab fa-css3-alt"></i></div>
-            <div class="font-semibold text-sm">CSS3</div>
+          <div class="skills-marquee-item group hover:bg-[#1572B6] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-css3-alt"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">CSS3</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-yellow-400"><i class="fab fa-js"></i></div>
-            <div class="font-semibold text-sm">JavaScript</div>
+          <div class="skills-marquee-item group hover:bg-[#F7DF1E] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-black transition-colors duration-300"><i
+                class="fab fa-js"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-black">JavaScript</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-blue-500"><i class="fas fa-wind"></i></div>
-            <div class="font-semibold text-sm">Tailwind CSS</div>
+          <div class="skills-marquee-item group hover:bg-[#06B6D4] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-wind"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Tailwind</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-purple-600"><i class="fab fa-bootstrap"></i></div>
-            <div class="font-semibold text-sm">Bootstrap</div>
+          <div class="skills-marquee-item group hover:bg-[#7952B3] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-bootstrap"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Bootstrap</div>
           </div>
 
           <!-- Backend Skills -->
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-blue-500"><i class="fab fa-php"></i></div>
-            <div class="font-semibold text-sm">PHP</div>
+          <div class="skills-marquee-item group hover:bg-[#777BB4] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-php"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">PHP</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-red-500"><i class="fab fa-laravel"></i></div>
-            <div class="font-semibold text-sm">Laravel</div>
+          <div class="skills-marquee-item group hover:bg-[#FF2D20] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-laravel"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Laravel</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-green-500"><i class="fas fa-database"></i></div>
-            <div class="font-semibold text-sm">MySQL</div>
+          <div class="skills-marquee-item group hover:bg-[#4479A1] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-database"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">MySQL</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-amber-600"><i class="fas fa-chart-bar"></i></div>
-            <div class="font-semibold text-sm">Google</div>
-            <div class="font-semibold text-sm">Analytics</div>
+          <div class="skills-marquee-item group hover:bg-[#E37400] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-chart-bar"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Analytics</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-blue-700"><i class="fab fa-wordpress"></i></div>
-            <div class="font-semibold text-sm">WordPress</div>
+          <div class="skills-marquee-item group hover:bg-[#21759B] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-wordpress"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">WordPress</div>
           </div>
 
           <!-- Network Skills -->
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-cyan-400"><i class="fas fa-network-wired"></i></div>
-            <div class="font-semibold text-sm">Cisco</div>
+          <div class="skills-marquee-item group hover:bg-[#1BA0D7] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-network-wired"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Cisco</div>
           </div>
 
           <!-- Design Skills -->
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-purple-500"><i class="fab fa-figma"></i></div>
-            <div class="font-semibold text-sm">Figma</div>
+          <div class="skills-marquee-item group hover:bg-[#F24E1E] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-figma"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Figma</div>
           </div>
 
           <!-- Tools Skills -->
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-gray-400"><i class="fab fa-github"></i></div>
-            <div class="font-semibold text-sm">GitHub</div>
+          <div class="skills-marquee-item group hover:bg-[#6e5494] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-github"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">GitHub</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-gray-300"><i class="fas fa-rocket"></i></div>
-            <div class="font-semibold text-sm">Vercel</div>
+          <div class="skills-marquee-item group hover:bg-gray-600 transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-rocket"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Vercel</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-envelope"></i></div>
-            <div class="font-semibold text-sm">Postman</div>
+          <div class="skills-marquee-item group hover:bg-[#FF6C37] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-envelope"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Postman</div>
           </div>
 
           <!-- Duplicate skills untuk continuous loop tanpa jeda -->
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-orange-400"><i class="fab fa-html5"></i></div>
-            <div class="font-semibold text-sm">HTML5</div>
+          <div class="skills-marquee-item group hover:bg-[#E34F26] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-html5"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">HTML5</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-blue-400"><i class="fab fa-css3-alt"></i></div>
-            <div class="font-semibold text-sm">CSS3</div>
+          <div class="skills-marquee-item group hover:bg-[#1572B6] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-css3-alt"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">CSS3</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-yellow-400"><i class="fab fa-js"></i></div>
-            <div class="font-semibold text-sm">JavaScript</div>
+          <div class="skills-marquee-item group hover:bg-[#F7DF1E] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-black transition-colors duration-300"><i
+                class="fab fa-js"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-black">JavaScript</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-blue-500"><i class="fas fa-wind"></i></div>
-            <div class="font-semibold text-sm">Tailwind CSS</div>
+          <div class="skills-marquee-item group hover:bg-[#06B6D4] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-wind"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Tailwind</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-purple-600"><i class="fab fa-bootstrap"></i></div>
-            <div class="font-semibold text-sm">Bootstrap</div>
+          <div class="skills-marquee-item group hover:bg-[#7952B3] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-bootstrap"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Bootstrap</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-blue-500"><i class="fab fa-php"></i></div>
-            <div class="font-semibold text-sm">PHP</div>
+
+          <div class="skills-marquee-item group hover:bg-[#777BB4] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-php"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">PHP</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-red-500"><i class="fab fa-laravel"></i></div>
-            <div class="font-semibold text-sm">Laravel</div>
+          <div class="skills-marquee-item group hover:bg-[#FF2D20] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-laravel"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Laravel</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-green-500"><i class="fas fa-database"></i></div>
-            <div class="font-semibold text-sm">MySQL</div>
+          <div class="skills-marquee-item group hover:bg-[#4479A1] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-database"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">MySQL</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-amber-600"><i class="fas chart-line"></i></div>
-            <div class="font-semibold text-sm">Google Analytics</div>
+          <div class="skills-marquee-item group hover:bg-[#E37400] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-chart-bar"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Analytics</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-blue-700"><i class="fab fa-wordpress"></i></div>
-            <div class="font-semibold text-sm">WordPress</div>
+          <div class="skills-marquee-item group hover:bg-[#21759B] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-wordpress"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">WordPress</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-cyan-400"><i class="fas fa-network-wired"></i></div>
-            <div class="font-semibold text-sm">Cisco</div>
+
+          <div class="skills-marquee-item group hover:bg-[#1BA0D7] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-network-wired"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Cisco</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-purple-500"><i class="fab fa-figma"></i></div>
-            <div class="font-semibold text-sm">Figma</div>
+
+          <div class="skills-marquee-item group hover:bg-[#F24E1E] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-figma"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Figma</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-gray-400"><i class="fab fa-github"></i></div>
-            <div class="font-semibold text-sm">GitHub</div>
+
+          <div class="skills-marquee-item group hover:bg-[#6e5494] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fab fa-github"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">GitHub</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-gray-300"><i class="fas fa-rocket"></i></div>
-            <div class="font-semibold text-sm">Vercel</div>
+          <div class="skills-marquee-item group hover:bg-gray-600 transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-rocket"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Vercel</div>
           </div>
-          <div class="skills-marquee-item">
-            <div class="text-4xl mb-3 text-orange-600"><i class="fas fa-envelope"></i></div>
-            <div class="font-semibold text-sm">Postman</div>
-            <!-- End duplicate skills -->
+          <div class="skills-marquee-item group hover:bg-[#FF6C37] transition-all duration-300">
+            <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
+                class="fas fa-envelope"></i></div>
+            <div class="font-black text-sm uppercase group-hover:text-white">Postman</div>
           </div>
         </div>
       </div>
@@ -1086,9 +1241,10 @@
 
   <!-- Certificate Detail Modal -->
   <div id="certificateModal" class="modal">
-    <div class="modal-content max-w-md">
-      <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl sm:text-2xl font-bold text-white">Certificate Details</h3>
+    <div class="modal-content max-w-md border-4 border-black shadow-neo-xl">
+      <div class="flex justify-between items-center mb-6 border-b-4 border-black pb-4">
+        <h3 class="text-2xl font-black text-black uppercase" data-translate="certificates-modal-title">Certificate
+          Details</h3>
         <button onclick="closeCertificateModal()" class="text-gray-400 hover:text-white text-2xl">
           <i class="fas fa-times"></i>
         </button>
@@ -1096,13 +1252,14 @@
       <div class="space-y-4">
         <!-- Removed empty image placeholder area - images are shown in details only -->
         <div>
-          <h4 id="certTitle" class="text-lg font-bold text-white mb-2"></h4>
-          <p id="certOrganization" class="text-electric-blue text-sm mb-4"></p>
-          <p id="certDescription" class="text-gray-400 text-sm leading-relaxed"></p>
+          <h4 id="certTitle" class="text-xl font-black text-black mb-2 uppercase"></h4>
+          <p id="certOrganization"
+            class="text-neo-blue font-bold text-sm mb-4 bg-neo-blue/10 inline-block px-2 border-2 border-black"></p>
+          <p id="certDescription" class="text-black font-medium text-sm leading-relaxed"></p>
         </div>
-        <div class="flex gap-3 pt-4">
-          <button onclick="closeCertificateModal()"
-            class="flex-1 px-4 py-2 rounded-lg bg-transparent border border-gray-600 text-gray-400 hover:border-electric-blue hover:text-electric-blue transition-all">
+        <div class="flex gap-4 pt-6">
+          <button onclick="closeCertificateModal()" class="neo-btn flex-1 py-3 bg-neo-pink text-white uppercase"
+            data-translate="certificates-modal-close">
             Close
           </button>
         </div>
@@ -1111,55 +1268,67 @@
   </div>
 
   <!-- Added new Certificates Section -->
-  <section id="certificates" class="py-16 sm:py-20 md:py-24 scroll-mt-20">
+  <section id="certificates" class="py-20 sm:py-32 bg-neo-yellow border-y-8 border-black">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
-        <span class="relative gradient-bg bg-clip-text text-transparent"
+      <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
+        <span
+          class="bg-white text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform -rotate-1 hover:rotate-1 transition-transform duration-300 cursor-default"
           data-translate="nav-certificates">Sertifikat</span>
       </h2>
-      <p class="text-center text-gray-400 mb-12 text-sm sm:text-base max-w-2xl mx-auto"
-        data-translate="certificates-desc">Saya telah menyelesaikan berbagai sertifikasi profesional dalam pengembangan
-        web, networking, dan Microsoft Office. Untuk melihat detail semua sertifikat, silakan klik tombol di bawah.</p>
 
       <!-- Certificates Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Certificate 1 -->
         <div
-          class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 hover:border-electric-blue/50 transition-all duration-300 cursor-pointer"
+          class="bg-white border-4 border-black shadow-neo-lg p-6 hover:transform hover:-translate-y-2 transition-all duration-200 cursor-pointer reveal reveal-up delay-100"
           onclick="showCertificateDetail(1, 'Cisco CCNA', 'Cisco Academy', '2024', 'image/cert1.jpg', 'Sertifikasi networking profesional untuk administrasi jaringan Cisco.')">
-          <img src="image/ccn.png" alt="">
-          <button
-            class="mt-4 w-full px-4 py-2 rounded-lg bg-gradient-to-r from-electric-blue to-cyan-glow text-white text-sm font-medium hover:shadow-glow transition-all"
+          <img src="image/ccn.png" alt="" class="border-2 border-black mb-4">
+          <button class="neo-btn w-full py-3 bg-neo-blue text-white uppercase tracking-wider"
             data-translate="btn-details">Lihat Detail</button>
         </div>
 
         <!-- Certificate 2 -->
         <div
-          class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20 hover:border-purple-glow/50 transition-all duration-300 cursor-pointer"
+          class="bg-white border-4 border-black shadow-neo-lg p-6 hover:transform hover:-translate-y-2 transition-all duration-200 cursor-pointer reveal reveal-up delay-200"
           onclick="showCertificateDetail(2, 'Web Development Professional', 'Udemy', '2023', 'image/cert2.jpg', 'Sertifikasi lengkap dalam pengembangan web modern dengan HTML, CSS, JavaScript, dan framework populer.')">
-          <img src="image/jscoi.png" alt="">
-          <button
-            class="mt-4 w-full px-4 py-2 rounded-lg bg-gradient-to-r from-purple-glow to-pink-glow text-white text-sm font-medium hover:shadow-glow transition-all"
+          <img src="image/jscoi.png" alt="" class="border-2 border-black mb-4">
+          <button class="neo-btn w-full py-3 bg-neo-purple text-white uppercase tracking-wider"
             data-translate="btn-details">Lihat Detail</button>
         </div>
 
         <!-- Certificate 3 -->
         <div
-          class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20 hover:border-green-glow/50 transition-all duration-300 cursor-pointer"
+          class="bg-white border-4 border-black shadow-neo-lg p-6 hover:transform hover:-translate-y-2 transition-all duration-200 cursor-pointer reveal reveal-up delay-300"
           onclick="showCertificateDetail(3, 'Microsoft Office Specialist', 'Microsoft', '2023', 'image/cert3.jpg', 'Sertifikasi keahlian dalam menggunakan Microsoft Word, Excel, dan PowerPoint secara profesional.')">
-          <img src="image/dicodingbackend.png" alt="">
-          <button
-            class="mt-4 w-full px-4 py-2 rounded-lg bg-gradient-to-r from-green-glow to-emerald-500 text-white text-sm font-medium hover:shadow-glow transition-all"
+          <img src="image/dicodingbackend.png" alt="" class="border-2 border-black mb-4">
+          <button class="neo-btn w-full py-3 bg-neo-green text-black uppercase tracking-wider"
             data-translate="btn-details">Lihat Detail</button>
         </div>
 
         <!-- Certificate 4 -->
         <div
-          class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-orange-glow/20 hover:border-orange-glow/50 transition-all duration-300 cursor-pointer"
-          onclick="showCertificateDetail(4, 'Database Administration', 'Oracle', '2023', 'image/cert4.jpg', 'Sertifikasi administrasi database dengan SQL dan Oracle Database untuk pengelolaan data profesional.')">
-          <img src="image/filterdata.png" alt="">
-          <button
-            class="mt-4 w-full px-4 py-2 rounded-lg bg-gradient-to-r from-orange-glow to-red-500 text-white text-sm font-medium hover:shadow-glow transition-all"
+          class="bg-white border-4 border-black shadow-neo-lg p-6 hover:transform hover:-translate-y-2 transition-all duration-200 cursor-pointer reveal reveal-up delay-400"
+          onclick="showCertificateDetail(4, 'Database Administration', 'Oracle', '2023', 'image/filterdata.png', 'Sertifikasi administrasi database dengan SQL dan Oracle Database untuk pengelolaan data profesional.')">
+          <img src="image/filterdata.png" alt="" class="border-2 border-black mb-4">
+          <button class="neo-btn w-full py-3 bg-neo-pink text-white uppercase tracking-wider"
+            data-translate="btn-details">Lihat Detail</button>
+        </div>
+
+        <!-- Certificate 5 -->
+        <div
+          class="bg-white border-4 border-black shadow-neo-lg p-6 hover:transform hover:-translate-y-2 transition-all duration-200 cursor-pointer reveal reveal-up delay-500"
+          onclick="showCertificateDetail(5, 'BNSP Programmer', 'BNSP', '2025', 'img/sertifikat 1.jpeg', 'Sertifikasi Kompetensi BNSP untuk skema Programmer.')">
+          <img src="img/sertifikat 1.jpeg" alt="" class="border-2 border-black mb-4">
+          <button class="neo-btn w-full py-3 bg-neo-yellow text-black uppercase tracking-wider"
+            data-translate="btn-details">Lihat Detail</button>
+        </div>
+
+        <!-- Certificate 6 -->
+        <div
+          class="bg-white border-4 border-black shadow-neo-lg p-6 hover:transform hover:-translate-y-2 transition-all duration-200 cursor-pointer reveal reveal-up delay-500"
+          onclick="showCertificateDetail(6, 'Belajar Dasar-dasar AI', 'Dicoding', '2024', 'img/sertifikat 2.jpeg', 'Sertifikasi penyelesaian kursus Belajar Dasar-dasar AI.')">
+          <img src="img/sertifikat 2.jpeg" alt="" class="border-2 border-black mb-4">
+          <button class="neo-btn w-full py-3 bg-neo-blue text-white uppercase tracking-wider"
             data-translate="btn-details">Lihat Detail</button>
         </div>
 
@@ -1168,301 +1337,281 @@
   </section>
 
   <!-- Enhanced Testimonials Section -->
-  <section id="testimonial" class="py-16 sm:py-20 md:py-24 scroll-mt-20">
+  <section id="testimonial" class="py-20 sm:py-32 bg-neo-pink border-b-8 border-black">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 sm:mb-16 text-center">
-        <span class="relative gradient-bg bg-clip-text text-transparent">What Clients Say</span>
+      <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
+        <span
+          class="bg-white text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform rotate-1 hover:-rotate-1 transition-transform duration-300 cursor-default"
+          data-translate="testimonial-title">What Clients Say</span>
       </h2>
 
       <!-- Testimonial Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
         <!-- Testimonial 1 -->
-        <div
-          class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20 flex flex-col h-full">
+        <div class="testimonial-card p-6 sm:p-8 flex flex-col h-full bg-white reveal reveal-up delay-100">
           <div class="flex items-center gap-2 mb-6">
-            <div class="flex text-yellow-400">
+            <div class="flex text-black">
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
             </div>
-            <span class="ml-2 text-sm text-gray-400">5.0</span>
+            <span class="ml-2 text-sm font-black">5.0</span>
           </div>
 
-          <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow text-justify">
+          <p class="text-black mb-8 italic font-bold leading-relaxed text-sm sm:text-base flex-grow text-justify border-l-4 border-neo-yellow pl-4"
+            data-translate="testi1-text">
             “I’m pleased with the portfolio website Fikri delivered—it looks great, works smoothly, and is easy to
             navigate and use across devices.”
           </p>
 
-          <div class="flex items-center pt-4 border-t border-gray-700">
-            <img src="img/home.jpg" alt="Nik Nurlin Nadhira" class="w-12 h-12 rounded-full object-cover mr-3">
+          <div class="flex items-center pt-4 border-t-2 border-black">
+            <img src="img/home.jpg" alt="Nik Nurlin Nadhira" class="w-12 h-12 border-2 border-black object-cover mr-3">
             <div>
-              <h4 class="font-semibold text-white text-sm sm:text-base">Nik Nurlin Nadhira</h4>
-              <p class="text-xs sm:text-sm text-gray-400">College Student of UiTM Selangor</p>
+              <h4 class="font-black text-black text-sm sm:text-base">Nik Nurlin Nadhira</h4>
+              <p class="text-xs sm:text-sm font-bold text-gray-600">College Student of UiTM Selangor</p>
             </div>
           </div>
         </div>
 
         <!-- Testimonial 2 -->
-        <div
-          class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20 flex flex-col h-full">
+        <div class="testimonial-card p-6 sm:p-8 flex flex-col h-full bg-white reveal reveal-up delay-200">
           <div class="flex items-center gap-2 mb-6">
-            <div class="flex text-yellow-400">
+            <div class="flex text-black">
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
             </div>
-            <span class="ml-2 text-sm text-gray-400">5.0</span>
+            <span class="ml-2 text-sm font-black">5.0</span>
           </div>
 
-          <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow">
+          <p class="text-black mb-8 italic font-bold leading-relaxed text-sm sm:text-base flex-grow border-l-4 border-neo-blue pl-4"
+            data-translate="testi2-text">
             "The AI chatbot Fikri developed for us has revolutionized our customer service. His understanding of both
             frontend and backend technologies is impressive."
           </p>
 
-          <div class="flex items-center pt-4 border-t border-gray-700">
+          <div class="flex items-center pt-4 border-t-2 border-black">
             <img
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-              alt="David Kim" class="w-12 h-12 rounded-full object-cover mr-3">
+              alt="David Kim" class="w-12 h-12 border-2 border-black object-cover mr-3">
             <div>
-              <h4 class="font-semibold text-white text-sm sm:text-base">David Kim</h4>
-              <p class="text-xs sm:text-sm text-gray-400">Founder, AI Solutions</p>
+              <h4 class="font-black text-black text-sm sm:text-base">David Kim</h4>
+              <p class="text-xs sm:text-sm font-bold text-gray-600">Founder, AI Solutions</p>
             </div>
           </div>
         </div>
 
         <!-- Testimonial 3 -->
-        <div
-          class="testimonial-card rounded-xl p-6 sm:p-8 shadow-neuro-dark bg-dark-card glass-dark border border-orange-glow/20 flex flex-col h-full">
+        <div class="testimonial-card p-6 sm:p-8 flex flex-col h-full bg-white reveal reveal-up delay-300">
           <div class="flex items-center gap-2 mb-6">
-            <div class="flex text-yellow-400">
+            <div class="flex text-black">
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
               <i class="fas fa-star text-lg"></i>
             </div>
-            <span class="ml-2 text-sm text-gray-400">5.0</span>
+            <span class="ml-2 text-sm font-black">5.0</span>
           </div>
 
-          <p class="text-gray-300 mb-8 italic leading-relaxed text-sm sm:text-base flex-grow">
+          <p class="text-black mb-8 italic font-bold leading-relaxed text-sm sm:text-base flex-grow border-l-4 border-neo-green pl-4"
+            data-translate="testi3-text">
             "Fikri's work on our financial dashboard was outstanding. The data visualization and real-time updates work
             flawlessly. Professional and reliable developer."
           </p>
 
-          <div class="flex items-center pt-4 border-t border-gray-700">
+          <div class="flex items-center pt-4 border-t-2 border-black">
             <img
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
-              alt="Lisa Thompson" class="w-12 h-12 rounded-full object-cover mr-3">
+              alt="Lisa Thompson" class="w-12 h-12 border-2 border-black object-cover mr-3">
             <div>
-              <h4 class="font-semibold text-white text-sm sm:text-base">Lisa Thompson</h4>
-              <p class="text-xs sm:text-sm text-gray-400">Director, FinTech Pro</p>
+              <h4 class="font-black text-black text-sm sm:text-base">Lisa Thompson</h4>
+              <p class="text-xs sm:text-sm font-bold text-gray-600">Director, FinTech Pro</p>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Testimonial Stats -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-        <div
-          class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-electric-blue/20">
-          <div class="text-2xl sm:text-3xl font-bold text-electric-blue mb-2">3</div>
-          <div class="text-xs sm:text-sm text-gray-400">Happy Clients</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 reveal reveal-up delay-400">
+        <div class="neo-card text-center p-6 bg-neo-yellow">
+          <div class="text-3xl sm:text-4xl font-black text-black mb-2 tracking-tighter">3</div>
+          <div class="text-xs sm:text-sm font-bold uppercase text-black" data-translate="stat-happy-clients">Happy
+            Clients</div>
         </div>
 
-        <div
-          class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-green-glow/20">
-          <div class="text-2xl sm:text-3xl font-bold text-green-glow mb-2">100</div>
-          <div class="text-xs sm:text-sm text-gray-400">Success Rate %</div>
+        <div class="neo-card text-center p-6 bg-neo-green">
+          <div class="text-3xl sm:text-4xl font-black text-black mb-2 tracking-tighter">100</div>
+          <div class="text-xs sm:text-sm font-bold uppercase text-black" data-translate="stat-success-rate">Success Rate
+            %</div>
         </div>
 
-        <div
-          class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-purple-glow/20">
-          <div class="text-2xl sm:text-3xl font-bold text-purple-glow mb-2">5</div>
-          <div class="text-xs sm:text-sm text-gray-400">Projects Completed</div>
+        <div class="neo-card text-center p-6 bg-neo-blue text-white">
+          <div class="text-3xl sm:text-4xl font-black mb-2 tracking-tighter">5</div>
+          <div class="text-xs sm:text-sm font-bold uppercase" data-translate="stat-projects">Projects Completed</div>
         </div>
 
-        <div
-          class="testimonial-stat text-center p-4 sm:p-6 rounded-xl shadow-neuro-dark bg-dark-card glass-dark border border-orange-glow/20">
-          <div class="text-2xl sm:text-3xl font-bold text-orange-glow mb-2">5.0</div>
-          <div class="text-xs sm:text-sm text-gray-400">Average Rating</div>
+        <div class="neo-card text-center p-6 bg-white">
+          <div class="text-3xl sm:text-4xl font-black text-black mb-2 tracking-tighter">5.0</div>
+          <div class="text-xs sm:text-sm font-bold uppercase text-black" data-translate="stat-rating">Average Rating
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  </div>
-  </div>
-  </section>
-
   <!-- GitHub Section -->
-  <section id="github" class="py-16 sm:py-20 md:py-24">
+  <section id="github" class="py-20 sm:py-32 bg-neo-bg">
     <div class="container mx-auto px-4 sm:px-6">
-      <div class="mb-12">
-        <h4 class="text-lg sm:text-xl font-semibold mb-6 text-center text-cyan-glow">GitHub Statistics</h4>
-        <div
-          class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-cyan-glow/20 overflow-x-auto">
+      <div class="mb-16">
+        <h4 class="text-2xl sm:text-3xl font-black mb-10 text-center uppercase tracking-tighter reveal reveal-up">
+          <span
+            class="bg-neo-blue text-white px-6 py-2 border-4 border-black shadow-neo transform rotate-1 hover:-rotate-1 transition-transform duration-300 cursor-default"
+            data-translate="github_title">GitHub Statistics</span>
+        </h4>
+        <div class="bg-white border-4 border-black shadow-neo-lg p-8 overflow-x-auto reveal reveal-scale delay-200">
           <div class="github-contribution-graph" id="contributionGraph"></div>
-          <div class="flex justify-between items-center mt-4 px-2">
-            <span class="text-gray-400 text-sm">Less</span>
+          <div class="flex justify-between items-center mt-6 px-2">
+            <span class="text-black font-black uppercase text-sm" data-translate="github-less">Less</span>
             <div class="flex gap-1">
-              <span class="inline-block w-3 h-3 bg-slate-700 rounded-sm"></span>
-              <span class="inline-block w-3 h-3 bg-green-900 rounded-sm"></span>
-              <span class="inline-block w-3 h-3 bg-green-600 rounded-sm"></span>
-              <span class="inline-block w-3 h-3 bg-green-400 rounded-sm"></span>
+              <span class="inline-block w-4 h-4 bg-gray-200 border border-black"></span>
+              <span class="inline-block w-4 h-4 bg-green-200 border border-black"></span>
+              <span class="inline-block w-4 h-4 bg-green-400 border border-black"></span>
+              <span class="inline-block w-4 h-4 bg-green-600 border border-black"></span>
+              <span class="inline-block w-4 h-4 bg-green-800 border border-black"></span>
             </div>
-            <span class="text-gray-400 text-sm">More</span>
+            <span class="text-black font-black uppercase text-sm" data-translate="github-more">More</span>
           </div>
         </div>
       </div>
 
       <!-- GitHub Stats Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-blue-500/20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal reveal-up delay-300">
+        <div class="neo-card p-6 bg-white">
           <div class="flex items-center justify-between mb-4">
-            <h4 class="text-lg font-medium" data-translate="github_repos">Repositories</h4>
-            <i class="fas fa-code-branch text-electric-blue text-2xl"></i>
+            <h4 class="text-xl font-black uppercase" data-translate="github_repos">Repositories</h4>
+            <i class="fas fa-code-branch text-black text-2xl"></i>
           </div>
-          <p class="text-4xl font-bold text-electric-blue count-up" data-target="1">29</p>
-          <p class="text-xs text-gray-500 mt-2" data-translate="github_public">Public repositories</p>
+          <p class="text-5xl font-black text-neo-blue tracking-tighter count-up" data-target="1">29</p>
+          <p class="text-xs font-bold text-gray-600 mt-2 uppercase" data-translate="github_public">Public repositories
+          </p>
         </div>
-        <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-yellow-500/20">
+        <div class="neo-card p-6 bg-neo-yellow">
           <div class="flex items-center justify-between mb-4">
-            <h4 class="text-lg font-medium" data-translate="github_stars">Stars</h4>
-            <i class="fas fa-star text-yellow-500 text-2xl"></i>
+            <h4 class="text-xl font-black uppercase" data-translate="github_stars">Stars</h4>
+            <i class="fas fa-star text-black text-2xl"></i>
           </div>
-          <p class="text-4xl font-bold text-yellow-500 count-up" data-target="3">5</p>
-          <p class="text-xs text-gray-500 mt-2" data-translate="github_received">Received on projects</p>
+          <p class="text-5xl font-black text-black tracking-tighter count-up" data-target="3">5</p>
+          <p class="text-xs font-bold text-black/70 mt-2 uppercase" data-translate="github_received">Received on
+            projects</p>
         </div>
-        <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-green-500/20">
+        <div class="neo-card p-6 bg-neo-green">
           <div class="flex items-center justify-between mb-4">
-            <h4 class="text-lg font-medium" data-translate="github_contrib">Contributions</h4>
-            <i class="fas fa-code-commit text-green-glow text-2xl"></i>
+            <h4 class="text-xl font-black uppercase" data-translate="github_contrib">Contributions</h4>
+            <i class="fas fa-code-commit text-black text-2xl"></i>
           </div>
-          <p class="text-4xl font-bold text-green-glow count-up" data-target="100">15</p>
-          <p class="text-xs text-gray-500 mt-2" data-translate="github_lastyear">Last year</p>
+          <p class="text-5xl font-black text-black tracking-tighter count-up" data-target="100">15</p>
+          <p class="text-xs font-bold text-black/70 mt-2 uppercase" data-translate="github_lastyear">Last year</p>
         </div>
-        <div class="rounded-xl p-6 shadow-neuro-dark bg-dark-card glass-dark border border-purple-500/20">
+        <div class="neo-card p-6 bg-neo-purple text-white">
           <div class="flex items-center justify-between mb-4">
-            <h4 class="text-lg font-medium" data-translate="github_followers">Followers</h4>
-            <i class="fas fa-users text-purple-glow text-2xl"></i>
+            <h4 class="text-xl font-black uppercase" data-translate="github_followers">Followers</h4>
+            <i class="fas fa-users text-white text-2xl"></i>
           </div>
-          <p class="text-4xl font-bold text-purple-glow count-up" data-target="10">10</p>
-          <p class="text-xs text-gray-500 mt-2" data-translate="github_followers_desc">GitHub followers</p>
+          <p class="text-5xl font-black tracking-tighter count-up" data-target="10">10</p>
+          <p class="text-xs font-bold mt-2 uppercase" data-translate="github_followers_desc">GitHub followers</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Enhanced Contact Section -->
-  <section id="contact" class="py-16 sm:py-20 md:py-24 scroll-mt-20 bg-gray-900">
+  <section id="contact" class="py-20 sm:py-32 bg-neo-green border-y-8 border-black">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
-        <span class="relative gradient-bg bg-clip-text text-transparent" data-translate="nav-contact">Get In
-          Touch</span>
+      <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
+        <span
+          class="bg-white text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform -rotate-1 hover:rotate-1 transition-transform duration-300 cursor-default"
+          data-translate="nav-contact">Get In Touch</span>
       </h2>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-        <div>
-          <h3 class="text-xl sm:text-2xl font-bold mb-6 gradient-bg bg-clip-text text-transparent"
-            data-translate="contact-info-title">Contact Information</h3>
+        <div class="reveal reveal-left">
+          <h3 class="text-2xl sm:text-3xl font-black mb-8 uppercase tracking-tight" data-translate="contact-info-title">
+            Contact Information</h3>
           <div class="space-y-6">
-            <div
-              class="flex items-start p-4 rounded-lg bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20">
+            <div class="flex items-start p-6 bg-white border-4 border-black shadow-neo">
               <div
-                class="w-12 h-12 rounded-full bg-gradient-to-r from-electric-blue to-purple-glow flex items-center justify-center mr-4 flex-shrink-0">
+                class="w-12 h-12 border-2 border-black bg-neo-pink flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="fas fa-map-marker-alt text-white"></i>
               </div>
               <div>
-                <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-location-title">
+                <h4 class="text-lg font-black mb-1 uppercase" data-translate="contact-location-title">
                   Location</h4>
-                <p class="text-gray-400 text-sm sm:text-base">Banjarmasin, Indonesia</p>
+                <p class="text-black font-bold">Banjarmasin, Indonesia</p>
               </div>
             </div>
-            <div
-              class="flex items-start p-4 rounded-lg bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/20">
+            <div class="flex items-start p-6 bg-white border-4 border-black shadow-neo">
               <div
-                class="w-12 h-12 rounded-full bg-gradient-to-r from-green-glow to-emerald-500 flex items-center justify-center mr-4 flex-shrink-0">
+                class="w-12 h-12 border-2 border-black bg-neo-blue flex items-center justify-center mr-4 flex-shrink-0">
                 <i class="fas fa-envelope text-white"></i>
               </div>
               <div>
-                <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-email-title">Email
+                <h4 class="text-lg font-black mb-1 uppercase" data-translate="contact-email-title">Email
                 </h4>
-                <p class="text-gray-400 text-sm sm:text-base">fikri@stiepancasetia.ac.id</p>
+                <p class="text-black font-bold break-all">fikri772277@gmail.com</p>
               </div>
             </div>
-            <div
-              class="flex items-start p-4 rounded-lg bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20">
+            <div class="flex items-start p-6 bg-white border-4 border-black shadow-neo">
               <div
-                class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-glow to-pink-glow flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fas fa-phone text-white"></i>
+                class="w-12 h-12 border-2 border-black bg-neo-yellow flex items-center justify-center mr-4 flex-shrink-0">
+                <i class="fas fa-phone text-black"></i>
               </div>
               <div>
-                <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-phone-title">Phone
+                <h4 class="text-lg font-black mb-1 uppercase" data-translate="contact-phone-title">Phone
                 </h4>
-                <p class="text-gray-400 text-sm sm:text-base">+62 852 4886 7449</p>
+                <p class="text-black font-bold">+62 852 4886 7449</p>
               </div>
-            </div>
-            <div
-              class="flex items-start p-4 rounded-lg bg-gradient-to-r from-green-500/10 to-teal-500/10 border border-green-500/20">
-              <div
-                class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-500 flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fab fa-whatsapp text-white"></i>
-              </div>
-              <div>
-                <h4 class="text-base sm:text-lg font-medium mb-1 text-white" data-translate="contact-whatsapp-title">
-                  WhatsApp
-                </h4>
-
-                <form action="https://api.whatsapp.com/send" method="GET" target="_blank" class="flex gap-2">
-                  <input type="hidden" name="phone" value="6285248867449">
-
-                  <!-- Kolom pesan -->
-                  <input type="text" name="text" placeholder="Send me something..."
-                    class="px-3 py-2 bg-[#1b1b1b] rounded text-white text-sm focus:outline-none focus:ring-1 focus:ring-cyan-glow">
-                </form>
-              </div>
-
             </div>
           </div>
         </div>
-        <div>
-          <h3 class="text-xl sm:text-2xl font-bold mb-6 gradient-bg bg-clip-text text-transparent"
+        <div class="reveal reveal-right delay-200">
+          <h3 class="text-2xl sm:text-3xl font-black mb-8 uppercase tracking-tight"
             data-translate="contact-message-title">Send Me a Message</h3>
           <form id="emailForm" class="space-y-6">
             <div class="relative">
               <input type="text" id="name" name="name"
-                class="form-input w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-lg focus:border-electric-blue focus:outline-none focus:shadow-glow transition-all duration-300 text-white"
+                class="form-input w-full px-4 py-4 bg-white border-4 border-black font-bold focus:outline-none shadow-neo transition-all duration-200 text-black"
                 placeholder=" " required="">
-              <label for="name" class="floating-label absolute left-4 top-3 text-gray-500"
+              <label for="name" class="floating-label absolute left-4 top-4 text-gray-500 font-bold uppercase text-xs"
                 data-translate="form-name">Your Name</label>
             </div>
             <div class="relative">
               <input type="email" id="email" name="email"
-                class="form-input w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-lg focus:border-electric-blue focus:outline-none focus:shadow-glow transition-all duration-300 text-white"
+                class="form-input w-full px-4 py-4 bg-white border-4 border-black font-bold focus:outline-none shadow-neo transition-all duration-200 text-black"
                 placeholder=" " required="">
-              <label for="email" class="floating-label absolute left-4 top-3 text-gray-500"
+              <label for="email" class="floating-label absolute left-4 top-4 text-gray-500 font-bold uppercase text-xs"
                 data-translate="form-email">Your Email</label>
             </div>
             <div class="relative">
               <input type="text" id="subject" name="subject"
-                class="form-input w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-lg focus:border-electric-blue focus:outline-none focus:shadow-glow transition-all duration-300 text-white"
+                class="form-input w-full px-4 py-4 bg-white border-4 border-black font-bold focus:outline-none shadow-neo transition-all duration-200 text-black"
                 placeholder=" " required="">
-              <label for="subject" class="floating-label absolute left-4 top-3 text-gray-500"
+              <label for="subject"
+                class="floating-label absolute left-4 top-4 text-gray-500 font-bold uppercase text-xs"
                 data-translate="form-subject">Subject</label>
             </div>
             <div class="relative">
               <textarea id="message" name="message" rows="5"
-                class="form-input w-full px-4 py-3 bg-transparent border-2 border-gray-600 rounded-lg focus:border-electric-blue focus:outline-none focus:shadow-glow transition-all duration-300 text-white"
+                class="form-input w-full px-4 py-4 bg-white border-4 border-black font-bold focus:outline-none shadow-neo transition-all duration-200 text-black"
                 placeholder=" " required=""></textarea>
-              <label for="message" class="floating-label absolute left-4 top-3 text-gray-500"
+              <label for="message"
+                class="floating-label absolute left-4 top-4 text-gray-500 font-bold uppercase text-xs"
                 data-translate="form-message">Your Message</label>
             </div>
-            <button type="submit"
-              class="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-electric-blue via-purple-glow to-pink-glow text-white font-medium hover:shadow-glow-strong transform hover:scale-105 transition-all duration-300"
-              data-translate="btn-send-message">
+            <button type="submit" class="neo-btn w-full py-4 bg-black text-white text-xl uppercase tracking-widest">
               <i class="fas fa-paper-plane mr-2"></i> Send Message
             </button>
           </form>
@@ -1472,35 +1621,35 @@
   </section>
 
   <!-- Enhanced Footer -->
-  <footer class="py-8 bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white">
+  <footer class="py-12 bg-black text-white border-t-8 border-black">
     <div class="container mx-auto px-4 sm:px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <a href="#" class="text-xl sm:text-2xl font-bold">
-            <span class="gradient-bg bg-clip-text text-transparent">Muhammad </span><span
-              class="text-electric-blue">Fikri</span>
+        <div class="mb-8 md:mb-0">
+          <a href="#" class="text-2xl sm:text-3xl font-black uppercase tracking-tighter">
+            Muhammad <span class="bg-neo-yellow text-black px-2 border-2 border-white">Fikri</span>
           </a>
         </div>
-        <div class="flex space-x-6 mb-4 md:mb-0">
+        <div class="flex space-x-6 mb-8 md:mb-0">
           <a href="https://github.com/MuhammadFikriiii" target="_blank"
-            class="w-12 h-12 rounded-full bg-gradient-to-r from-gray-700 to-gray-900 flex items-center justify-center text-white hover:from-electric-blue hover:to-purple-glow transition-all duration-300">
+            class="neo-btn w-12 h-12 bg-neo-blue flex items-center justify-center text-white border-white">
             <i class="fab fa-github text-xl"></i>
           </a>
           <a href="https://www.linkedin.com/in/muhammad-fikri-4833923a0/" target="_blank"
-            class="w-12 h-12 rounded-full bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center text-white hover:from-electric-blue hover:to-purple-glow transition-all duration-300">
+            class="neo-btn w-12 h-12 bg-neo-purple flex items-center justify-center text-white border-white">
             <i class="fab fa-linkedin-in text-xl"></i>
           </a>
           <a href="https://www.instagram.com/mfikri.724" target="_blank"
-            class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-white hover:from-electric-blue hover:to-purple-glow transition-all duration-300">
+            class="neo-btn w-12 h-12 bg-neo-pink flex items-center justify-center text-white border-white">
             <i class="fab fa-instagram text-xl"></i>
           </a>
           <a href="https://wa.me/6285248867449" target="_blank"
-            class="w-12 h-12 rounded-full bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center text-white hover:from-electric-blue hover:to-purple-glow transition-all duration-300">
+            class="neo-btn w-12 h-12 bg-neo-green flex items-center justify-center text-black border-white">
             <i class="fab fa-whatsapp text-xl"></i>
           </a>
         </div>
-        <div class="text-gray-400 text-sm">
-          © <span id="current-year">2025</span> Muhammad Fikri. All rights reserved.
+        <div class="text-white font-bold uppercase text-xs">
+          © <span id="current-year">2025</span> Muhammad Fikri. <span data-translate="footer-rights">All rights
+            reserved.</span>
         </div>
       </div>
     </div>
@@ -1523,36 +1672,45 @@
         "hero-whatsapp": "Chat di WhatsApp",
         "about-title": "Tentang Saya",
         "about-subtitle": "Lulusan D3 Teknik Informatika",
-        "about-desc1": "Saya berspesialisasi dalam membangun pengalaman digital yang luar biasa dan memelihara infrastruktur jaringan yang kuat. Sebagai Pengembang Web, saya menggabungkan keahlian teknis dalam infrastruktur dan teknologi web untuk memberikan solusi komprehensif.",
         "about-desc2": "Sebagai lulusan terbaru dari Politeknik Negeri Banjarmasin (D3 Teknik Informatika), saya telah mengerjakan berbagai proyek selama studi dan melalui pekerjaan freelance—mulai dari website sederhana hingga aplikasi kompleks, dan implementasi infrastruktur jaringan. Saya menikmati menggabungkan keterampilan teknis dengan pemecahan masalah kreatif untuk memberikan solusi yang efektif dan menarik.",
-        "about-download": "Unduh CV",
         "about-hire": "Rekrut Saya",
         "projects-title": "Proyek Saya",
         "badge-new": "Baru",
-        "badge-new2": "portofolio",
+        "badge-portfolio": "DonghuaWatch",
         "badge-website": "Website",
         "badge-network": "Jaringan",
         "badge-game": "Game",
-        "project1-desc": "Chatbot bertenaga AI yang dirancang untuk berinteraksi secara alami dengan pengguna menggunakan pemrosesan bahasa alami.",
+        "project1-desc": "Chatbot cerdas bertenaga AI yang dirancang untuk berinteraksi secara alami dengan pengguna menggunakan pemrosesan bahasa alami.",
         "project2-title": "Sistem Informasi Kurikulum OBE",
-        "project2-desc": "Sistem Desain Kurikulum OBE yang dikembangkan untuk Poliban mendukung pengembangan kurikulum sesuai prinsip OBE.",
-        "project3-title": "Desain LAN Berskala Besar Cisco",
+        "project2-desc": "Sistem Informasi Desain Kurikulum OBE yang dikembangkan untuk Poliban untuk mendukung pengembangan kurikulum yang selaras dengan prinsip OBE.",
+        "project3-title": "Desain LAN Skala Besar Cisco",
         "project3-desc": "Desain jaringan menggunakan Cisco Packet Tracer untuk optimasi lingkungan korporat dengan VLAN dan protokol routing.",
         "project4-title": "Permainan Ular Tangga",
-        "project4-desc": "Game papan klasik berbasis web dengan fitur interaktif, memungkinkan dua pemain untuk bermain dengan animasi mulus.",
+        "project4-desc": "Permainan papan klasik berbasis web dengan fitur interaktif, memungkinkan dua pemain untuk bermain dengan animasi yang mulus.",
         "project5-title": "SIMA BPKPAD Kota Banjarmasin",
-        "project5-desc": "Sistem manajemen arsip elektronik untuk BPKPAD mengoptimalkan penyimpanan dokumen, pengambilan, dan keamanan.",
-        "project6-title": "Setting Load Balance Mikrotik",
+        "project5-desc": "Sistem manajemen arsip elektronik untuk BPKPAD yang mengoptimalkan penyimpanan, pengambilan, dan keamanan dokumen.",
+        "project6-title": "Pengaturan Load Balance Mikrotik",
         "project6-desc": "Implementasi load balancing multi-WAN dengan Mikrotik RouterOS untuk optimasi bandwidth dan failover otomatis.",
         "project7-title": "Landing Page Cafe - Brew Haven",
-        "project7-desc": "Landing page responsif modern untuk kedai kopi dengan menu showcase, lokasi, dan call-to-action yang efektif.",
-        "project8-title": "AI Image Upscaler",
-        "project8-desc": "Aplikasi web dengan AI untuk upscale gambar hingga 4x menggunakan neural network Real-ESRGAN dengan hasil profesional.",
+        "project7-desc": "Landing page responsif modern untuk kedai kopi dengan tampilan menu, lokasi, dan panggilan aksi yang efektif.",
+        "project8-desc": "Aplikasi web dengan AI untuk meningkatkan resolusi gambar hingga 4x menggunakan neural network Real-ESRGAN dengan hasil profesional.",
+        "project9-title": "Gilmar Idea",
+        "project9-desc": "Web berita digital yang menyajikan informasi terkini bagi mahasiswa STIE Pancasetia.",
+        "project10-title": "SIP STIE Pancasetia",
+        "project10-desc": "Sistem Informasi Terpadu STIE Pancasetia untuk manajemen data akademik yang efisien.",
+        "project11-title": "LPPM STIE Pancasetia",
+        "project11-desc": "Portal resmi Lembaga Penelitian dan Pengabdian kepada Masyarakat STIE Pancasetia.",
+        "project12-title": "Siperu",
+        "project12-desc": "Sistem Informasi Peminjaman Ruangan untuk mengelola reservasi fasilitas kampus secara otomatis.",
+        "project13-title": "DonghuaWatch Komik",
+        "project13-desc": "Platform baca komik online dengan koleksi lengkap dan antarmuka yang ramah pengguna.",
         "project-api-desc": "RESTful API untuk mengambil data streaming Donghua dengan fitur pencarian dan caching yang efisien.",
-        "project-donghuawatch-desc": "Situs streaming untuk menonton film atau animasi donghua dengan subtitle Indonesia yang cepat dan responsif.",
+        "project-donghuawatch-desc": "Situs streaming Donghua dengan subtitle Indonesia yang cepat dan responsif.",
         "badge-ai": "AI",
         "badge-backend": "Backend",
+        "donghuawatchs": "Kunjungi",
         "btn-details": "Detail",
+        "btn-source": "Source Code",
         "btn-code": "Kode",
         "btn-code2": "Kunjungi",
         "btn-file": "File",
@@ -1569,15 +1727,31 @@
         "form-message": "Pesan Anda",
         "btn-send-message": "Kirim Pesan",
         "github_title": "Statistik GitHub",
-        "github_repos": "Repository",
+        "github_repos": "Repositori",
         "github_stars": "Bintang",
         "github_contrib": "Kontribusi",
         "github_followers": "Pengikut",
-        "github_public": "Repository publik",
+        "github_public": "Repositori publik",
         "github_received": "Diterima di proyek",
         "github_lastyear": "satu tahun terakhir",
         "github_followers_desc": "Pengikut GitHub",
-        "certificates-desc": "Saya telah menyelesaikan berbagai sertifikasi profesional dalam pengembangan web, networking, dan Microsoft Office. Untuk melihat detail semua sertifikat, silakan klik tombol di bawah.",
+        "certificates-modal-title": "Detail Sertifikat",
+        "certificates-modal-close": "Tutup",
+        "testimonial-title": "Apa Kata Klien",
+        "testi1-text": "“Saya senang dengan website portofolio yang diberikan Fikri—terlihat bagus, berjalan lancar, dan mudah dinavigasi serta digunakan di berbagai perangkat.”",
+        "testi2-text": "“Chatbot AI yang dikembangkan Fikri untuk kami telah merevolusi layanan pelanggan kami. Pemahamannya tentang teknologi frontend dan backend sangat mengesankan.”",
+        "testi3-text": "“Pekerjaan Fikri pada dashboard keuangan kami sangat luar biasa. Visualisasi data dan pembaruan real-time bekerja dengan sempurna. Pengembang yang profesional dan andal.”",
+        "stat-happy-clients": "Klien Puas",
+        "stat-success-rate": "Tingkat Keberhasilan %",
+        "stat-projects": "Proyek Selesai",
+        "stat-rating": "Rating Rata-rata",
+        "github-less": "Sedikit",
+        "github-more": "Banyak",
+        "footer-rights": "Hak cipta dilindungi.",
+        "cert5-title": "BNSP Programmer",
+        "cert5-desc": "Sertifikasi Kompetensi BNSP untuk skema Programmer.",
+        "cert6-title": "Belajar Dasar-dasar AI",
+        "cert6-desc": "Sertifikasi penyelesaian kursus Belajar Dasar-dasar AI.",
       },
       en: {
         "nav-home": "Home",
@@ -1593,13 +1767,11 @@
         "hero-whatsapp": "Chat on WhatsApp",
         "about-title": "About Me",
         "about-subtitle": "D3 Informatic Engineering Graduate",
-        "about-desc1": "I specialize in building exceptional digital experiences and maintaining robust network infrastructure. As a Web Developer, I combine technical expertise in both infrastructure and web technologies to deliver comprehensive solutions.",
         "about-desc2": "As a recent graduate from Politeknik Negeri Banjarmasin (D3 Informatic Engineering), I've worked on various projects during my studies and through freelance work—ranging from simple websites to complex applications. I enjoy combining technical skills with creative problem-solving to deliver effective and engaging solutions.",
-        "about-download": "Download CV",
         "about-hire": "Hire Me",
         "projects-title": "My Projects",
         "badge-new": "New",
-        "badge-new": "portfolio",
+        "badge-portfolio": "DonghuaWatch",
         "badge-website": "Website",
         "badge-network": "Network",
         "badge-game": "Game",
@@ -1618,12 +1790,23 @@
         "project7-desc": "Modern responsive landing page for coffee shop with menu showcase, location, and effective call-to-action.",
         "project8-title": "AI Image Upscaler",
         "project8-desc": "Web application with AI to upscale images up to 4x using Real-ESRGAN neural network with professional results.",
+        "project9-title": "Gilmar Idea",
+        "project9-desc": "Digital news web providing the latest information for STIE Pancasetia students.",
+        "project10-title": "SIP STIE Pancasetia",
+        "project10-desc": "STIE Pancasetia Integrated Information System for efficient academic data management.",
+        "project11-title": "LPPM STIE Pancasetia",
+        "project11-desc": "Official portal of STIE Pancasetia Research and Community Service Institute.",
+        "project12-title": "Siperu",
+        "project12-desc": "Room Booking Information System for automated campus facility reservation management.",
+        "project13-title": "DonghuaWatch Komik",
+        "project13-desc": "Online comic reading platform with a complete collection and user-friendly interface.",
         "project-api-desc": "RESTful API to fetch Donghua streaming data with efficient search and caching features.",
         "project-donghuawatch-desc": "Donghua streaming site with fast and responsive Indonesian subtitles.",
         "badge-ai": "AI",
         "badge-backend": "Backend",
         "donghuawatchs": "Visit",
         "btn-details": "Details",
+        "btn-source": "Source Code",
         "btn-code": "Code",
         "btn-code2": "Visit",
         "btn-file": "File",
@@ -1648,7 +1831,23 @@
         "github_received": "Received on projects",
         "github_lastyear": "Last year",
         "github_followers_desc": "GitHub followers",
-        "certificates-desc": "I have completed various professional certifications in web development, networking, and Microsoft Office. To view details of all certificates, please click the button below.",
+        "certificates-modal-title": "Certificate Details",
+        "certificates-modal-close": "Close",
+        "testimonial-title": "What Clients Say",
+        "testi1-text": "“I’m pleased with the portfolio website Fikri delivered—it looks great, works smoothly, and is easy to navigate and use across devices.”",
+        "testi2-text": "“The AI chatbot Fikri developed for us has revolutionized our customer service. His understanding of both frontend and backend technologies is impressive.”",
+        "testi3-text": "“Fikri's work on our financial dashboard was outstanding. The data visualization and real-time updates work flawlessly. Professional and reliable developer.”",
+        "stat-happy-clients": "Happy Clients",
+        "stat-success-rate": "Success Rate %",
+        "stat-projects": "Projects Completed",
+        "stat-rating": "Average Rating",
+        "github-less": "Less",
+        "github-more": "More",
+        "footer-rights": "All rights reserved.",
+        "cert5-title": "BNSP Programmer",
+        "cert5-desc": "BNSP Competency Certification for Programmer scheme.",
+        "cert6-title": "AI Basics",
+        "cert6-desc": "Completion certification for AI Basics course.",
       }
     };
 
@@ -1783,6 +1982,90 @@
     document.getElementById("current-year").textContent = new Date().getFullYear();
     updatePageTranslations();
 
+    // Add incremental rotation to about image
+    let currentAngle = -3;
+    let hoverOffset = 0;
+    const aboutImgContainer = document.getElementById('about-img-container');
+
+    function updateAboutImageTransform() {
+      aboutImgContainer.style.transform = `rotate(${currentAngle + hoverOffset}deg)`;
+    }
+
+    if (aboutImgContainer) {
+      aboutImgContainer.addEventListener('click', () => {
+        currentAngle += 20; // Rotate slightly more on each click
+        updateAboutImageTransform();
+      });
+
+      aboutImgContainer.addEventListener('mouseenter', () => {
+        hoverOffset = 8; // Slight rotation shift on hover
+        updateAboutImageTransform();
+      });
+
+      aboutImgContainer.addEventListener('mouseleave', () => {
+        hoverOffset = 0; // Return to current base angle
+        updateAboutImageTransform();
+      });
+    }
+
+    // Scroll Reveal implementation
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Drag and Drop for Hero Shapes
+    const draggableShapes = document.querySelectorAll('.draggable-shape');
+    draggableShapes.forEach(shape => {
+      let isDragging = false;
+      let offsetX, offsetY;
+
+      const startDrag = (e) => {
+        isDragging = true;
+        shape.classList.add('dragging');
+        
+        const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+        
+        const rect = shape.getBoundingClientRect();
+        offsetX = clientX - rect.left;
+        offsetY = clientY - rect.top;
+      };
+
+      const doDrag = (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+        const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+        
+        // Use fixed positioning during drag or adjust style top/left
+        shape.style.position = 'fixed';
+        shape.style.left = `${clientX - offsetX}px`;
+        shape.style.top = `${clientY - offsetY}px`;
+        shape.style.bottom = 'auto';
+        shape.style.right = 'auto';
+      };
+
+      const stopDrag = () => {
+        isDragging = false;
+        shape.classList.remove('dragging');
+      };
+
+      shape.addEventListener('mousedown', startDrag);
+      window.addEventListener('mousemove', doDrag);
+      window.addEventListener('mouseup', stopDrag);
+
+      shape.addEventListener('touchstart', startDrag, { passive: false });
+      window.addEventListener('touchmove', doDrag, { passive: false });
+      window.addEventListener('touchend', stopDrag);
+    });
+
     // </CHANGE> Generate GitHub contribution activity graph
     function generateContributionGraph() {
       const graph = document.getElementById('contributionGraph');
@@ -1816,6 +2099,24 @@
 
     // Call function when page loads
     document.addEventListener('DOMContentLoaded', generateContributionGraph);
+
+    // Custom Alert for Private Repositories
+    function showPrivateAlert() {
+      const existingToast = document.querySelector('.private-alert-toast');
+      if (existingToast) existingToast.remove();
+
+      const toast = document.createElement('div');
+      toast.className = 'private-alert-toast fixed top-10 left-1/2 -translate-x-1/2 z-[100] bg-neo-pink text-white border-4 border-black shadow-neo px-8 py-4 font-black uppercase tracking-wider text-center animate-slide-down-rope';
+      toast.style.minWidth = '300px';
+      toast.innerHTML = '<i class="fas fa-lock mr-2"></i> Link repository was private';
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.5s ease-out';
+        setTimeout(() => toast.remove(), 500);
+      }, 3000);
+    }
   </script>
 </body>
 
