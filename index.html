@@ -466,10 +466,24 @@
     }
 
     @keyframes slideDownRope {
-      0% { transform: translateY(-200px); opacity: 0; }
-      60% { transform: translateY(20px); opacity: 1; }
-      80% { transform: translateY(-10px); }
-      100% { transform: translateY(0); opacity: 1; }
+      0% {
+        transform: translateY(-200px);
+        opacity: 0;
+      }
+
+      60% {
+        transform: translateY(20px);
+        opacity: 1;
+      }
+
+      80% {
+        transform: translateY(-10px);
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .animate-slide-down-rope {
@@ -483,22 +497,50 @@
       will-change: transform, opacity;
     }
 
-    .reveal-up { transform: translateY(60px); }
-    .reveal-down { transform: translateY(-60px); }
-    .reveal-left { transform: translateX(-60px); }
-    .reveal-right { transform: translateX(60px); }
-    .reveal-scale { transform: scale(0.8); }
+    .reveal-up {
+      transform: translateY(60px);
+    }
+
+    .reveal-down {
+      transform: translateY(-60px);
+    }
+
+    .reveal-left {
+      transform: translateX(-60px);
+    }
+
+    .reveal-right {
+      transform: translateX(60px);
+    }
+
+    .reveal-scale {
+      transform: scale(0.8);
+    }
 
     .reveal.active {
       opacity: 1 !important;
       transform: translate(0) scale(1) !important;
     }
 
-    .delay-100 { transition-delay: 100ms; }
-    .delay-200 { transition-delay: 200ms; }
-    .delay-300 { transition-delay: 300ms; }
-    .delay-400 { transition-delay: 400ms; }
-    .delay-500 { transition-delay: 500ms; }
+    .delay-100 {
+      transition-delay: 100ms;
+    }
+
+    .delay-200 {
+      transition-delay: 200ms;
+    }
+
+    .delay-300 {
+      transition-delay: 300ms;
+    }
+
+    .delay-400 {
+      transition-delay: 400ms;
+    }
+
+    .delay-500 {
+      transition-delay: 500ms;
+    }
 
     /* End GitHub styles */
   </style>
@@ -591,8 +633,7 @@
     <div class="container mx-auto px-4 sm:px-6 z-30 text-center">
       <p class="text-lg sm:text-xl md:text-2xl font-black mb-4 text-black uppercase tracking-widest animate-slide-in"
         data-translate="hero-greeting">Halo, Saya</p>
-      <h1
-        class="text-4xl sm:text-6xl md:text-8xl font-black mb-6 text-black uppercase tracking-tighter">
+      <h1 class="text-4xl sm:text-6xl md:text-8xl font-black mb-6 text-black uppercase tracking-tighter">
         <div class="relative inline-block animate-slide-down-rope">
           <span
             class="bg-white px-6 py-2 border-4 border-black shadow-neo-xl inline-block transform -rotate-2 hover:rotate-2 transition-transform duration-300 cursor-default relative"
@@ -640,7 +681,8 @@
   <!-- Enhanced About Section -->
   <section id="about" class="py-10 sm:py-16 md:py-20 scroll-mt-16">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-10 text-center uppercase tracking-tighter reveal reveal-up">
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl font-black mb-10 text-center uppercase tracking-tighter reveal reveal-up">
         <span
           class="bg-neo-pink text-white px-6 py-2 border-4 border-black shadow-neo-lg inline-block transform rotate-2 hover:-rotate-2 transition-transform duration-300 cursor-default"
           data-translate="about-title">Tentang Saya</span>
@@ -692,7 +734,8 @@
   <!-- Enhanced Projects Section with Carousel -->
   <section id="projects" class="py-20 sm:py-32 border-y-8 border-black bg-neo-blue">
     <div class="container mx-auto px-4 sm:px-6">
-      <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 text-center md:text-left reveal reveal-up">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 text-center md:text-left reveal reveal-up">
         <h2 class="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter">
           <span
             class="bg-neo-yellow text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform -rotate-1 hover:rotate-1 transition-transform duration-300 cursor-default"
@@ -720,17 +763,21 @@
                 <img src="img/gilmaridea.png" alt="Gilmar Idea" class="w-full h-full object-contain">
               </div>
               <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project9-title">GILMAR IDEA</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project9-desc">Web berita digital yang menyajikan informasi terkini bagi mahasiswa STIE Pancasetia.</p>
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project9-title">
+                  GILMAR IDEA</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project9-desc">Web berita
+                  digital yang menyajikan informasi terkini bagi mahasiswa STIE Pancasetia.</p>
                 <div class="flex flex-wrap gap-4 mb-6">
                   <i class="fas fa-bolt text-[#000000] text-2xl" title="Next.js"></i>
                   <i class="fas fa-database text-[#339933] text-2xl" title="Supabase"></i>
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://gilmarideastiepancasetia.vercel.app/" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -762,9 +809,11 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://donghuawatch.vercel.app/" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -778,8 +827,10 @@
                 <img src="img/siperu.png" alt="Siperu" class="w-full h-full object-contain">
               </div>
               <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project12-title">SIPERU</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project12-desc">Sistem Informasi Peminjaman Ruangan untuk mengelola reservasi fasilitas kampus secara otomatis.</p>
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
+                  data-translate="project12-title">SIPERU</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project12-desc">Sistem
+                  Informasi Peminjaman Ruangan untuk mengelola reservasi fasilitas kampus secara otomatis.</p>
                 <div class="flex flex-wrap gap-4 mb-6">
                   <i class="fab fa-laravel text-[#FF2D20] text-2xl" title="Laravel"></i>
                   <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
@@ -787,9 +838,11 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://siperu.stiepancasetia.ac.id/" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -803,8 +856,10 @@
                 <img src="img/komik.png" alt="DonghuaWatch Komik" class="w-full h-full object-contain">
               </div>
               <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project13-title">DONGHUAWATCH KOMIK</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project13-desc">Platform baca komik online dengan koleksi lengkap dan antarmuka yang ramah pengguna.</p>
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
+                  data-translate="project13-title">DONGHUAWATCH KOMIK</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project13-desc">Platform baca
+                  komik online dengan koleksi lengkap dan antarmuka yang ramah pengguna.</p>
                 <div class="flex flex-wrap gap-4 mb-6">
                   <i class="fab fa-react text-[#61DAFB] text-2xl" title="React.js"></i>
                   <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS"></i>
@@ -812,9 +867,11 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://www.donghuawatch.cloud/komik" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -841,7 +898,8 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://donghuawatchapi.vercel.app/" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
                 </div>
@@ -857,17 +915,21 @@
                 <img src="img/sip.png" alt="SIP" class="w-full h-full object-contain">
               </div>
               <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project10-title">SIP STIE PANCASETIA</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project10-desc">Sistem Informasi Terpadu STIE Pancasetia untuk manajemen data akademik yang efisien.</p>
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
+                  data-translate="project10-title">SIP STIE PANCASETIA</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project10-desc">Sistem
+                  Informasi Terpadu STIE Pancasetia untuk manajemen data akademik yang efisien.</p>
                 <div class="flex flex-wrap gap-4 mb-6">
                   <i class="fab fa-html5 text-[#E34F26] text-2xl" title="HTML5"></i>
                   <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://sip.stiepancasetia.ac.id/" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -881,16 +943,20 @@
                 <img src="img/lppm.png" alt="LPPM" class="w-full h-full object-contain">
               </div>
               <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project11-title">LPPM STIE PANCASETIA</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project11-desc">Portal resmi Lembaga Penelitian dan Pengabdian kepada Masyarakat STIE Pancasetia.</p>
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
+                  data-translate="project11-title">LPPM STIE PANCASETIA</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project11-desc">Portal resmi
+                  Lembaga Penelitian dan Pengabdian kepada Masyarakat STIE Pancasetia.</p>
                 <div class="flex flex-wrap gap-4 mb-6">
                   <i class="fab fa-wordpress text-[#21759B] text-2xl" title="WordPress"></i>
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://lppm.stiepancasetia.ac.id/" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -916,7 +982,8 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/baru_kurikulum_OBE" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://obepoliban.vps-poliban.my.id/" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
                 </div>
@@ -942,9 +1009,11 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/FikBot" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://fikri-bot.vercel.app/" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -971,9 +1040,11 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/sistem-informasi-manajemen-arsip" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -1000,7 +1071,8 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/Snakes-and-Ladders." target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://muhammadfikriiii.github.io/Snakes-and-Ladders./" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
                 </div>
@@ -1027,7 +1099,8 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/UpscaleGambar" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://muhammadfikriiii.github.io/UpscaleGambar/" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
                 </div>
@@ -1055,7 +1128,8 @@
                 </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
                   <a href="https://drive.google.com/drive/u/0/folders/12u0mo5TJ_B59r6mcU_ZM1LNpqIP7H-yz" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-file">File</a>
                 </div>
@@ -1072,7 +1146,8 @@
   <!-- Enhanced Skills Section -->
   <section id="skills" class="py-20 sm:py-32 bg-neo-bg">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
+      <h2
+        class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
         <span
           class="bg-neo-green text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform rotate-1 hover:-rotate-1 transition-transform duration-300 cursor-default"
           data-translate="nav-skills">Keahlian</span>
@@ -1281,7 +1356,8 @@
   <!-- Added new Certificates Section -->
   <section id="certificates" class="py-20 sm:py-32 bg-neo-yellow border-y-8 border-black">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
+      <h2
+        class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
         <span
           class="bg-white text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform -rotate-1 hover:rotate-1 transition-transform duration-300 cursor-default"
           data-translate="nav-certificates">Sertifikat</span>
@@ -1350,7 +1426,8 @@
   <!-- Enhanced Testimonials Section -->
   <section id="testimonial" class="py-20 sm:py-32 bg-neo-pink border-b-8 border-black">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
+      <h2
+        class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
         <span
           class="bg-white text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform rotate-1 hover:-rotate-1 transition-transform duration-300 cursor-default"
           data-translate="testimonial-title">What Clients Say</span>
@@ -1504,12 +1581,10 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal reveal-up delay-300">
         <div class="neo-card p-6 bg-white">
           <div class="flex items-center justify-between mb-4">
-            <h4 class="text-xl font-black uppercase" data-translate="github_repos">Repositories</h4>
-            <i class="fas fa-code-branch text-black text-2xl"></i>
+            <h4 class="text-xl font-black uppercase" data-translate="github_repos">Total Repositories/h4>
+              <i class="fas fa-code-branch text-black text-2xl"></i>
           </div>
-          <p class="text-5xl font-black text-neo-blue tracking-tighter count-up" data-target="1">29</p>
-          <p class="text-xs font-bold text-gray-600 mt-2 uppercase" data-translate="github_public">Public repositories
-          </p>
+          <p class="text-5xl font-black text-neo-blue tracking-tighter count-up" data-target="50">50</p>
         </div>
         <div class="neo-card p-6 bg-neo-yellow">
           <div class="flex items-center justify-between mb-4">
@@ -1543,7 +1618,8 @@
   <!-- Enhanced Contact Section -->
   <section id="contact" class="py-20 sm:py-32 bg-neo-green border-y-8 border-black">
     <div class="container mx-auto px-4 sm:px-6">
-      <h2 class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
+      <h2
+        class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
         <span
           class="bg-white text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform -rotate-1 hover:rotate-1 transition-transform duration-300 cursor-default"
           data-translate="nav-contact">Get In Touch</span>
@@ -1737,11 +1813,11 @@
         "form-message": "Pesan Anda",
         "btn-send-message": "Kirim Pesan",
         "github_title": "Statistik GitHub",
-        "github_repos": "Repositori",
+        "github_repos": "Total Repo",
         "github_stars": "Bintang",
         "github_contrib": "Kontribusi",
         "github_followers": "Pengikut",
-        "github_public": "Repositori publik",
+        "github_public": "",
         "github_received": "Diterima di proyek",
         "github_lastyear": "satu tahun terakhir",
         "github_followers_desc": "Pengikut GitHub",
@@ -1833,11 +1909,11 @@
         "form-message": "Your Message",
         "btn-send-message": "Send Message",
         "github_title": "GitHub Statistics",
-        "github_repos": "Repositories",
+        "github_repos": "Total Repo",
         "github_stars": "Stars",
         "github_contrib": "Contributions",
         "github_followers": "Followers",
-        "github_public": "Public repositories",
+        "github_public": "",
         "github_received": "Received on projects",
         "github_lastyear": "Last year",
         "github_followers_desc": "GitHub followers",
@@ -2038,10 +2114,10 @@
       const startDrag = (e) => {
         isDragging = true;
         shape.classList.add('dragging');
-        
+
         const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
         const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-        
+
         const rect = shape.getBoundingClientRect();
         offsetX = clientX - rect.left;
         offsetY = clientY - rect.top;
@@ -2050,10 +2126,10 @@
       const doDrag = (e) => {
         if (!isDragging) return;
         e.preventDefault();
-        
+
         const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
         const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-        
+
         // Use fixed positioning during drag or adjust style top/left
         shape.style.position = 'fixed';
         shape.style.left = `${clientX - offsetX}px`;
