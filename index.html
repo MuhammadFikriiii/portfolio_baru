@@ -30,7 +30,6 @@
     </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0RPE8VRFSH"></script>
   <script>
@@ -209,6 +208,19 @@
       box-shadow: 8px 8px 0px 0px #000000;
     }
 
+    .skills-marquee-item > div:first-child i {
+      color: var(--skill-color, #111111);
+      transition: color 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .skills-marquee-item:hover > div:first-child i,
+    .skills-marquee-item:active > div:first-child i,
+    .skills-marquee-item:focus-within > div:first-child i {
+      color: var(--skill-active-color, #ffffff);
+      filter: saturate(1.6);
+      transform: scale(1.16);
+    }
+
     @keyframes marquee {
       0% {
         transform: translateX(0);
@@ -292,6 +304,7 @@
       flex: 0 0 33.333%;
       padding: 0 1rem;
       min-width: 0;
+      box-sizing: border-box;
     }
 
     @media (max-width: 768px) {
@@ -577,9 +590,6 @@
           <a href="#github"
             class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-yellow px-2 transition-all"
             data-translate="nav-github">Github</a>
-          <a href="#contact"
-            class="nav-link py-2 text-sm lg:text-base font-bold text-black hover:bg-neo-pink hover:text-white px-2 transition-all"
-            data-translate="nav-contact">Kontak</a>
         </nav>
         <!-- Language Toggle Button -->
         <div class="flex items-center gap-4">
@@ -608,8 +618,6 @@
           data-translate="nav-testimonial">Testimonial</a>
         <a href="#github" class="block py-2 font-bold text-black hover:bg-neo-yellow px-2"
           data-translate="nav-github">Github</a>
-        <a href="#contact" class="block py-2 font-bold text-black hover:bg-neo-pink px-2 hover:text-white"
-          data-translate="nav-contact">Kontak</a>
       </div>
     </div>
   </header>
@@ -652,21 +660,31 @@
         class="text-2xl sm:text-3xl md:text-4xl font-black mb-8 text-black animate-slide-up bg-neo-pink text-white inline-block px-4 py-2 border-4 border-black shadow-neo transform rotate-1 hover:-rotate-1 transition-transform duration-300 cursor-default">
         <span class="typing-text" id="dev-title">Admin Jaringan & Pengembang Web</span>
       </h2>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mt-8 animate-slide-up">
-        <a href="#projects" class="neo-btn px-8 py-4 text-lg uppercase tracking-bold bg-neo-blue text-white"
-          data-translate="hero-view-work">Lihat Karya Saya</a>
-        <a href="https://wa.me/6285248867449?text=Halo%20Muhammad%20Fikri" target="_blank"
-          class="neo-btn px-8 py-4 text-lg uppercase tracking-bold bg-neo-green text-black">
-          <i class="fab fa-whatsapp mr-2"></i><span data-translate="hero-whatsapp">Chat di WhatsApp</span>
-        </a>
-        <div class="flex gap-4">
-          <a href="https://github.com/MuhammadFikriiii" target="_blank"
-            class="neo-btn w-14 h-14 bg-neo-purple flex items-center justify-center text-white" title="GitHub">
-            <i class="fab fa-github text-2xl"></i>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-8 animate-slide-up">
+        <div class="flex gap-3 order-2 sm:order-1">
+          <a href="https://wa.me/6285248867449?text=Halo%20Muhammad%20Fikri" target="_blank" rel="noopener noreferrer"
+            aria-label="WhatsApp" title="WhatsApp"
+            class="neo-btn w-14 h-14 text-2xl bg-neo-green flex items-center justify-center text-black">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
           </a>
-          <a href="https://www.instagram.com/just.mf7/" target="_blank"
-            class="neo-btn w-14 h-14 bg-neo-pink flex items-center justify-center text-white" title="Instagram">
-            <i class="fab fa-instagram text-2xl"></i>
+          <a href="https://github.com/MuhammadFikriiii" target="_blank" rel="noopener noreferrer"
+            aria-label="GitHub" title="GitHub"
+            class="neo-btn w-14 h-14 bg-neo-purple flex items-center justify-center text-white">
+            <i class="fab fa-github text-2xl" aria-hidden="true"></i>
+          </a>
+        </div>
+        <a href="#projects" class="neo-btn order-1 sm:order-2 px-8 py-4 text-lg uppercase tracking-bold bg-neo-blue text-white"
+          data-translate="hero-view-work">Lihat Karya Saya</a>
+        <div class="flex gap-3 order-3">
+          <a href="https://www.instagram.com/just.mf7/" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram" title="Instagram"
+            class="neo-btn w-14 h-14 bg-neo-pink flex items-center justify-center text-white">
+            <i class="fab fa-instagram text-2xl" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/muhammad-fikri-4833923a0/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn" title="LinkedIn"
+            class="neo-btn w-14 h-14 bg-neo-blue flex items-center justify-center text-white">
+            <i class="fab fa-linkedin-in text-2xl" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -711,20 +729,18 @@
             kompleks, dan implementasi infrastruktur jaringan. Saya menikmati menggabungkan keterampilan teknis dengan
             pemecahan masalah kreatif untuk memberikan solusi yang efektif dan menarik.
           </p>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 reveal reveal-up delay-400">
-            <div class="flex items-center p-3 bg-white border-3 border-black shadow-neo">
-              <i class="fas fa-map-marker-alt text-neo-pink mr-3 text-lg"></i>
-              <span class="text-xs sm:text-sm font-bold">Banjarmasin, Indonesia</span>
+          <div class="mb-6">
+            <h4 class="text-lg font-black uppercase tracking-tight mb-3" data-translate="career-title">Karier Saya</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="p-3 bg-white border-3 border-black shadow-neo">
+                <span class="inline-block bg-neo-yellow border-2 border-black px-2 py-1 text-xs font-black mb-2">2022–2025</span>
+                <p class="text-sm font-bold" data-translate="career-education">Kuliah D3 di Politeknik Negeri Banjarmasin</p>
+              </div>
+              <div class="p-3 bg-white border-3 border-black shadow-neo">
+                <span class="inline-block bg-neo-green border-2 border-black px-2 py-1 text-xs font-black mb-2" data-translate="career-current-years">2025–Sekarang</span>
+                <p class="text-sm font-bold" data-translate="career-current">IT di STIE Pancasetia</p>
+              </div>
             </div>
-            <div class="flex items-center p-3 bg-white border-3 border-black shadow-neo">
-              <i class="fas fa-envelope text-neo-blue mr-3 text-lg"></i>
-              <span class="text-xs sm:text-sm font-bold break-all">fikri772277@gmail.com</span>
-            </div>
-          </div>
-          <div class="flex flex-col sm:flex-row gap-6 mt-8">
-            <a href="#contact" class="neo-btn px-8 py-2 bg-white text-black uppercase text-sm">
-              <i class="fas fa-paper-plane mr-2"></i> <span data-translate="about-hire">Rekrut Saya</span>
-            </a>
           </div>
         </div>
       </div>
@@ -754,6 +770,90 @@
       <div class="carousel-container relative reveal reveal-scale delay-200">
         <div class="carousel-inner" id="projectCarousel">
 
+          <!-- delphi.tools -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-emerald-400/30 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="image/delphi-tools.png" alt="delphi.tools online tools" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project-delphi-title">delphi.tools</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-delphi-desc">Saya berkontribusi dalam pengembangan fitur berbagai tools di delphi.tools, kumpulan utilitas web untuk kreativitas dan produktivitas.</p>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/1612elphi/delphitools" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="https://delphi.tools/" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DongFlix Apps -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-blue-400/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="image/dongflix-apps.png" alt="Aplikasi DongFlix di ponsel" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project-dongflix-apps-title">DongFlix — Android, iOS & Windows</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-dongflix-apps-desc">Aplikasi streaming lintas perangkat: Android v1.0.7, Android TV, Windows v1.0.4, dan iOS v1.0.1 Beta. Mendukung donghua, anime, film, series, drama pendek, serta novel.</p>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/MuhammadFikriiii/DongFlix" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
+                  <a href="https://dongflix-download.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Unduh</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SIPEKA WhatsApp AI Bot -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-emerald-400/30 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="image/sipeka-landing.png" alt="SIPEKA WhatsApp AI bot landing page" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project-sipeka-title">SIPEKA — WhatsApp AI Bot</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-sipeka-desc">Bot WhatsApp otomatis bertenaga AI untuk mencatat dan mengelola keuangan lewat chat, serta bot grup untuk game, unduh video, dan fitur lainnya.</p>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/MuhammadFikriiii/SIPEKA-LANDING" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <a href="https://sipeka-landing.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DongFlix Website -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-neo-yellow/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="image/dongflix-web.png" alt="DongFlix website" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
+                  data-translate="project-dongflix-web-title">DongFlix — Website</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-dongflix-web-desc">Website streaming DongFlix untuk donghua, anime, film, series, drama pendek, dan novel.</p>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/MuhammadFikriiii/DongFlix" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
+                  <a href="https://dongflix.cloud/" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
+                    data-translate="btn-code2">Kunjungi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- 0. Saybot -->
           <div class="carousel-item">
             <div
@@ -767,17 +867,11 @@
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-saybot-desc">
                   Platform pembuatan chatbot AI kustom yang mudah diintegrasikan ke website apa saja.
                 </p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fas fa-bolt text-[#000000] text-2xl" title="Next.js"></i>
-                  <i class="fas fa-database text-[#339933] text-2xl" title="Supabase"></i>
-                  <i class="fas fa-robot text-neo-pink text-2xl" title="AI"></i>
-                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
                     Code</a>
-                  <a href="https://saybot.vercel.app/" target="_blank"
+                  <a href="https://saybots.vercel.app/" target="_blank" rel="noopener noreferrer"
                     class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
                     data-translate="btn-code2">Kunjungi</a>
                 </div>
@@ -785,68 +879,74 @@
             </div>
           </div>
 
-          <!-- 1. MePDF -->
+          <!-- DongTify Android App -->
           <div class="carousel-item">
             <div
-              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-blue-400/20 h-full">
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-sky-400/30 h-full">
               <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
-                <img src="img/mepdf.png" alt="MePDF" class="w-full h-full object-contain">
+                <img src="image/dongtify.png" alt="DongTify koleksi musik" class="w-full h-full object-contain">
               </div>
               <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
-                  data-translate="project-mepdf-title">MePDF</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-mepdf-desc">
-                  Apa itu MePDF? 🤔<br>
-                  MePDF adalah tools online gratis untuk kelola file PDF dengan mudah!
-                  Lebih dari 30 tools online serta integrasi chatbot AI.
-                </p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-react text-[#61DAFB] text-2xl" title="React.js"></i>
-                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
-                  <i class="fas fa-robot text-black text-2xl" title="AI"></i>
-                </div>
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight" data-translate="project-dongtify-title">DongTify</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-dongtify-desc">Aplikasi Android untuk mendengarkan musik gratis, menyimpan lagu agar bisa didengar offline, dan mengimpor playlist dari Spotify.</p>
                 <div class="flex gap-4 mt-auto">
-                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
-                    Code</a>
-                  <a href="https://me-pdf.vercel.app/" class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
-                    data-translate="btn-code2">Kunjungi</a>
+                  <a href="https://github.com/MuhammadFikriiii/f-music" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source Code</a>
+                  <button type="button" disabled aria-disabled="true"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs opacity-60 cursor-not-allowed">Visit</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 2. DonghuaWatch -->
+          <!-- 2. DongFlix Download -->
           <div class="carousel-item">
             <div
               class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-purple-400/20 h-full">
               <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
-                <img src="image/donghuawatch.png" alt="DonghuaWatch" class="w-full h-full object-contain">
+                <img src="image/dongflix-download.png" alt="DongFlix landing page dan unduhan aplikasi" class="w-full h-full object-contain">
               </div>
               <div class="p-4 bg-white">
                 <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
-                  data-translate="badge-portfolio">DONGHUAWATCH</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-donghuawatch-desc">
-                  Situs
-                  streaming Donghua dengan subtitle Indonesia yang cepat dan responsif.
+                  data-translate="project-dongflix-download-title">DongFlix — Landing & Download</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-dongflix-download-desc">
+                  Landing page untuk informasi dan unduhan DongFlix di Android, Android TV, Windows, dan iOS.
                 </p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-react text-[#61DAFB] text-2xl" title="React.js"></i>
-                  <i class="fas fa-server text-neo-blue text-2xl" title="API"></i>
-                  <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS"></i>
-                  <i class="fas fa-bolt text-[#00A3E0] text-2xl" title="Supabase"></i>
-                  <i class="fas fa-mobile-alt text-neo-pink text-2xl" title="Capacitor"></i>
-                  <i class="fas fa-route text-black text-2xl" title="React Router"></i>
-                  <i class="fas fa-database text-[#4479A1] text-2xl" title="PostgreSQL"></i>
-                  <i class="fas fa-chart-line text-neo-purple text-2xl" title="Vercel Analytics"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
-                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
+                  <a href="https://github.com/MuhammadFikriiii/dongflix-landing" target="_blank" rel="noopener noreferrer"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
                     Code</a>
-                  <a href="https://donghuawatch.vercel.app/" target="_blank"
+                  <a href="https://dongflix-download.vercel.app/" target="_blank" rel="noopener noreferrer"
                     class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
                     data-translate="btn-code2">Kunjungi</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1. DeepTools -->
+          <div class="carousel-item">
+            <div
+              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-blue-400/20 h-full">
+              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
+                <img src="image/deeptools.png" alt="DeepTools" class="w-full h-full object-contain">
+              </div>
+              <div class="p-4 bg-white">
+                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
+                  data-translate="project-deeptools-title">DeepTools</h3>
+                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-deeptools-desc">
+                  Kumpulan alat online untuk PDF, gambar, video, audio, keamanan, dan kebutuhan developer.
+                </p>
+                <details class="text-black text-xs mb-4">
+                  <summary class="font-bold cursor-pointer" data-translate="deeptools-list-label">Lihat semua alat</summary>
+                  <p class="mt-2 leading-relaxed" data-translate="deeptools-list">PDF: gabung, pisah, kompres, ubah ke gambar, hapus halaman, putar, ekstrak teks, watermark, susun ulang, buka kunci, beri nomor, tanda tangan, dan potong. Gambar: kompres, hapus latar, potong, ubah dimensi, sensor, cek metadata, hapus EXIF, konversi format, dan ubah ke PDF. Video/audio: ekstrak audio, kompres, potong, buat GIF, dan unduh TikTok. Keamanan: pesan rahasia dengan enkripsi. Developer: konverter Base64.</p>
+                </details>
+                <div class="flex gap-4 mt-auto">
+                  <a href="https://github.com/MuhammadFikriiii/deeptools" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
+                    Code</a>
+                  <a href="https://deep-tools.vercel.app/" target="_blank" rel="noopener noreferrer"
+                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Kunjungi</a>
                 </div>
               </div>
             </div>
@@ -864,10 +964,6 @@
                   GILMAR IDEA</h3>
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project9-desc">Web berita
                   digital yang menyajikan informasi terkini bagi mahasiswa STIE Pancasetia.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fas fa-bolt text-[#000000] text-2xl" title="Next.js"></i>
-                  <i class="fas fa-database text-[#339933] text-2xl" title="Supabase"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
@@ -892,103 +988,11 @@
                   data-translate="project12-title">SIPERU</h3>
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project12-desc">Sistem
                   Informasi Peminjaman Ruangan untuk mengelola reservasi fasilitas kampus secara otomatis.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-laravel text-[#FF2D20] text-2xl" title="Laravel"></i>
-                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
-                  <i class="fas fa-database text-[#4479A1] text-2xl" title="MySQL"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
                     Code</a>
                   <a href="https://siperu.stiepancasetia.ac.id/" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
-                    data-translate="btn-code2">Kunjungi</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. DonghuaWatch Komik -->
-          <div class="carousel-item">
-            <div
-              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-neo-yellow/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
-                <img src="img/komik.png" alt="DonghuaWatch Komik" class="w-full h-full object-contain">
-              </div>
-              <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
-                  data-translate="project13-title">DONGHUAWATCH KOMIK</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project13-desc">Platform baca
-                  komik online dengan koleksi lengkap dan antarmuka yang ramah pengguna.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-react text-[#61DAFB] text-2xl" title="React.js"></i>
-                  <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS"></i>
-                  <i class="fas fa-bolt text-[#00A3E0] text-2xl" title="Supabase"></i>
-                </div>
-                <div class="flex gap-4 mt-auto">
-                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
-                    Code</a>
-                  <a href="https://www.donghuawatch.cloud/komik" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
-                    data-translate="btn-code2">Kunjungi</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 4. DonghuaWatch API -->
-          <div class="carousel-item">
-            <div
-              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-blue-400/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
-                <img src="image/donghuawatchapi.png" alt="DonghuaWatch API" class="w-full h-full object-contain">
-              </div>
-              <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight">DONGHUAWATCH API</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project-api-desc">RESTful API
-                  untuk
-                  mengambil data streaming Donghua dengan fitur pencarian dan caching yang efisien.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-node-js text-[#339933] text-2xl" title="Node.js"></i>
-                  <i class="fas fa-server text-neo-blue text-2xl" title="Express"></i>
-                  <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS"></i>
-                  <i class="fas fa-spider text-[#FF6600] text-2xl" title="Scraping (Cheerio)"></i>
-                  <i class="fas fa-exchange-alt text-neo-purple text-2xl" title="Axios"></i>
-                </div>
-                <div class="flex gap-4 mt-auto">
-                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
-                    Code</a>
-                  <a href="https://donghuawatchapi.vercel.app/" target="_blank"
-                    class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs" data-translate="btn-code2">Visit</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 5. SIP -->
-          <div class="carousel-item">
-            <div
-              class="project-card rounded-xl overflow-hidden shadow-neuro-dark bg-dark-card glass-dark border border-neo-blue/20 h-full">
-              <div class="relative aspect-video overflow-hidden bg-black border-b-4 border-black">
-                <img src="img/sip.png" alt="SIP" class="w-full h-full object-contain">
-              </div>
-              <div class="p-4 bg-white">
-                <h3 class="text-lg font-black mb-2 text-black uppercase tracking-tight"
-                  data-translate="project10-title">SIP STIE PANCASETIA</h3>
-                <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project10-desc">Sistem
-                  Informasi Terpadu STIE Pancasetia untuk manajemen data akademik yang efisien.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-html5 text-[#E34F26] text-2xl" title="HTML5"></i>
-                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
-                </div>
-                <div class="flex gap-4 mt-auto">
-                  <a href="javascript:void(0)" onclick="showPrivateAlert()"
-                    class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
-                    Code</a>
-                  <a href="https://sip.stiepancasetia.ac.id/" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-green text-center text-xs"
                     data-translate="btn-code2">Kunjungi</a>
                 </div>
@@ -1008,9 +1012,6 @@
                   data-translate="project11-title">LPPM STIE PANCASETIA</h3>
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project11-desc">Portal resmi
                   Lembaga Penelitian dan Pengabdian kepada Masyarakat STIE Pancasetia.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-wordpress text-[#21759B] text-2xl" title="WordPress"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
@@ -1036,11 +1037,6 @@
                   Kurikulum OBE</h3>
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project2-desc">Sistem Desain
                   Kurikulum OBE yang dikembangkan untuk Poliban mendukung pengembangan kurikulum sesuai prinsip OBE.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-laravel text-[#FF2D20] text-2xl" title="Laravel"></i>
-                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
-                  <i class="fas fa-database text-[#4479A1] text-2xl" title="MySQL"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/baru_kurikulum_OBE" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
@@ -1064,10 +1060,6 @@
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project1-desc">Chatbot cerdas
                   bertenaga AI
                   yang dirancang untuk berinteraksi secara alami dengan pengguna menggunakan Gemini API.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fas fa-bolt text-[#000000] text-2xl" title="Next.js"></i>
-                  <i class="fas fa-brain text-neo-purple text-2xl" title="Gemini API"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/FikBot" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
@@ -1094,11 +1086,6 @@
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project5-desc">Sistem
                   manajemen arsip
                   elektronik untuk BPKPAD mengoptimalkan penyimpanan dokumen, pengambilan, dan keamanan.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-laravel text-[#FF2D20] text-2xl" title="Laravel"></i>
-                  <i class="fas fa-wind text-[#06B6D4] text-2xl" title="Tailwind CSS"></i>
-                  <i class="fas fa-database text-[#4479A1] text-2xl" title="MySQL"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/sistem-informasi-manajemen-arsip" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
@@ -1125,11 +1112,6 @@
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project4-desc">Game papan
                   klasik
                   berbasis web dengan fitur interaktif, memungkinkan dua pemain untuk bermain dengan animasi mulus.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fab fa-html5 text-[#E34F26] text-2xl" title="HTML5"></i>
-                  <i class="fab fa-js text-[#F7DF1E] text-2xl" title="JavaScript"></i>
-                  <i class="fab fa-css3-alt text-[#1572B6] text-2xl" title="CSS3"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/Snakes-and-Ladders." target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
@@ -1154,10 +1136,6 @@
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project8-desc">Aplikasi web
                   dengan AI
                   untuk upscale gambar hingga 4x menggunakan neural network Real-ESRGAN dengan hasil profesional.</p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fas fa-bolt text-[#000000] text-2xl" title="Next.js"></i>
-                  <i class="fas fa-brain text-neo-purple text-2xl" title="AI/ML"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="https://github.com/MuhammadFikriiii/UpscaleGambar" target="_blank"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
@@ -1183,10 +1161,6 @@
                 <p class="text-black font-bold mb-4 text-xs text-justify" data-translate="project3-desc">Desain jaringan
                   menggunakan Cisco Packet Tracer untuk optimasi lingkungan korporat dengan VLAN dan protokol routing.
                 </p>
-                <div class="flex flex-wrap gap-4 mb-6">
-                  <i class="fas fa-network-wired text-[#1BA0D7] text-2xl" title="Cisco"></i>
-                  <i class="fas fa-project-diagram text-neo-blue text-2xl" title="VLAN"></i>
-                </div>
                 <div class="flex gap-4 mt-auto">
                   <a href="javascript:void(0)" onclick="showPrivateAlert()"
                     class="neo-btn flex-1 py-1.5 bg-neo-yellow text-center text-xs" data-translate="btn-source">Source
@@ -1218,166 +1192,166 @@
       <div class="skills-marquee-container">
         <div class="skills-marquee">
           <!-- Frontend Skills -->
-          <div class="skills-marquee-item group hover:bg-[#E34F26] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#E34F26] transition-all duration-300" style="--skill-color: #E34F26">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-html5"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">HTML5</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#1572B6] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#1572B6] transition-all duration-300" style="--skill-color: #1572B6">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-css3-alt"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">CSS3</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#F7DF1E] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#F7DF1E] transition-all duration-300" style="--skill-color: #F7DF1E; --skill-active-color: #111111">
             <div class="text-4xl mb-3 text-black group-hover:text-black transition-colors duration-300"><i
                 class="fab fa-js"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-black">JavaScript</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#06B6D4] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#06B6D4] transition-all duration-300" style="--skill-color: #06B6D4">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-wind"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Tailwind</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#7952B3] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#7952B3] transition-all duration-300" style="--skill-color: #7952B3">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-bootstrap"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Bootstrap</div>
           </div>
 
           <!-- Backend Skills -->
-          <div class="skills-marquee-item group hover:bg-[#777BB4] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#777BB4] transition-all duration-300" style="--skill-color: #777BB4">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-php"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">PHP</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#FF2D20] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#FF2D20] transition-all duration-300" style="--skill-color: #FF2D20">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-laravel"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Laravel</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#4479A1] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#4479A1] transition-all duration-300" style="--skill-color: #4479A1">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-database"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">MySQL</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#E37400] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#E37400] transition-all duration-300" style="--skill-color: #E37400">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-chart-bar"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Analytics</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#21759B] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#21759B] transition-all duration-300" style="--skill-color: #21759B">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-wordpress"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">WordPress</div>
           </div>
 
           <!-- Network Skills -->
-          <div class="skills-marquee-item group hover:bg-[#1BA0D7] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#1BA0D7] transition-all duration-300" style="--skill-color: #1BA0D7">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-network-wired"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Cisco</div>
           </div>
 
           <!-- Design Skills -->
-          <div class="skills-marquee-item group hover:bg-[#F24E1E] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#F24E1E] transition-all duration-300" style="--skill-color: #F24E1E">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-figma"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Figma</div>
           </div>
 
           <!-- Tools Skills -->
-          <div class="skills-marquee-item group hover:bg-[#6e5494] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#6e5494] transition-all duration-300" style="--skill-color: #6e5494">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-github"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">GitHub</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-gray-600 transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-gray-600 transition-all duration-300" style="--skill-color: #111111">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-rocket"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Vercel</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#FF6C37] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#FF6C37] transition-all duration-300" style="--skill-color: #FF6C37">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-envelope"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Postman</div>
           </div>
 
           <!-- Duplicate skills untuk continuous loop tanpa jeda -->
-          <div class="skills-marquee-item group hover:bg-[#E34F26] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#E34F26] transition-all duration-300" style="--skill-color: #E34F26">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-html5"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">HTML5</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#1572B6] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#1572B6] transition-all duration-300" style="--skill-color: #1572B6">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-css3-alt"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">CSS3</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#F7DF1E] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#F7DF1E] transition-all duration-300" style="--skill-color: #F7DF1E; --skill-active-color: #111111">
             <div class="text-4xl mb-3 text-black group-hover:text-black transition-colors duration-300"><i
                 class="fab fa-js"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-black">JavaScript</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#06B6D4] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#06B6D4] transition-all duration-300" style="--skill-color: #06B6D4">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-wind"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Tailwind</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#7952B3] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#7952B3] transition-all duration-300" style="--skill-color: #7952B3">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-bootstrap"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Bootstrap</div>
           </div>
 
-          <div class="skills-marquee-item group hover:bg-[#777BB4] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#777BB4] transition-all duration-300" style="--skill-color: #777BB4">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-php"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">PHP</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#FF2D20] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#FF2D20] transition-all duration-300" style="--skill-color: #FF2D20">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-laravel"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Laravel</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#4479A1] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#4479A1] transition-all duration-300" style="--skill-color: #4479A1">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-database"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">MySQL</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#E37400] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#E37400] transition-all duration-300" style="--skill-color: #E37400">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-chart-bar"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Analytics</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#21759B] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#21759B] transition-all duration-300" style="--skill-color: #21759B">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-wordpress"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">WordPress</div>
           </div>
 
-          <div class="skills-marquee-item group hover:bg-[#1BA0D7] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#1BA0D7] transition-all duration-300" style="--skill-color: #1BA0D7">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-network-wired"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Cisco</div>
           </div>
 
-          <div class="skills-marquee-item group hover:bg-[#F24E1E] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#F24E1E] transition-all duration-300" style="--skill-color: #F24E1E">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-figma"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Figma</div>
           </div>
 
-          <div class="skills-marquee-item group hover:bg-[#6e5494] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#6e5494] transition-all duration-300" style="--skill-color: #6e5494">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fab fa-github"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">GitHub</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-gray-600 transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-gray-600 transition-all duration-300" style="--skill-color: #111111">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-rocket"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Vercel</div>
           </div>
-          <div class="skills-marquee-item group hover:bg-[#FF6C37] transition-all duration-300">
+          <div class="skills-marquee-item group hover:bg-[#FF6C37] transition-all duration-300" style="--skill-color: #FF6C37">
             <div class="text-4xl mb-3 text-black group-hover:text-white transition-colors duration-300"><i
                 class="fas fa-envelope"></i></div>
             <div class="font-black text-sm uppercase group-hover:text-white">Postman</div>
@@ -1539,17 +1513,13 @@
 
           <p class="text-black mb-8 italic font-bold leading-relaxed text-sm sm:text-base flex-grow border-l-4 border-neo-blue pl-4"
             data-translate="testi2-text">
-            "The AI chatbot Fikri developed for us has revolutionized our customer service. His understanding of both
-            frontend and backend technologies is impressive."
+            “SIMA BPKPAD shows how a well-designed digital archive can make document management more organized and efficient. It helps make storing, finding, and protecting important records easier.”
           </p>
 
           <div class="flex items-center pt-4 border-t-2 border-black">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-              alt="David Kim" class="w-12 h-12 border-2 border-black object-cover mr-3">
             <div>
-              <h4 class="font-black text-black text-sm sm:text-base">David Kim</h4>
-              <p class="text-xs sm:text-sm font-bold text-gray-600">Founder, AI Solutions</p>
+              <h4 class="font-black text-black text-sm sm:text-base">Reya Difa</h4>
+              <p class="text-xs sm:text-sm font-bold text-gray-600" data-translate="testi2-role">Student Politeknik Negeri Banjarmasin</p>
             </div>
           </div>
         </div>
@@ -1569,17 +1539,13 @@
 
           <p class="text-black mb-8 italic font-bold leading-relaxed text-sm sm:text-base flex-grow border-l-4 border-neo-green pl-4"
             data-translate="testi3-text">
-            "Fikri's work on our financial dashboard was outstanding. The data visualization and real-time updates work
-            flawlessly. Professional and reliable developer."
+            “Fikri bekerja dengan profesional dan komunikatif. Ia cepat memahami kebutuhan usaha kami dan memberikan solusi digital yang praktis serta mudah digunakan.”
           </p>
 
           <div class="flex items-center pt-4 border-t-2 border-black">
-            <img
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
-              alt="Lisa Thompson" class="w-12 h-12 border-2 border-black object-cover mr-3">
             <div>
-              <h4 class="font-black text-black text-sm sm:text-base">Lisa Thompson</h4>
-              <p class="text-xs sm:text-sm font-bold text-gray-600">Director, FinTech Pro</p>
+              <h4 class="font-black text-black text-sm sm:text-base">Lina</h4>
+              <p class="text-xs sm:text-sm font-bold text-gray-600" data-translate="testi3-role">Pelaku UMKM</p>
             </div>
           </div>
         </div>
@@ -1645,7 +1611,7 @@
             <h4 class="text-xl font-black uppercase" data-translate="github_repos">Total Repositories</h4>
             <i class="fas fa-code-branch text-black text-2xl"></i>
           </div>
-          <p class="text-5xl font-black text-neo-blue tracking-tighter count-up" data-target="50">50</p>
+          <p class="text-5xl font-black text-neo-blue tracking-tighter count-up" data-target="62">62</p>
           <p class="text-xs font-bold text-gray-600 mt-2 uppercase">all repositories</p>
         </div>
         <div class="neo-card p-6 bg-neo-yellow">
@@ -1662,7 +1628,7 @@
             <h4 class="text-xl font-black uppercase" data-translate="github_contrib">Contributions</h4>
             <i class="fas fa-code-commit text-black text-2xl"></i>
           </div>
-          <p class="text-5xl font-black text-black tracking-tighter count-up" data-target="1600">1.600</p>
+          <p class="text-5xl font-black text-black tracking-tighter count-up" data-target="1956">1.956</p>
           <p class="text-xs font-bold text-black/70 mt-2 uppercase" data-translate="github_lastyear">(sampai kini)</p>
         </div>
         <div class="neo-card p-6 bg-neo-purple text-white">
@@ -1670,100 +1636,8 @@
             <h4 class="text-xl font-black uppercase" data-translate="github_followers">Followers</h4>
             <i class="fas fa-users text-white text-2xl"></i>
           </div>
-          <p class="text-5xl font-black tracking-tighter count-up" data-target="13">13</p>
+          <p class="text-5xl font-black tracking-tighter count-up" data-target="21">21</p>
           <p class="text-xs font-bold mt-2 uppercase" data-translate="github_followers_desc">GitHub followers</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Enhanced Contact Section -->
-  <section id="contact" class="py-20 sm:py-32 bg-neo-green border-y-8 border-black">
-    <div class="container mx-auto px-4 sm:px-6">
-      <h2
-        class="text-3xl sm:text-4xl md:text-6xl font-black mb-16 text-center uppercase tracking-tighter reveal reveal-up">
-        <span
-          class="bg-white text-black px-8 py-3 border-4 border-black shadow-neo-lg inline-block transform -rotate-1 hover:rotate-1 transition-transform duration-300 cursor-default"
-          data-translate="nav-contact">Get In Touch</span>
-      </h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-        <div class="reveal reveal-left">
-          <h3 class="text-2xl sm:text-3xl font-black mb-8 uppercase tracking-tight" data-translate="contact-info-title">
-            Contact Information</h3>
-          <div class="space-y-6">
-            <div class="flex items-start p-6 bg-white border-4 border-black shadow-neo">
-              <div
-                class="w-12 h-12 border-2 border-black bg-neo-pink flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fas fa-map-marker-alt text-white"></i>
-              </div>
-              <div>
-                <h4 class="text-lg font-black mb-1 uppercase" data-translate="contact-location-title">
-                  Location</h4>
-                <p class="text-black font-bold">Banjarmasin, Indonesia</p>
-              </div>
-            </div>
-            <div class="flex items-start p-6 bg-white border-4 border-black shadow-neo">
-              <div
-                class="w-12 h-12 border-2 border-black bg-neo-blue flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fas fa-envelope text-white"></i>
-              </div>
-              <div>
-                <h4 class="text-lg font-black mb-1 uppercase" data-translate="contact-email-title">Email
-                </h4>
-                <p class="text-black font-bold break-all">fikri772277@gmail.com</p>
-              </div>
-            </div>
-            <div class="flex items-start p-6 bg-white border-4 border-black shadow-neo">
-              <div
-                class="w-12 h-12 border-2 border-black bg-neo-yellow flex items-center justify-center mr-4 flex-shrink-0">
-                <i class="fas fa-phone text-black"></i>
-              </div>
-              <div>
-                <h4 class="text-lg font-black mb-1 uppercase" data-translate="contact-phone-title">Phone
-                </h4>
-                <p class="text-black font-bold">+62 852 4886 7449</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="reveal reveal-right delay-200">
-          <h3 class="text-2xl sm:text-3xl font-black mb-8 uppercase tracking-tight"
-            data-translate="contact-message-title">Send Me a Message</h3>
-          <form id="emailForm" class="space-y-6">
-            <div class="relative">
-              <input type="text" id="name" name="name"
-                class="form-input w-full px-4 py-4 bg-white border-4 border-black font-bold focus:outline-none shadow-neo transition-all duration-200 text-black"
-                placeholder=" " required="">
-              <label for="name" class="floating-label absolute left-4 top-4 text-gray-500 font-bold uppercase text-xs"
-                data-translate="form-name">Your Name</label>
-            </div>
-            <div class="relative">
-              <input type="email" id="email" name="email"
-                class="form-input w-full px-4 py-4 bg-white border-4 border-black font-bold focus:outline-none shadow-neo transition-all duration-200 text-black"
-                placeholder=" " required="">
-              <label for="email" class="floating-label absolute left-4 top-4 text-gray-500 font-bold uppercase text-xs"
-                data-translate="form-email">Your Email</label>
-            </div>
-            <div class="relative">
-              <input type="text" id="subject" name="subject"
-                class="form-input w-full px-4 py-4 bg-white border-4 border-black font-bold focus:outline-none shadow-neo transition-all duration-200 text-black"
-                placeholder=" " required="">
-              <label for="subject"
-                class="floating-label absolute left-4 top-4 text-gray-500 font-bold uppercase text-xs"
-                data-translate="form-subject">Subject</label>
-            </div>
-            <div class="relative">
-              <textarea id="message" name="message" rows="5"
-                class="form-input w-full px-4 py-4 bg-white border-4 border-black font-bold focus:outline-none shadow-neo transition-all duration-200 text-black"
-                placeholder=" " required=""></textarea>
-              <label for="message"
-                class="floating-label absolute left-4 top-4 text-gray-500 font-bold uppercase text-xs"
-                data-translate="form-message">Your Message</label>
-            </div>
-            <button type="submit" class="neo-btn w-full py-4 bg-black text-white text-xl uppercase tracking-widest">
-              <i class="fas fa-paper-plane mr-2"></i> Send Message
-            </button>
-          </form>
         </div>
       </div>
     </div>
@@ -1814,14 +1688,15 @@
         "nav-github": "Github",
         "nav-certificates": "Sertifikat",
         "nav-testimonial": "Testimonial",
-        "nav-contact": "Kontak",
         "hero-greeting": "Halo, Saya",
         "hero-view-work": "Lihat Karya Saya",
-        "hero-whatsapp": "Chat di WhatsApp",
         "about-title": "Tentang Saya",
         "about-subtitle": "Lulusan D3 Teknik Informatika",
         "about-desc2": "Sebagai lulusan terbaru dari Politeknik Negeri Banjarmasin (D3 Teknik Informatika), saya telah mengerjakan berbagai proyek selama studi dan melalui pekerjaan freelance—mulai dari website sederhana hingga aplikasi kompleks, dan implementasi infrastruktur jaringan. Saya menikmati menggabungkan keterampilan teknis dengan pemecahan masalah kreatif untuk memberikan solusi yang efektif dan menarik.",
-        "about-hire": "Rekrut Saya",
+        "career-title": "Karier Saya",
+        "career-education": "Kuliah D3 di Politeknik Negeri Banjarmasin",
+        "career-current-years": "2025–Sekarang",
+        "career-current": "IT di STIE Pancasetia",
         "projects-title": "Proyek Saya",
         "badge-new": "Baru",
         "badge-portfolio": "DonghuaWatch",
@@ -1844,18 +1719,28 @@
         "project8-desc": "Aplikasi web dengan AI untuk meningkatkan resolusi gambar hingga 4x menggunakan neural network Real-ESRGAN dengan hasil profesional.",
         "project9-title": "Gilmar Idea",
         "project9-desc": "Web berita digital yang menyajikan informasi terkini bagi mahasiswa STIE Pancasetia.",
-        "project10-title": "SIP STIE Pancasetia",
-        "project10-desc": "Sistem Informasi Terpadu STIE Pancasetia untuk manajemen data akademik yang efisien.",
         "project11-title": "LPPM STIE Pancasetia",
         "project11-desc": "Portal resmi Lembaga Penelitian dan Pengabdian kepada Masyarakat STIE Pancasetia.",
         "project12-title": "Siperu",
         "project12-desc": "Sistem Informasi Peminjaman Ruangan untuk mengelola reservasi fasilitas kampus secara otomatis.",
-        "project13-title": "DonghuaWatch Komik",
-        "project13-desc": "Platform baca komik online dengan koleksi lengkap dan antarmuka yang ramah pengguna.",
-        "project-api-desc": "RESTful API untuk mengambil data streaming Donghua dengan fitur pencarian dan caching yang efisien.",
-        "project-donghuawatch-desc": "Situs streaming Donghua dengan subtitle Indonesia yang cepat dan responsif.",
+        "project-deeptools-title": "DeepTools",
+        "project-deeptools-desc": "Kumpulan alat online untuk PDF, gambar, video, audio, keamanan, dan kebutuhan developer.",
+        "deeptools-list-label": "Lihat semua alat",
+        "deeptools-list": "PDF: gabung, pisah, kompres, ubah ke gambar, hapus halaman, putar, ekstrak teks, watermark, susun ulang, buka kunci, beri nomor, tanda tangan, dan potong. Gambar: kompres, hapus latar, potong, ubah dimensi, sensor, cek metadata, hapus EXIF, konversi format, dan ubah ke PDF. Video/audio: ekstrak audio, kompres, potong, buat GIF, dan unduh TikTok. Keamanan: pesan rahasia dengan enkripsi. Developer: konverter Base64.",
+        "project-dongflix-download-title": "DongFlix — Landing & Download",
+        "project-dongflix-download-desc": "Landing page untuk informasi dan unduhan DongFlix di Android, Android TV, Windows, dan iOS.",
+        "project-dongflix-web-title": "DongFlix — Website",
+        "project-dongflix-web-desc": "Website streaming DongFlix untuk donghua, anime, film, series, drama pendek, dan novel.",
+        "project-dongflix-apps-title": "DongFlix — Android, iOS & Windows",
+        "project-dongflix-apps-desc": "Aplikasi streaming lintas perangkat: Android v1.0.7, Android TV, Windows v1.0.4, dan iOS v1.0.1 Beta. Mendukung donghua, anime, film, series, drama pendek, serta novel.",
         "project-saybot-title": "Saybot AI",
         "project-saybot-desc": "Platform pembuatan chatbot AI kustom yang mudah diintegrasikan ke website apa saja.",
+        "project-dongtify-title": "DongTify",
+        "project-dongtify-desc": "Aplikasi Android untuk mendengarkan musik gratis, menyimpan lagu agar bisa didengar offline, dan mengimpor playlist dari Spotify.",
+        "project-sipeka-title": "SIPEKA — Bot WhatsApp AI",
+        "project-sipeka-desc": "Bot WhatsApp otomatis bertenaga AI untuk mencatat dan mengelola keuangan lewat chat, serta bot grup untuk game, unduh video, dan fitur lainnya.",
+        "project-delphi-title": "delphi.tools",
+        "project-delphi-desc": "Saya berkontribusi dalam pengembangan fitur berbagai tools di delphi.tools, kumpulan utilitas web untuk kreativitas dan produktivitas.",
         "badge-ai": "AI",
         "badge-backend": "Backend",
         "donghuawatchs": "Kunjungi",
@@ -1865,17 +1750,6 @@
         "btn-code2": "Kunjungi",
         "btn-file": "File",
         "skills-technical": "Keahlian Teknis",
-        "contact-info-title": "Informasi Kontak",
-        "contact-location-title": "Lokasi",
-        "contact-email-title": "Email",
-        "contact-phone-title": "Telepon",
-        "contact-whatsapp-title": "WhatsApp",
-        "contact-message-title": "Kirim Pesan",
-        "form-name": "Nama Anda",
-        "form-email": "Email Anda",
-        "form-subject": "Subjek",
-        "form-message": "Pesan Anda",
-        "btn-send-message": "Kirim Pesan",
         "github_title": "Statistik GitHub",
         "github_repos": "Total Repo",
         "github_stars": "Bintang",
@@ -1889,8 +1763,10 @@
         "certificates-modal-close": "Tutup",
         "testimonial-title": "Apa Kata Klien",
         "testi1-text": "“Saya senang dengan website portofolio yang diberikan Fikri—terlihat bagus, berjalan lancar, dan mudah dinavigasi serta digunakan di berbagai perangkat.”",
-        "testi2-text": "“Chatbot AI yang dikembangkan Fikri untuk kami telah merevolusi layanan pelanggan kami. Pemahamannya tentang teknologi frontend dan backend sangat mengesankan.”",
-        "testi3-text": "“Pekerjaan Fikri pada dashboard keuangan kami sangat luar biasa. Visualisasi data dan pembaruan real-time bekerja dengan sempurna. Pengembang yang profesional dan andal.”",
+        "testi2-text": "“SIMA BPKPAD menunjukkan bagaimana arsip digital yang dirancang dengan baik dapat membuat pengelolaan dokumen lebih teratur dan efisien. Penyimpanan, pencarian, dan perlindungan arsip penting pun menjadi lebih mudah.”",
+        "testi2-role": "Mahasiswa Politeknik Negeri Banjarmasin",
+        "testi3-text": "“Fikri bekerja dengan profesional dan komunikatif. Ia cepat memahami kebutuhan usaha kami dan memberikan solusi digital yang praktis serta mudah digunakan.”",
+        "testi3-role": "Pelaku UMKM",
         "stat-happy-clients": "Klien Puas",
         "stat-success-rate": "Tingkat Keberhasilan %",
         "stat-projects": "Proyek Selesai",
@@ -1911,14 +1787,15 @@
         "nav-github": "Github",
         "nav-certificates": "Certificates",
         "nav-testimonial": "Testimonial",
-        "nav-contact": "Contact",
         "hero-greeting": "Hello, I'm",
         "hero-view-work": "View My Work",
-        "hero-whatsapp": "Chat on WhatsApp",
         "about-title": "About Me",
         "about-subtitle": "D3 Informatic Engineering Graduate",
         "about-desc2": "As a recent graduate from Politeknik Negeri Banjarmasin (D3 Informatic Engineering), I've worked on various projects during my studies and through freelance work—ranging from simple websites to complex applications. I enjoy combining technical skills with creative problem-solving to deliver effective and engaging solutions.",
-        "about-hire": "Hire Me",
+        "career-title": "Career",
+        "career-education": "D3 studies at Politeknik Negeri Banjarmasin",
+        "career-current-years": "2025–Present",
+        "career-current": "IT at STIE Pancasetia",
         "projects-title": "My Projects",
         "badge-new": "New",
         "badge-portfolio": "DonghuaWatch",
@@ -1942,18 +1819,28 @@
         "project8-desc": "Web application with AI to upscale images up to 4x using Real-ESRGAN neural network with professional results.",
         "project9-title": "Gilmar Idea",
         "project9-desc": "Digital news web providing the latest information for STIE Pancasetia students.",
-        "project10-title": "SIP STIE Pancasetia",
-        "project10-desc": "STIE Pancasetia Integrated Information System for efficient academic data management.",
         "project11-title": "LPPM STIE Pancasetia",
         "project11-desc": "Official portal of STIE Pancasetia Research and Community Service Institute.",
         "project12-title": "Siperu",
         "project12-desc": "Room Booking Information System for automated campus facility reservation management.",
-        "project13-title": "DonghuaWatch Komik",
-        "project13-desc": "Online comic reading platform with a complete collection and user-friendly interface.",
-        "project-api-desc": "RESTful API to fetch Donghua streaming data with efficient search and caching features.",
-        "project-donghuawatch-desc": "Donghua streaming site with fast and responsive Indonesian subtitles.",
+        "project-deeptools-title": "DeepTools",
+        "project-deeptools-desc": "A collection of online tools for PDF, images, video, audio, security, and developer tasks.",
+        "deeptools-list-label": "View all tools",
+        "deeptools-list": "PDF: merge, split, compress, convert to images, remove pages, rotate, extract text, watermark, reorder, unlock, number, sign, and crop. Images: compress, remove background, crop, resize, censor, inspect metadata, remove EXIF, convert formats, and convert to PDF. Video/audio: extract audio, compress, cut, create GIFs, and download TikTok videos. Security: encrypted secret messages. Developer: Base64 converter.",
+        "project-dongflix-download-title": "DongFlix — Landing & Download",
+        "project-dongflix-download-desc": "The landing page for DongFlix information and downloads for Android, Android TV, Windows, and iOS.",
+        "project-dongflix-web-title": "DongFlix — Website",
+        "project-dongflix-web-desc": "DongFlix streaming website for donghua, anime, movies, series, short dramas, and novels.",
+        "project-dongflix-apps-title": "DongFlix — Android, iOS & Windows",
+        "project-dongflix-apps-desc": "Cross-platform streaming apps: Android v1.0.7, Android TV, Windows v1.0.4, and iOS v1.0.1 Beta. Streams donghua, anime, movies, series, short dramas, and novels.",
         "project-saybot-title": "Saybot AI",
         "project-saybot-desc": "Custom AI chatbot creation platform easily integrated into any website.",
+        "project-dongtify-title": "DongTify",
+        "project-dongtify-desc": "An Android app for free music listening, saving songs for offline playback, and importing playlists from Spotify.",
+        "project-sipeka-title": "SIPEKA — WhatsApp AI Bot",
+        "project-sipeka-desc": "An AI-powered WhatsApp bot for tracking and managing finances through chat, plus group bots for games, video downloads, and more.",
+        "project-delphi-title": "delphi.tools",
+        "project-delphi-desc": "I contributed to building features across delphi.tools, a collection of web utilities for creativity and productivity.",
         "badge-ai": "AI",
         "badge-backend": "Backend",
         "donghuawatchs": "Visit",
@@ -1963,17 +1850,6 @@
         "btn-code2": "Visit",
         "btn-file": "File",
         "skills-technical": "Technical Skills",
-        "contact-info-title": "Contact Information",
-        "contact-location-title": "Location",
-        "contact-email-title": "Email",
-        "contact-phone-title": "Phone",
-        "contact-whatsapp-title": "WhatsApp",
-        "contact-message-title": "Send Me a Message",
-        "form-name": "Your Name",
-        "form-email": "Your Email",
-        "form-subject": "Subject",
-        "form-message": "Your Message",
-        "btn-send-message": "Send Message",
         "github_title": "GitHub Statistics",
         "github_repos": "Total Repo",
         "github_stars": "Stars",
@@ -1987,8 +1863,10 @@
         "certificates-modal-close": "Close",
         "testimonial-title": "What Clients Say",
         "testi1-text": "“I’m pleased with the portfolio website Fikri delivered—it looks great, works smoothly, and is easy to navigate and use across devices.”",
-        "testi2-text": "“The AI chatbot Fikri developed for us has revolutionized our customer service. His understanding of both frontend and backend technologies is impressive.”",
-        "testi3-text": "“Fikri's work on our financial dashboard was outstanding. The data visualization and real-time updates work flawlessly. Professional and reliable developer.”",
+        "testi2-text": "“SIMA BPKPAD shows how a well-designed digital archive can make document management more organized and efficient. It helps make storing, finding, and protecting important records easier.”",
+        "testi2-role": "Student, Politeknik Negeri Banjarmasin",
+        "testi3-text": "“Fikri was professional and easy to communicate with. He quickly understood our business needs and offered a practical digital solution that was easy to use.”",
+        "testi3-role": "Small business owner",
         "stat-happy-clients": "Happy Clients",
         "stat-success-rate": "Success Rate %",
         "stat-projects": "Projects Completed",
@@ -2040,9 +1918,19 @@
         currentCarouselIndex = itemCount - itemsPerView;
       }
 
+      updateCarouselPosition();
+    }
+
+    function updateCarouselPosition() {
+      const carousel = document.getElementById('projectCarousel');
+      const itemCount = carousel.querySelectorAll('.carousel-item').length;
+      const itemsPerView = window.innerWidth <= 768 ? 1 : 3;
+      currentCarouselIndex = Math.min(currentCarouselIndex, Math.max(0, itemCount - itemsPerView));
       const offset = -currentCarouselIndex * (100 / itemsPerView);
       carousel.style.transform = `translateX(${offset}%)`;
     }
+
+    window.addEventListener('resize', updateCarouselPosition);
 
     function showCertificateDetail(id, title, organization, year, image, description) {
       // Dynamically create image element if needed, or use pre-defined placeholder
@@ -2096,25 +1984,6 @@
           }
         }, speed);
       }, delay);
-    }
-
-    const emailForm = document.getElementById("emailForm");
-    if (emailForm) {
-      emailjs.init("MkDTippaiZtJd2cUV"); // Replace with your actual EmailJS User ID
-      emailForm.addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent default form submission
-
-        const serviceID = "service_rw9xkqw"; // Replace with your Service ID
-        const templateID = "template_z37v5ih"; // Replace with your Template ID
-
-        emailjs.sendForm(serviceID, templateID, this)
-          .then(function (response) {
-            alert(currentLang === 'id' ? "Pesan berhasil dikirim!" : "Message sent successfully!");
-            emailForm.reset();
-          }, function (error) {
-            alert(currentLang === 'id' ? "Terjadi kesalahan: " + error.text : "Error occurred: " + error.text);
-          });
-      });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -2424,7 +2293,7 @@
       const typingId = addTypingIndicator();
 
       try {
-        const response = await fetch('https://saybot.vercel.app/api/chat', {
+        const response = await fetch('https://saybots.vercel.app/api/chat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
